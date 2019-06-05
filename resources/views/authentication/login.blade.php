@@ -9,12 +9,13 @@
 			<img class="mb-4 rounded-circle shadow-sm" src="{{ asset('application_images/welcome/asar.jpg') }}" alt="" width="72" height="72">
 			<h1 class="h3 mb-3 font-weight-normal">{{ trans('heading.asarsoft_authentication') }}</h1>
 			<p>Log in to any <b>Asarsoft</b> application vie <code>asarsoft authentication</code> service.
-				Asarsoft Authentication assumes you accept <a href="https://caniuse.com/#feat=css-placeholder-shown">privacy and terms</a></p>
+				Asarsoft Authentication assumes you accept
+				<a href="https://caniuse.com/#feat=css-placeholder-shown">privacy and terms</a></p>
 		</div>
 
 		<div class="form-label-group">
-			<input type="text" id="username_email" class="form-control" placeholder="{{ trans('authentication.username_email') }}" required autofocus>
-			<label for="username_email">{{ trans('authentication.username_email') }}</label>
+			<input type="text" id="username_or_email" class="form-control" placeholder="{{ trans('authentication.username_or_email') }}" required autofocus>
+			<label for="username_or_email">{{ trans('authentication.username_or_email') }}</label>
 		</div>
 
 		<div class="form-label-group">

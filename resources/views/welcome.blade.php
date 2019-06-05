@@ -107,7 +107,7 @@
 			</p></div>
 		<div class="col-md-4 col-sm-4 col-xs-12 box2">
 			<h3>SECURE</h3>
-			<p>There are different security attacks, thus there are different security products.
+			<p>There are different security attacks, thus there are different security projects.
 				On "Asarsoft" project development life-cycle,the softwares are training by
 				imitated attacks.
 			</p></div>

@@ -17,6 +17,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('login', 'Authentication\LoginController@login_view')->name('login');
+Route::get('login', 'Authentication\LoginController@view_login')->name('view_login');
+Route::post('login', 'Authentication\LoginController@attempt_login')->name('attempt_login');
+
+Route::get('projects', 'Web\ProjectsController@projects')->name('projects');
 
 Route::get('/home', 'HomeController@index')->name('home');
