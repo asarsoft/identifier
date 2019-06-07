@@ -14,12 +14,13 @@
 
 	<!-- Styles -->
     @include('includes.general_css')
-
-	@yield('styles')
+    @yield('style')
+    
 </head>
 <body>
 	@yield('content')
 
-    @include('includes.general_js')@yield('scripts')
+    @include('includes.general_js')
+    @yield('script')
 </body>
 </html>

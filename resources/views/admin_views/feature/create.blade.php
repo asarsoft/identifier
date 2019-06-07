@@ -1,149 +1,72 @@
 @extends('layouts.admin_master')
 
 @section('content')
-    <div
-        class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Dashboard</h1>
-        <div class="btn-toolbar mb-2 mb-md-0">
-            <div class="btn-group mr-2">
-                <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
-                <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
-            </div>
-            <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
-                <span data-feather="calendar"></span>
-                This week
-            </button>
+    <form class="mb-4" method="post" action="{{ route('store-feature') }}" enctype="multipart/form-data">
+        @csrf
+        <div class="form-group col-md-2 mx-0 px-0">
+            <label for="icon">
+                <span role="button" class="btn btn-outline-primary"><i class="mr-2 fas fa-image"></i>{{ trans('button_input.icon') }}</span>
+            </label>
+            <input class="d-none" name="icon" id="icon" type="file">
         </div>
-    </div>
 
-    <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
+        <div class="form-row">
+            @component('admin_views.components.forms.type_text', ['field_name' => 'min_price', 'class' => 'col-md-2', 'value' => ''])
+            @endcomponent
 
-    <h2>Section title</h2>
-    <div class="table-responsive">
-        <table class="table table-striped table-sm">
-            <thead>
-            <tr>
-                <th>#</th>
-                <th>Header</th>
-                <th>Header</th>
-                <th>Header</th>
-                <th>Header</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>1,001</td>
-                <td>Lorem</td>
-                <td>ipsum</td>
-                <td>dolor</td>
-                <td>sit</td>
-            </tr>
-            <tr>
-                <td>1,002</td>
-                <td>amet</td>
-                <td>consectetur</td>
-                <td>adipiscing</td>
-                <td>elit</td>
-            </tr>
-            <tr>
-                <td>1,003</td>
-                <td>Integer</td>
-                <td>nec</td>
-                <td>odio</td>
-                <td>Praesent</td>
-            </tr>
-            <tr>
-                <td>1,003</td>
-                <td>libero</td>
-                <td>Sed</td>
-                <td>cursus</td>
-                <td>ante</td>
-            </tr>
-            <tr>
-                <td>1,004</td>
-                <td>dapibus</td>
-                <td>diam</td>
-                <td>Sed</td>
-                <td>nisi</td>
-            </tr>
-            <tr>
-                <td>1,005</td>
-                <td>Nulla</td>
-                <td>quis</td>
-                <td>sem</td>
-                <td>at</td>
-            </tr>
-            <tr>
-                <td>1,006</td>
-                <td>nibh</td>
-                <td>elementum</td>
-                <td>imperdiet</td>
-                <td>Duis</td>
-            </tr>
-            <tr>
-                <td>1,007</td>
-                <td>sagittis</td>
-                <td>ipsum</td>
-                <td>Praesent</td>
-                <td>mauris</td>
-            </tr>
-            <tr>
-                <td>1,008</td>
-                <td>Fusce</td>
-                <td>nec</td>
-                <td>tellus</td>
-                <td>sed</td>
-            </tr>
-            <tr>
-                <td>1,009</td>
-                <td>augue</td>
-                <td>semper</td>
-                <td>porta</td>
-                <td>Mauris</td>
-            </tr>
-            <tr>
-                <td>1,010</td>
-                <td>massa</td>
-                <td>Vestibulum</td>
-                <td>lacinia</td>
-                <td>arcu</td>
-            </tr>
-            <tr>
-                <td>1,011</td>
-                <td>eget</td>
-                <td>nulla</td>
-                <td>Class</td>
-                <td>aptent</td>
-            </tr>
-            <tr>
-                <td>1,012</td>
-                <td>taciti</td>
-                <td>sociosqu</td>
-                <td>ad</td>
-                <td>litora</td>
-            </tr>
-            <tr>
-                <td>1,013</td>
-                <td>torquent</td>
-                <td>per</td>
-                <td>conubia</td>
-                <td>nostra</td>
-            </tr>
-            <tr>
-                <td>1,014</td>
-                <td>per</td>
-                <td>inceptos</td>
-                <td>himenaeos</td>
-                <td>Curabitur</td>
-            </tr>
-            <tr>
-                <td>1,015</td>
-                <td>sodales</td>
-                <td>ligula</td>
-                <td>in</td>
-                <td>libero</td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
+            @component('admin_views.components.forms.type_text', ['field_name' => 'max_price', 'class' => 'col-md-2', 'value' => ''])
+            @endcomponent
+
+            @component('admin_views.components.forms.type_number', ['field_name' => 'difficulty', 'class' => 'col-md-2', 'value' => ''])
+            @endcomponent
+
+            @component('admin_views.components.forms.type_number', ['field_name' => 'approximate_time', 'class' => 'col-md-4', 'value' => ''])
+            @endcomponent
+
+
+
+            @component('admin_views.components.forms.type_number', ['field_name' => 'priority', 'class' => 'col-md-2', 'value' => ''])
+            @endcomponent
+
+
+            <div class="form-group col-md-3">
+                <label for="category_id">Category</label>
+                <select class="form-control" name="category_id" id="category_id">
+                    @foreach($categories as $category)
+                        <option value="{{$category->id}}">{{ $category->detail->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+
+        </div>
+
+        <hr class="my-4">
+
+        <h4 class="mb-3">Future Details</h4>
+
+        <div class="form-row">
+            @component('admin_views.components.forms.type_text', ['field_name' => 'name', 'class' => 'col-md-7', 'value' => ''])
+            @endcomponent
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label for="language_id">Language</label>
+                <select class="form-control" name="language_id" id="language_id">
+                    @foreach($languages as $language)
+                        <option value="{{$language->accept_language}}">{{ $language->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+
+            @component('admin_views.components.forms.type_text', ['field_name' => 'feature_type', 'class' => 'col-md-2', 'value' => ''])
+            @endcomponent
+
+        </div>
+
+        @component('admin_views.components.text_editor', ['field_name' => 'description'])
+        @endcomponent
+
+        <button type="submit" class="btn btn-primary">{{ trans('button_input.create') }}</button>
+    </form>
 @endsection

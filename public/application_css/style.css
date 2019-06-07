@@ -5,8 +5,8 @@
 
 .user_sidebar {
     top: 0;
-    min-width: 280px;
-    z-index: 1001;
+    width: 280px;
+    z-index: 1030;
     right: -100%;
     transition: all 0.5s;
     -webkit-transition: all 0.5s;
@@ -15,8 +15,6 @@
 }
 
 .user_actions_toggler {
-    width: 42px;
-    height: 42px;
     text-align: center;
 }
 

@@ -1,5 +1,5 @@
 @extends('layouts.empty_master')
-@section('styles')
+@section('style')
 	<link href="{{ asset('application_css/authentication/floating-labels.css') }}" rel="stylesheet">
 	<link href="{{ asset('application_css/authentication/login.css') }}" rel="stylesheet">
 @endsection

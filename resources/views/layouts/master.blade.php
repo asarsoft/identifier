@@ -14,7 +14,6 @@
 
 	<!-- Styles -->
     @include('includes.general_css')
-
     @yield('style')
 </head>
 <body>
@@ -27,5 +26,7 @@
 </div>
 
 @include('includes.general_js')
+@yield('script')
+
 </body>
 </html>

@@ -2,7 +2,7 @@
     <div class="sidebar-sticky">
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link s_b_anchor active" href="#">
+                <a class="nav-link s_b_anchor @if(Request::route()->getName() == 'dashboard-admin') active @endif" href="{{ route('dashboard-admin') }}">
                     <i class="mr-2 s_b_icons fas fa-satellite"></i>
                     Dashboard <span class="sr-only">(current)</span>
                 </a>
@@ -32,7 +32,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link s_b_anchor" href="#">
+                <a class="nav-link s_b_anchor " href="{{ route('create-feature') }}">
                     <i class="mr-2 s_b_icons fas fa-clipboard-check"></i>
                     Feature
                 </a>

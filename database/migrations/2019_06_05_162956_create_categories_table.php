@@ -17,7 +17,8 @@ class CreateCategoriesTable extends Migration
 			$table->increments('id');
 			$table->string('guid');
 
-			$table->integer('parent_id');
+			$table->integer('parent_id')->nullable();
+			$table->string('title')->nullable();
 
 			$table->string('icon')->nullable();
 
@@ -25,7 +26,7 @@ class CreateCategoriesTable extends Migration
 			$table->timestamps();
 		});
 
-		Schema::create('category_details', function (Blueprint $table) {
+		Schema::create('category_detail', function (Blueprint $table) {
 			$table->increments('id');
 			$table->string('guid');
 
@@ -33,6 +34,7 @@ class CreateCategoriesTable extends Migration
 			$table->string('description')->nullable();
 
 			$table->integer('language_id');
+			$table->integer('category_id');
 
 			$table->softDeletes();
 			$table->timestamps();

@@ -24,6 +24,5 @@ class UsersTableSeeder extends Seeder
 
 		    'password' => \Illuminate\Support\Facades\Hash::make('Asar55soft77ware'),
 	    ]);
-
     }
 }

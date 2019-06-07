@@ -5,6 +5,7 @@
 .s_b_icons{
     width: 1.1rem;
     color: #acacac;
+    text-align: center;
 }
 
 .s_b_anchor:hover .s_b_icons{
