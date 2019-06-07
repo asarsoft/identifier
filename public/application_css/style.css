@@ -1,0 +1,39 @@
+.web_navbar {
+    top: 0;
+    z-index: 1000;
+}
+
+.user_sidebar {
+    top: 0;
+    min-width: 280px;
+    z-index: 1001;
+    right: -100%;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;;
+}
+
+.user_actions_toggler {
+    width: 42px;
+    height: 42px;
+    text-align: center;
+}
+
+.slided_in {
+    right: 0;
+}
+
+@media (max-width: 991px) {
+    .user_sidebar {
+    }
+}
+
+@media (max-width: 767px) {
+}
+
+@media (max-width: 576px) {
+    .user_sidebar {
+        width: 100%;
+    }
+}

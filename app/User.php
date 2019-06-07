@@ -2,13 +2,14 @@
 
 namespace App;
 
+use App\Models\Concerns\GenerateGuid;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, GenerateGuid;
 
     /**
      * The attributes that are mass assignable.
