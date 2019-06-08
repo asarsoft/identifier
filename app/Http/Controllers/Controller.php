@@ -10,4 +10,13 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    function toast_message($action){
+        return [
+            [
+                'message' => trans('message.' . $this->module_name . '_'.$action.'_success'),
+                'title' => trans('app.name'),
+            ]
+        ];
+    }
 }

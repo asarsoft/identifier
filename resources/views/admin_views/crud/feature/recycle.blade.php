@@ -11,9 +11,9 @@
                         <h3 class="h5 mr-auto mb-0">
                             @component('admin_views.components.image', ['image' => $feature->icon, 'width' => '', 'height' => '2rem', 'class' => 'rounded border mr-2'])
                             @endcomponent
-                            {{ $feature->detail->name }}
-                            <span class="badge badge-success">{{ $feature->category->detail->name }}</span>
-                            <p class="badge badge-light mb-0">{{ $feature->detail->feature_type }}</p>
+                            {{ $feature->trashed_detail->name }}
+                            <span class="badge badge-success">{{ $feature->category->name }}</span>
+                            <p class="badge badge-light mb-0">{{ $feature->trashed_detail->feature_type }}</p>
                         </h3>
                         <p class="h6 mb-0">
                             <span class="mr-3 h6"><small
@@ -22,7 +22,7 @@
                                     class="text-info">{{ trans('button_input.min_price') }}:</small> <b>{{ $feature->min_price }}</b></span>
                         </p>
                     </div>
-                    <p class="px-3 pt-4">{{ $feature->detail->description }}</p>
+                    <p class="px-3 pt-4">{{ $feature->trashed_detail->description }}</p>
 
                     <div class="d-flex px-3 w-100">
                         <p class="mr-auto h6">
@@ -40,13 +40,10 @@
                         </p>
 
                         <p class="text-success d-flex align-items-center">
-                            <a href="{{ route('edit-feature', $feature->id) }}" class="btn mr-2 btn-sm btn-outline-primary btn-lg"
+                            <a href="{{ route('restore-feature', $feature->id) }}"
+                               class="btn btn-sm btn-success btn-lg"
                                role="button" aria-pressed="true">
-                                <i class="fas fa-pencil-alt"></i>
-                            </a>
-                            <a href="{{ route('destroy-feature', $feature->id) }}" class="btn btn-sm btn-outline-danger btn-lg"
-                               role="button" aria-pressed="true">
-                                <i class="fas fa-trash-alt"></i>
+                                <i class="fas fa-recycle"></i>
                             </a>
                         </p>
                     </div>

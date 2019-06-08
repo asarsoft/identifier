@@ -1,5 +1,4 @@
 @if(session()->has('toast_messages'))
-    <h1>There is a message</h1>
     <div style="position: fixed; bottom: 1rem; right: 1rem; z-index: 1031;">
 
         @foreach(session()->get('toast_messages') as $toast_message)

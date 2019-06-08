@@ -5,5 +5,5 @@ return [
     'dashboard-admin' => 'Admin Dashboard',
     'index-feature' => 'Index Features',
 
-    'recycle-feature' => 'Index Features',
+    'recycle-feature' => 'Recycle Features',
 ];

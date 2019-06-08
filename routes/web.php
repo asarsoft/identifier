@@ -36,7 +36,7 @@ Route::group(['middleware' => 'language_required'], function ()
             Route::prefix('feature')->group(function ()
             {
                 Route::get('/', 'Admin\FeatureController@index')->name('index-feature');
-                Route::get('/recycle', 'Admin\FeatureController@recycle_bin')->name('recycle-feature');
+                Route::get('/recycle', 'Admin\FeatureController@recycle')->name('recycle-feature');
 
                 Route::get('/create', 'Admin\FeatureController@create')->name('create-feature');
                 Route::get('/edit', 'Admin\FeatureController@edit')->name('edit-feature');

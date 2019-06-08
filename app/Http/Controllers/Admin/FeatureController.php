@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Session;
 
 class FeatureController extends Controller
 {
-    public $module_name = 'feature';
+    protected $module_name = 'feature';
 
     /**
      * Returns Feature List Page
@@ -60,7 +60,7 @@ class FeatureController extends Controller
             'feature_type' => 'nullable|max:199',
         ]);
 
-        $media_validator = $request->validate([
+        $request->validate([
             'icon' => 'nullable|image|max:2048',
         ]);
 
@@ -73,14 +73,7 @@ class FeatureController extends Controller
         $feature = Feature::create(array_merge($feature_validator, ['icon' => $path]));
         FeatureDetail::create(array_merge($feature_detail_validator, ['feature_id' => $feature->id]));
 
-
-        $toast_messages = [
-            [
-                'message' => trans('message.' . $this->module_name . '_create_success'),
-                'title' => trans('app.name'),
-            ]
-        ];
-
+        $toast_messages = $this->toast_message('create');
         Session::flash('toast_messages', $toast_messages);
         return redirect()->back();
     }
@@ -99,12 +92,26 @@ class FeatureController extends Controller
             $feature->delete();
         }
 
-        $toast_messages = [
-            [
-                'message' => trans('message.' . $this->module_name . '_delete_success'),
-                'title' => trans('app.name'),
-            ]
-        ];
+        $toast_messages = $this->toast_message('delete');
+
+        Session::flash('toast_messages', $toast_messages);
+        return redirect()->back();
+    }
+
+    public function recycle()
+    {
+        $features = Feature::with('trashed_detail')->onlyTrashed()->get();
+        return view('admin_views.crud.feature.recycle', ['features' => $features]);
+    }
+
+    public function restore($id)
+    {
+        $feature = Feature::withTrashed()->where('id', $id)->first();
+
+        $feature->restore();
+        $feature->trashed_detail()->restore();
+
+        $toast_messages = $this->toast_message('restore');
 
         Session::flash('toast_messages', $toast_messages);
         return redirect()->back();
