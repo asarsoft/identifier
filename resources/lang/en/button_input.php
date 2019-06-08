@@ -21,5 +21,7 @@ return [
 
     'create' => 'Create',
 
+    'hours' => 'Hours',
+
     'all' => 'All',
 ];

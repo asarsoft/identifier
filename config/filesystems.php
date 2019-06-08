@@ -58,7 +58,7 @@ return [
         'feature' => [
             'driver' => 'local',
             'root' => storage_path('app/public/feature'),
-            'url' => env('APP_URL').'/storage/feature',
+            'url' => env('APP_URL').'/storage/public/feature',
             'visibility' => 'public',
         ],
 

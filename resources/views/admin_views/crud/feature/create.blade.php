@@ -42,7 +42,7 @@
 
         <hr class="my-4">
 
-        <h4 class="mb-3">Future Details</h4>
+        <h4 class="mb-3">Feature Details</h4>
 
         <div class="form-row">
             @component('admin_views.components.forms.type_text', ['field_name' => 'name', 'class' => 'col-md-7', 'value' => ''])
@@ -54,7 +54,7 @@
                 <label for="language_id">Language</label>
                 <select class="form-control" name="language_id" id="language_id">
                     @foreach($languages as $language)
-                        <option value="{{$language->accept_language}}">{{ $language->name }}</option>
+                        <option value="{{$language->id}}">{{ $language->name }}</option>
                     @endforeach
                 </select>
             </div>

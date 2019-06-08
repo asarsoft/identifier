@@ -32,7 +32,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link s_b_anchor " href="{{ route('create-feature') }}">
+                <a class="nav-link s_b_anchor " href="{{ route('index-feature') }}">
                     <i class="mr-2 s_b_icons fas fa-clipboard-check"></i>
                     Feature
                 </a>

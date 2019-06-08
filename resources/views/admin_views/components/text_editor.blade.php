@@ -4,7 +4,7 @@
 
 <div class="mb-4">
     <label for="{{ $field_name }}">{{ trans('button_input.'.$field_name) }}</label>
-    <textarea id="{{ $field_name }}" name="editordata"></textarea>
+    <textarea id="{{ $field_name }}" name="{{ $field_name }}"></textarea>
 </div>
 
 @section('script')
