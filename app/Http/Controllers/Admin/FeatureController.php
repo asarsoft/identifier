@@ -76,7 +76,7 @@ class FeatureController extends Controller
 
         $toast_messages = [
             [
-                'message' => trans('message.'.$this->module_name.'_create_success'),
+                'message' => trans('message.' . $this->module_name . '_create_success'),
                 'title' => trans('app.name'),
             ]
         ];
@@ -85,16 +85,23 @@ class FeatureController extends Controller
         return redirect()->back();
     }
 
-    public function destroy($id){
+    /**
+     * The function Soft deletes features
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function destroy($id)
+    {
         $feature = Feature::find($id);
-        if ($feature){
+        if ($feature)
+        {
             $feature->detail()->delete();
             $feature->delete();
         }
 
         $toast_messages = [
             [
-                'message' => trans('message.'.$this->module_name.'_delete_success'),
+                'message' => trans('message.' . $this->module_name . '_delete_success'),
                 'title' => trans('app.name'),
             ]
         ];
