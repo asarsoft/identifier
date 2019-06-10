@@ -32,22 +32,22 @@ class Feature extends Model
         return $this->hasOne(FeatureDetail::class)->withTrashed()->where('language_id', $language->id);
     }
 
-    /**
+	/**
+	 * All of it's Trashed Details
+	 * @return mixed
+	 */
+	public function trashed_details()
+	{
+		return $this->hasMany(FeatureDetail::class)->withTrashed();
+	}
+
+	/**
      * All of the details
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function details()
     {
         return $this->hasMany(FeatureDetail::class);
-    }
-
-    /**
-     * All of it's Trashed Details
-     * @return mixed
-     */
-    public function trashed_details()
-    {
-        return $this->hasMany(FeatureDetail::class)->withTrashed();
     }
 
     /**

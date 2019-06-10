@@ -14,6 +14,7 @@ return [
     'approximate_time' => 'Approximate Time',
     'priority' => 'Priority',
     'feature_type' => 'Feature Type',
+    'category_id' => 'Category',
 
     'name' => 'Name',
     'description' => 'Description',

@@ -4,7 +4,7 @@
     @component('admin_views.components.crud_actions', ['module' => 'feature'])
     @endcomponent
     <div class="row my-5">
-        @foreach($features as $feature)
+        @foreach($records as $feature)
             <div class="col-xl-12 col-md-12 mb-3">
                 <div class="border rounded shadow-sm">
                     <div class="d-flex border-bottom py-2 px-3 w-100 align-items-center">
