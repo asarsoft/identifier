@@ -7,23 +7,16 @@ use App\Models\Category;
 use App\Models\Feature;
 use App\Models\Language;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Session;
 
-class FeatureController extends Controller
+class FeatureController extends AdminCrudController
 {
     protected $module_name = 'feature';
 
-    /**
-     * Returns Feature List Page
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function index()
-    {
-        $features = Feature::with('detail')->with('category')->get();
-        return view('admin_views.crud.feature.index', ['features' => $features]);
-    }
+    protected $model = Feature::class;
+    protected $index_view = 'admin_views.crud.feature.index';
+
+    protected $index_relations = ['detail', 'category'];
 
     /**
      * Returns Feature Create page

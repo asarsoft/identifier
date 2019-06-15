@@ -4,7 +4,7 @@
     @component('admin_views.components.crud_actions', ['module' => 'feature'])
     @endcomponent
     <div class="row my-5">
-        @foreach($features as $feature)
+        @foreach($data as $feature)
             @component('admin_views.components.feature', ['feature' => $feature, 'detail' => $feature->detail])
                 <p class="text-success d-flex align-items-center">
                     <a href="{{ route('edit-feature', $feature->id) }}"
