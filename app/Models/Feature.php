@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\FeatureDetail;
+use App\Models\FeatureDetail;
 use App\Models\Concerns\GenerateGuid;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
