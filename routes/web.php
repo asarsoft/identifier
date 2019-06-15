@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,6 +36,7 @@ Route::group(['middleware' => 'language_required'], function ()
             {
                 Route::get('/', 'Admin\FeatureController@index')->name('index-feature');
                 Route::get('/recycle', 'Admin\FeatureController@recycle')->name('recycle-feature');
+                Route::get('/show/{id}', 'Admin\FeatureController@show')->name('show-feature');
 
                 Route::get('/create', 'Admin\FeatureController@create')->name('create-feature');
                 Route::get('/edit', 'Admin\FeatureController@edit')->name('edit-feature');

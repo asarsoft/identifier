@@ -1,16 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ea2b836b-4a90-4720-ac77-7c1747a25d8d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/admin_views/components/forms/select.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin_views/crud/feature/edit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin_views/crud/feature/edit_detail.blade.php" afterDir="false" />
+    <list default="true" id="ea2b836b-4a90-4720-ac77-7c1747a25d8d" name="Default Changelist" comment="index function was moved into AdminCrudController">
+      <change afterPath="$PROJECT_DIR$/resources/views/admin_views/crud/feature/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/CrudController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/CrudController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/FeatureController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/FeatureController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Feature.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Feature.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/en/button_input.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/button_input.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin_views/crud/feature/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin_views/crud/feature/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin_views/crud/feature/recycle.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin_views/crud/feature/recycle.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/FeatureDetail.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/FeatureDetail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/filesystems.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/filesystems.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/public/.htaccess" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/application_css/authentication/floating-labels.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/application_css/authentication/floating-labels.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/application_css/welcome/animate.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/application_css/welcome/animate.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/application_css/welcome/bootstrap.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/application_css/welcome/bootstrap.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/application_css/welcome/ionicons/css/ionicons.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/application_css/welcome/ionicons/css/ionicons.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/application_css/welcome/ionicons/css/ionicons.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/application_css/welcome/ionicons/css/ionicons.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/application_css/welcome/ionicons/fonts/ionicons.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/application_css/welcome/ionicons/fonts/ionicons.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/application_css/welcome/owl.carousel.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/application_css/welcome/owl.carousel.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/application_css/welcome/owl.theme.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/application_css/welcome/owl.theme.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/application_css/welcome/supersized.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/application_css/welcome/supersized.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/application_js/welcome/TweenLite.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/application_js/welcome/TweenLite.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/application_js/welcome/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/application_js/welcome/bootstrap.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/application_js/welcome/bootstrap.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/application_js/welcome/bootstrap.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/application_js/welcome/isotope.pkgd.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/application_js/welcome/isotope.pkgd.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/application_js/welcome/jquery-2.2.4.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/application_js/welcome/jquery-2.2.4.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/application_js/welcome/jquery.easing.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/application_js/welcome/jquery.easing.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/application_js/welcome/jquery.localScroll.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/application_js/welcome/jquery.localScroll.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/application_js/welcome/jquery.localScroll.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/application_js/welcome/jquery.localScroll.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/application_js/welcome/jquery.magnific-popup.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/application_js/welcome/jquery.magnific-popup.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/application_js/welcome/jquery.magnific-popup.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/application_js/welcome/jquery.magnific-popup.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/application_js/welcome/jquery.scrollTo.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/application_js/welcome/jquery.scrollTo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/application_js/welcome/jquery.scrollTo.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/application_js/welcome/jquery.scrollTo.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/application_js/welcome/magic-canvas.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/application_js/welcome/magic-canvas.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/application_js/welcome/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/application_js/welcome/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/application_js/welcome/owl.carousel.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/application_js/welcome/owl.carousel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/application_js/welcome/owl.carousel.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/application_js/welcome/owl.carousel.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/application_js/welcome/parallax.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/application_js/welcome/parallax.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/application_js/welcome/parallax.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/application_js/welcome/parallax.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/application_js/welcome/supersized.3.2.7.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/application_js/welcome/supersized.3.2.7.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/application_js/welcome/supersized.3.2.7.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/application_js/welcome/supersized.3.2.7.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/application_js/welcome/supersized.shutter.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/application_js/welcome/supersized.shutter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/application_js/welcome/supersized.shutter.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/application_js/welcome/supersized.shutter.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/application_js/welcome/wow.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/application_js/welcome/wow.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/robots.txt" beforeDir="false" afterPath="$PROJECT_DIR$/public/robots.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin_views/components/image.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin_views/components/image.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/includes/toast_message.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/includes/toast_message.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,20 +67,38 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/FeatureController.php">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/admin_views/crud/feature/recycle.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="92">
-              <caret line="9" column="36" lean-forward="true" selection-start-line="9" selection-start-column="36" selection-end-line="9" selection-end-column="36" />
+            <state relative-caret-position="168">
+              <caret line="7" column="29" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="29" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/admin_views/crud/feature/recycle.blade.php">
+        <entry file="file://$PROJECT_DIR$/resources/views/includes/toast_message.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="382">
-              <caret line="20" column="51" lean-forward="true" selection-start-line="20" selection-start-column="51" selection-end-line="20" selection-end-column="51" />
+            <state relative-caret-position="312">
+              <caret line="13" column="22" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/admin_views/crud/feature/show.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="10" column="65" selection-start-line="10" selection-start-column="65" selection-end-line="10" selection-end-column="65" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/admin_views/components/image.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
             </state>
           </provider>
         </entry>
@@ -47,50 +106,23 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/CrudController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
-              <caret line="50" lean-forward="true" selection-start-line="50" selection-end-line="50" />
+            <state relative-caret-position="240">
+              <caret line="73" column="17" lean-forward="true" selection-start-line="73" selection-start-column="17" selection-end-line="73" selection-end-column="17" />
               <folding>
-                <element signature="e#46#69#0#PHP" expanded="true" />
+                <element signature="e#46#74#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Models/Feature.php">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Controller.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
-              <caret line="10" column="1" lean-forward="true" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
+            <state relative-caret-position="258">
+              <caret line="20" column="10" selection-start-line="20" selection-start-column="10" selection-end-line="20" selection-end-column="10" />
               <folding>
-                <element signature="e#30#52#0#PHP" expanded="true" />
+                <element signature="e#40#85#0#PHP" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/lang/en/message.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="115">
-              <caret line="5" column="67" selection-start-line="5" selection-start-column="67" selection-end-line="5" selection-end-column="67" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/admin_views/crud/feature/edit.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="115">
-              <caret line="5" column="59" selection-start-line="5" selection-start-column="59" selection-end-line="5" selection-end-column="59" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/admin_views/crud/feature/edit_detail.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="69">
-              <caret line="3" column="82" selection-start-line="3" selection-start-column="82" selection-end-line="3" selection-end-column="82" />
             </state>
           </provider>
         </entry>
@@ -98,26 +130,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="828">
-              <caret line="36" column="13" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
+            <state relative-caret-position="120">
+              <caret line="38" column="37" selection-start-line="38" selection-start-column="37" selection-end-line="38" selection-end-column="37" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/admin_views/components/crud_actions.blade.php">
+        <entry file="file://$PROJECT_DIR$/config/filesystems.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="9" selection-start-line="9" selection-end-line="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/admin_views/crud/feature/index.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="138">
-              <caret line="6" column="26" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="26" />
+            <state relative-caret-position="192">
+              <caret line="56" selection-start-line="56" selection-end-line="56" />
             </state>
           </provider>
         </entry>
@@ -126,8 +149,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>-refactor</find>
-      <find>conte</find>
       <find>home</find>
       <find>feather</find>
       <find>sign</find>
@@ -156,9 +177,10 @@
       <find>components.image</find>
       <find>icon</find>
       <find>min</find>
+      <find>App\FeatureDetail</find>
+      <find>$feature</find>
     </findStrings>
     <replaceStrings>
-      <replace>}}&quot;&gt;&lt;/script&gt;</replace>
       <replace>'}}&quot; rel=&quot;stylesheet&quot;&gt;</replace>
       <replace>'}}&quot;&gt;&lt;/script&gt;</replace>
       <replace>')}}&quot; rel=&quot;stylesheet&quot;&gt;</replace>
@@ -188,6 +210,7 @@
       <replace>accept_language</replace>
       <replace>use GenerateGuid, SoftDeletes;</replace>
       <replace />
+      <replace>App\Models\FeatureDetail</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -196,7 +219,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/resources/views/admin_views/components/forms/type_number.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin_views/includes/admin_footer.blade.php" />
         <option value="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" />
         <option value="$PROJECT_DIR$/app/Http/Middleware/BeforeLanguage.php" />
@@ -212,14 +234,11 @@
         <option value="$PROJECT_DIR$/public/application_js/script.js" />
         <option value="$PROJECT_DIR$/resources/views/admin_views/feature/create.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin_views/dashboard.blade.php" />
-        <option value="$PROJECT_DIR$/config/filesystems.php" />
         <option value="$PROJECT_DIR$/resources/views/admin_views/components/text_editor.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin_views/includes/statistics.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin_views/components/image.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin_views/includes/admin_side_navbar.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin_views/components/crud_actions.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/admin_master.blade.php" />
-        <option value="$PROJECT_DIR$/app/Models/FeatureDetail.php" />
         <option value="$PROJECT_DIR$/app/Models/Language.php" />
         <option value="$PROJECT_DIR$/app/Models/Category.php" />
         <option value="$PROJECT_DIR$/app/Models/CategoryDetail.php" />
@@ -233,10 +252,7 @@
         <option value="$PROJECT_DIR$/app/Models/StatusComments.php" />
         <option value="$PROJECT_DIR$/app/Models/Terms.php" />
         <option value="$PROJECT_DIR$/resources/lang/en/page_names.php" />
-        <option value="$PROJECT_DIR$/routes/web.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Controller.php" />
         <option value="$PROJECT_DIR$/resources/lang/en/message.php" />
-        <option value="$PROJECT_DIR$/resources/views/includes/toast_message.blade.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_06_05_164018_create_languages_table.php" />
         <option value="$PROJECT_DIR$/resources/lang/en/button_input.php" />
         <option value="$PROJECT_DIR$/resources/views/admin_views/components/forms/select.blade.php" />
@@ -245,8 +261,15 @@
         <option value="$PROJECT_DIR$/resources/views/admin_views/crud/feature/index.blade.php" />
         <option value="$PROJECT_DIR$/app/Models/Feature.php" />
         <option value="$PROJECT_DIR$/resources/views/admin_views/crud/feature/recycle.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/CrudController.php" />
+        <option value="$PROJECT_DIR$/app/Models/FeatureDetail.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin_views/crud/feature/show.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/FeatureController.php" />
+        <option value="$PROJECT_DIR$/routes/web.php" />
+        <option value="$PROJECT_DIR$/resources/views/includes/toast_message.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Controller.php" />
+        <option value="$PROJECT_DIR$/config/filesystems.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/CrudController.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin_views/components/image.blade.php" />
       </list>
     </option>
   </component>
@@ -300,7 +323,6 @@
       <path value="$PROJECT_DIR$/vendor/myclabs/deep-copy" />
       <path value="$PROJECT_DIR$/vendor/symfony/contracts" />
       <path value="$PROJECT_DIR$/vendor/symfony/finder" />
-      <path value="$PROJECT_DIR$/vendor/symfony/routing" />
       <path value="$PROJECT_DIR$/vendor/symfony/css-selector" />
       <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-ctype" />
@@ -334,20 +356,20 @@
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php73" />
       <path value="$PROJECT_DIR$/vendor/symfony/mime" />
       <path value="$PROJECT_DIR$/vendor/symfony/service-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/routing" />
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="298" />
-    <option name="y" value="158" />
-    <option name="width" value="1391" />
-    <option name="height" value="791" />
+    <option name="x" value="-10" />
+    <option name="y" value="-10" />
+    <option name="width" value="978" />
+    <option name="height" value="530" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -363,106 +385,12 @@
             <path>
               <item name="asarsoft" type="b2602c69:ProjectViewProjectNode" />
               <item name="asarsoft" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="asarsoft" type="b2602c69:ProjectViewProjectNode" />
-              <item name="asarsoft" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="asarsoft" type="b2602c69:ProjectViewProjectNode" />
-              <item name="asarsoft" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
-              <item name="Admin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="asarsoft" type="b2602c69:ProjectViewProjectNode" />
-              <item name="asarsoft" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
-              <item name="Authentication" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="asarsoft" type="b2602c69:ProjectViewProjectNode" />
-              <item name="asarsoft" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
-              <item name="Web" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="asarsoft" type="b2602c69:ProjectViewProjectNode" />
-              <item name="asarsoft" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-              <item name="Middleware" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="asarsoft" type="b2602c69:ProjectViewProjectNode" />
-              <item name="asarsoft" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-              <item name="Requests" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="asarsoft" type="b2602c69:ProjectViewProjectNode" />
-              <item name="asarsoft" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Models" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="asarsoft" type="b2602c69:ProjectViewProjectNode" />
-              <item name="asarsoft" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="asarsoft" type="b2602c69:ProjectViewProjectNode" />
-              <item name="asarsoft" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
-              <item name="factories" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="asarsoft" type="b2602c69:ProjectViewProjectNode" />
-              <item name="asarsoft" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
-              <item name="migrations" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="asarsoft" type="b2602c69:ProjectViewProjectNode" />
-              <item name="asarsoft" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
-              <item name="seeds" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="asarsoft" type="b2602c69:ProjectViewProjectNode" />
               <item name="asarsoft" type="462c0819:PsiDirectoryNode" />
               <item name="public" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="asarsoft" type="b2602c69:ProjectViewProjectNode" />
-              <item name="asarsoft" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="application_css" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="asarsoft" type="b2602c69:ProjectViewProjectNode" />
-              <item name="asarsoft" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="application_css" type="462c0819:PsiDirectoryNode" />
-              <item name="authentication" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="asarsoft" type="b2602c69:ProjectViewProjectNode" />
-              <item name="asarsoft" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="application_js" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="asarsoft" type="b2602c69:ProjectViewProjectNode" />
@@ -501,6 +429,14 @@
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
               <item name="admin_views" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="asarsoft" type="b2602c69:ProjectViewProjectNode" />
+              <item name="asarsoft" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="admin_views" type="462c0819:PsiDirectoryNode" />
               <item name="crud" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -517,6 +453,14 @@
               <item name="asarsoft" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="admin_views" type="462c0819:PsiDirectoryNode" />
+              <item name="includes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="asarsoft" type="b2602c69:ProjectViewProjectNode" />
+              <item name="asarsoft" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
               <item name="includes" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -525,13 +469,6 @@
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
               <item name="layouts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="asarsoft" type="b2602c69:ProjectViewProjectNode" />
-              <item name="asarsoft" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="web_views" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="asarsoft" type="b2602c69:ProjectViewProjectNode" />
@@ -554,12 +491,40 @@
               <item name="asarsoft" type="462c0819:PsiDirectoryNode" />
               <item name="storage" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="feature" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="asarsoft" type="b2602c69:ProjectViewProjectNode" />
+              <item name="asarsoft" type="462c0819:PsiDirectoryNode" />
+              <item name="storage" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="public" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="asarsoft" type="b2602c69:ProjectViewProjectNode" />
+              <item name="asarsoft" type="462c0819:PsiDirectoryNode" />
+              <item name="storage" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="feature" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="asarsoft" type="b2602c69:ProjectViewProjectNode" />
+              <item name="asarsoft" type="462c0819:PsiDirectoryNode" />
+              <item name="storage" type="462c0819:PsiDirectoryNode" />
+              <item name="framework" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="asarsoft" type="b2602c69:ProjectViewProjectNode" />
+              <item name="asarsoft" type="462c0819:PsiDirectoryNode" />
+              <item name="storage" type="462c0819:PsiDirectoryNode" />
+              <item name="logs" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -573,19 +538,19 @@
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.PHP" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Agil\Desktop\asarsoft\storage\app\public\feature" />
+      <recent name="C:\Users\Agil\Desktop\asarsoft\storage\app\public" />
+      <recent name="$PROJECT_DIR$/storage/app/public" />
+      <recent name="C:\Users\Agil\Desktop\asarsoft\resources\views\admin_views\crud" />
+      <recent name="C:\Users\Agil\Desktop\asarsoft\app\Models" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/resources/views/admin_views/crud/feature" />
       <recent name="C:\Users\Agil\Desktop\asarsoft\resources\views\admin_views\crud\feature" />
+      <recent name="$PROJECT_DIR$/resources/views/admin_views/crud/feature" />
       <recent name="C:\Users\Agil\Desktop\asarsoft\storage\app\public" />
       <recent name="C:\Users\Agil\Desktop\asarsoft\app\Models" />
       <recent name="C:\Users\Agil\Desktop\asarsoft\resources\views\admin_views\includes" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/storage/app/public" />
-      <recent name="C:\Users\Agil\Desktop\asarsoft\storage\app\public" />
-      <recent name="C:\Users\Agil\Desktop\asarsoft\resources\views\admin_views\crud" />
-      <recent name="C:\Users\Agil\Desktop\asarsoft\app\Models" />
-      <recent name="C:\Users\Agil\Desktop\asarsoft\resources\views\admin_views\components" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -685,13 +650,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="126873000" />
+    <option name="totallyTimeSpent" value="142547000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="848" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25456557" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26979867" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="npm" order="3" side_tool="true" />
@@ -704,8 +669,8 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
-      <window_info anchor="bottom" id="Version Control" order="9" weight="0.32900432" />
-      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.4997233" visible="true" weight="0.38852814" />
+      <window_info anchor="bottom" id="Version Control" order="9" weight="0.24225353" />
+      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.4997233" visible="true" weight="0.32957748" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5002767" side_tool="true" weight="0.32900432" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -728,51 +693,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="Contact Us model was created" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/views/authentication/login.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="11" column="110" lean-forward="true" selection-start-line="11" selection-start-column="60" selection-end-line="11" selection-end-column="110" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/lang/en/auth.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/lang/en/authentication.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/lang/en/app.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/application_js/script.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="5" column="22" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin_views/crud/feature/create.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="8" column="20" selection-end-line="72" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="8" column="19" lean-forward="true" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
@@ -825,13 +745,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/filesystems.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="49" lean-forward="true" selection-start-line="49" selection-end-line="49" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Models/Category.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="49">
@@ -858,16 +771,6 @@
           <caret line="6" selection-start-line="6" selection-end-line="6" />
           <folding>
             <element signature="e#28#65#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/FeatureDetail.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
-          <folding>
-            <element signature="e#21#58#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -965,14 +868,7 @@
     <entry file="file://$PROJECT_DIR$/resources/lang/en/page_names.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
-          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/includes/toast_message.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="12" column="29" lean-forward="true" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
         </state>
       </provider>
     </entry>
@@ -1042,20 +938,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin_views/components/image.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Controller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="14" column="16" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/lang/en/message.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="115">
@@ -1077,13 +959,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="828">
-          <caret line="36" column="13" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/admin_views/components/crud_actions.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="207">
@@ -1093,42 +968,132 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/admin_views/crud/feature/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="6" column="26" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin_views/crud/feature/recycle.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="382">
-          <caret line="20" column="51" lean-forward="true" selection-start-line="20" selection-start-column="51" selection-end-line="20" selection-end-column="51" />
+        <state relative-caret-position="79">
+          <caret line="6" column="22" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Models/Feature.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="10" column="1" lean-forward="true" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
+        <state>
+          <caret line="49" column="52" selection-start-line="49" selection-start-column="52" selection-end-line="49" selection-end-column="52" />
           <folding>
             <element signature="e#30#52#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/CrudController.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Authentication/LoginController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="50" lean-forward="true" selection-start-line="50" selection-end-line="50" />
-          <folding>
-            <element signature="e#46#69#0#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="672">
+          <caret line="49" lean-forward="true" selection-start-line="49" selection-end-line="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/FeatureDetail.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="2" column="20" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/FeatureController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="9" column="36" lean-forward="true" selection-start-line="9" selection-start-column="36" selection-end-line="9" selection-end-column="36" />
+        <state relative-caret-position="169">
+          <caret line="162" column="5" selection-start-line="162" selection-start-column="5" selection-end-line="162" selection-end-column="5" />
+          <folding>
+            <element signature="e#46#75#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/app.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1584" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="151">
+          <caret line="16" column="47" selection-start-line="16" selection-start-column="47" selection-end-line="16" selection-end-column="47" />
+          <folding>
+            <element signature="e#7#132#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin_views/crud/feature/recycle.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="7" column="29" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="38" column="37" selection-start-line="38" selection-start-column="37" selection-end-line="38" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/includes/toast_message.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="13" column="22" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Controller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="258">
+          <caret line="20" column="10" selection-start-line="20" selection-start-column="10" selection-end-line="20" selection-end-column="10" />
+          <folding>
+            <element signature="e#40#85#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="8" column="19" lean-forward="true" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/storage/app/feature/ObzlMRKThHBKpSTKkui7CoJ4ff1Ra4ZcKov88Tv9.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/storage/app/feature/6utnfOZCS4jiFuheYjDI28d0Q531Z55HEIwWwWig.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/filesystems.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="56" selection-start-line="56" selection-end-line="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin_views/crud/feature/show.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="10" column="65" selection-start-line="10" selection-start-column="65" selection-end-line="10" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/CrudController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="73" column="17" lean-forward="true" selection-start-line="73" selection-start-column="17" selection-end-line="73" selection-end-column="17" />
+          <folding>
+            <element signature="e#46#74#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin_views/components/image.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
         </state>
       </provider>
     </entry>

@@ -1,5 +1,5 @@
 @if(session()->has('toast_messages'))
-    <div style="position: fixed; bottom: 1rem; right: 1rem; z-index: 1031;">
+    <div style="position: fixed; bottom: 1rem; right: 1rem; z-index: 1031;">{{ dd(@$toast_message) }}
 
         @foreach(session()->get('toast_messages') as $toast_message)
             <div class="toast" role="alert" aria-live="assertive" data-delay="2750" aria-atomic="true">
