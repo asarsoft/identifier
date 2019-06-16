@@ -4,7 +4,7 @@
     @component('admin_views.components.crud_actions', ['module' => 'feature'])
     @endcomponent
     <div class="row my-5">
-        @foreach($features as $feature)
+        @foreach($records as $feature)
             @component('admin_views.components.feature', ['feature' => $feature, 'detail' => $feature->trashed_detail])
                 <p class="text-success d-flex align-items-center">
                     <a href="{{ route('restore-feature', $feature->id) }}"

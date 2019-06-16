@@ -39,6 +39,12 @@ class CrudController extends Controller
         return view($this->index_view, ['records' => $records]);
     }
 
+    /**
+     * Shows the given item in it's view
+     *
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function show($id)
     {
         $record = $this->model::with($this->relationships)->where('id', $id)->first();
@@ -89,7 +95,7 @@ class CrudController extends Controller
             Session::flash('toast_messages', $toast_messages);
         }
 
-        return $this->show($this->primary);
+        return redirect()->route($this->show_route, $this->primary);
     }
 
 
@@ -118,66 +124,14 @@ class CrudController extends Controller
         return redirect()->back();
     }
 
+    /**
+     * A default image rule
+     * @return array
+     */
     public function image_rule()
     {
         return [
             'image' => 'nullable|image|max:2048',
         ];
     }
-
-    //    /**
-//     * Show the form for creating a new resource.
-//     *
-//     * @return \Illuminate\Http\Response
-//     */
-//    public function create()
-//    {
-//        //
-//    }
-//
-//
-//    /**
-//     * Display the specified resource.
-//     *
-//     * @param  int  $id
-//     * @return \Illuminate\Http\Response
-//     */
-//    public function show($id)
-//    {
-//        //
-//    }
-//
-//    /**
-//     * Show the form for editing the specified resource.
-//     *
-//     * @param  int  $id
-//     * @return \Illuminate\Http\Response
-//     */
-//    public function edit($id)
-//    {
-//        //
-//    }
-//
-//    /**
-//     * Update the specified resource in storage.
-//     *
-//     * @param  \Illuminate\Http\Request  $request
-//     * @param  int  $id
-//     * @return \Illuminate\Http\Response
-//     */
-//    public function update(Request $request, $id)
-//    {
-//        //
-//    }
-//
-//    /**
-//     * Remove the specified resource from storage.
-//     *
-//     * @param  int  $id
-//     * @return \Illuminate\Http\Response
-//     */
-//    public function destroy($id)
-//    {
-//        //
-//    }
 }
