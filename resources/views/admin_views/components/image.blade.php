@@ -1,3 +1,4 @@
+{{ $slot }}
 @if($image != null)
     <img class="{{ $class }}" src="{{asset('storage/feature/'.$image)}}" style="width: {{$width ? $width : 'auto'}}; height: {{$height ? $height : 'auto'}}">
 @else

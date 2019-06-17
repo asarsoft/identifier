@@ -5,6 +5,7 @@
  */
 
 return [
+	'cover_image' => 'Cover Image',
     'place_order' => 'Place Order',
     'discuss_order' => 'Discuss Order',
 
