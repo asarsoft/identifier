@@ -39,7 +39,25 @@ class CrudController extends Controller
         return view($this->index_view, ['records' => $records]);
     }
 
-    /**
+	/**
+	 * Returns Feature Create page
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+	 */
+	public function create()
+	{
+		$data = [];
+
+		foreach ($this->create_objects as $object)
+		{
+			$records = $object['model']::with($object['sub_models'])->get();
+			$data[$object['model_name']] = $records;
+		}
+
+		return view($this->create_view, ['records' => $data]);
+	}
+
+
+	/**
      * Shows the given item in it's view
      *
      * @param $id
