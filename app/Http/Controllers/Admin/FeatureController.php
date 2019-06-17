@@ -7,7 +7,6 @@ use App\Models\Category;
 use App\Models\Feature;
 use App\Models\Language;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
 
 class FeatureController extends CrudController
 {
@@ -20,7 +19,20 @@ class FeatureController extends CrudController
 	public $relationships = ['details', 'category'];
 	public $child_relations = ['details'];
 
-	public $create_objects = [
+	public $trashed_child = ['trashed_detail'];
+	public $trashed_children = ['trashed_details'];
+
+	public $index_view = 'admin_views.crud.feature.index';
+	public $recycle_view = 'admin_views.crud.feature.recycle';
+	public $show_view = 'admin_views.crud.feature.show';
+	public $create_view = 'admin_views.crud.feature.create';
+	public $edit_view = 'admin_views.crud.feature.edit';
+
+	public $show_route = "show-feature";
+
+	public $cover = true;
+
+	public $manage_objects = [
 		[
 			'model' => Category::class,
 			'sub_models' => ['detail'],
@@ -32,65 +44,6 @@ class FeatureController extends CrudController
 			'model_name' => 'languages'
 		]
 	];
-
-	public $trashed_child = ['trashed_detail'];
-	public $trashed_children = ['trashed_details'];
-
-	public $index_view = 'admin_views.crud.feature.index';
-	public $recycle_view = 'admin_views.crud.feature.recycle';
-	public $show_view = 'admin_views.crud.feature.show';
-	public $create_view = 'admin_views.crud.feature.create';
-
-	public $show_route = "show-feature";
-
-	public $cover = true;
-
-//	/**
-//	 * Returns Feature Create page
-//	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-//	 */
-//	public function create()
-//	{
-//		$categories = Category::with('detail')->get();
-//		$languages = Language::all();
-//
-//		return view('admin_views.crud.feature.create', ['languages' => $languages, 'categories' => $categories]);
-//	}
-
-	public function restore($id)
-	{
-		$feature = Feature::withTrashed()->where('id', $id)->first();
-
-		$feature->restore();
-		$feature->trashed_detail()->restore();
-
-		$this->return_one_record($id)->withTrashed()->restore();
-		$this->return_one_record($id)->trashed_detail()->restore();
-
-		$toast_messages = $this->toast_message('restore');
-
-		Session::flash('toast_messages', $toast_messages);
-		return redirect()->back();
-	}
-
-	/**
-	 * Edit fcuntion returns the editable item to the edit view to be edited
-	 */
-	public function edit($id)
-	{
-		$feature = Feature::find($id);
-		if ($feature)
-		{
-			$categories = Category::with('detail')->get();
-			$languages = Language::all();
-
-			return view('admin_views.crud.feature.edit', ['languages' => $languages, 'categories' => $categories]);
-		}
-		else
-		{
-			abort(404);
-		}
-	}
 
 	/**
 	 * Update the Feature itself

@@ -13,10 +13,11 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     protected $module_name = 'non_registered';
+    protected $success = true;
     function toast_message($action)
     {
         $toast_messages = [
-            'message' => trans('message.' . $this->module_name . '_' . $action . '_success'),
+            'message' => trans('message.' . $this->module_name . '_' . $action . '_success_'.$this->success),
             'title' => trans('app.name')
         ];
 

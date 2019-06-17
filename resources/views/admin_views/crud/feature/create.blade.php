@@ -25,11 +25,8 @@
 			@component('admin_views.components.forms.type_number', ['field_name' => 'approximate_time', 'class' => 'col-md-4', 'value' => ''])
 			@endcomponent
 
-
-
 			@component('admin_views.components.forms.type_number', ['field_name' => 'priority', 'class' => 'col-md-2', 'value' => ''])
 			@endcomponent
-
 
 			<div class="form-group col-md-3">
 				<label for="category_id">Category</label>

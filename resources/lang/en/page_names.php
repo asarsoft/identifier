@@ -5,6 +5,7 @@ return [
     'index-feature' => 'Index Features',
     'recycle-feature' => 'Recycle Features',
     'show-feature' => 'Show Feature',
+    'edit-feature' => 'Edit Feature',
 
     'dashboard-admin' => 'Admin Dashboard',
 
