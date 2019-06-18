@@ -101,6 +101,7 @@ class FeatureController extends CrudController
 					'difficulty' => 'required|numeric|max:100|min:0',
 					'priority' => 'required|numeric|max:100000',
 				],
+				'name' => 'fish',
 				'model' => Feature::class,
 				'image' => 'icon'
 			],

@@ -175,7 +175,7 @@ class CrudController extends Controller
 		$record = $this->model::with($this->relationships)->where('id', $id)->first();
 		if ($record != null)
 		{
-			$data = [];
+			$data = ['feature_detail' => null];
 
 			foreach ($this->manage_objects as $object)
 			{

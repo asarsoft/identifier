@@ -38,6 +38,11 @@
 			@endcomponent
 		</div>
 
+		@if($records['feature_detail'] != null)
+			@component('admin_views.crud.feature.components.edit_detail', ['detail' => $records['feature_detail'], 'languages' => $records['languages'], 'categories' => $records['categories']])
+			@endcomponent
+		@endif
+
 		<button type="submit" class="btn btn-primary">{{ trans('button_input.create') }}</button>
 	</form>
 @endsection
