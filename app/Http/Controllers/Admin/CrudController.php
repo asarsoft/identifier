@@ -164,8 +164,13 @@ class CrudController extends Controller
 
 	/**
 	 * Edit function returns the editable item to the edit view to be edited
+	 *
+	 * @param $id
+	 * @param null $child
+	 * @param null $parameter
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
 	 */
-	public function edit($id)
+	public function edit($id, $parameter = null)
 	{
 		$record = $this->model::with($this->relationships)->where('id', $id)->first();
 		if ($record != null)
@@ -176,6 +181,11 @@ class CrudController extends Controller
 			{
 				$records = $object['model']::with($object['sub_models'])->get();
 				$data[$object['model_name']] = $records;
+			}
+
+			if ($parameter != null)
+			{
+				$data[$this->child['name']] = $this->child['model']::where($this->module_foreign, $id)->where($this->child['parameter'], $parameter)->first();
 			}
 
 			return view($this->edit_view, ['records' => $data, 'record' => $record]);

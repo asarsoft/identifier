@@ -11,24 +11,15 @@ use Illuminate\Http\Request;
 class FeatureController extends CrudController
 {
 	public $module_name = 'feature';
-	public $module_foreign = 'feature_id';
-
 	public $model = Feature::class;
-	public $model_detail = FeatureDetail::class;
+
+	public $module_foreign = 'feature_id';
 
 	public $relationships = ['details', 'category'];
 	public $child_relations = ['details'];
 
 	public $trashed_child = ['trashed_detail'];
 	public $trashed_children = ['trashed_details'];
-
-	public $index_view = 'admin_views.crud.feature.index';
-	public $recycle_view = 'admin_views.crud.feature.recycle';
-	public $show_view = 'admin_views.crud.feature.show';
-	public $create_view = 'admin_views.crud.feature.create';
-	public $edit_view = 'admin_views.crud.feature.edit';
-
-	public $show_route = "show-feature";
 
 	public $cover = true;
 
@@ -44,6 +35,20 @@ class FeatureController extends CrudController
 			'model_name' => 'languages'
 		]
 	];
+
+	public $child = [
+		'name' => 'feature_detail',
+		'model' => FeatureDetail::class,
+		'parameter' => 'language_id'
+	];
+
+	public $index_view = 'admin_views.crud.feature.index';
+	public $recycle_view = 'admin_views.crud.feature.recycle';
+	public $show_view = 'admin_views.crud.feature.show';
+	public $create_view = 'admin_views.crud.feature.create';
+	public $edit_view = 'admin_views.crud.feature.edit';
+
+	public $show_route = "show-feature";
 
 	/**
 	 * Update the Feature itself

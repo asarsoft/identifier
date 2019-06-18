@@ -39,7 +39,7 @@ Route::group(['middleware' => 'language_required'], function ()
                 Route::get('/show/{id}', 'Admin\FeatureController@show')->name('show-feature');
 
                 Route::get('/create', 'Admin\FeatureController@create')->name('create-feature');
-                Route::get('/edit/{id?}', 'Admin\FeatureController@edit')->name('edit-feature');
+                Route::get('/edit/{id}/{parameter?}', 'Admin\FeatureController@edit')->name('edit-feature');
 
                 Route::post('/store', 'Admin\FeatureController@store')->name('store-feature');
                 Route::post('/update', 'Admin\FeatureController@update')->name('update-feature');
