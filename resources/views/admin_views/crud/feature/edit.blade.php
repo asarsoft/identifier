@@ -38,11 +38,26 @@
 			@endcomponent
 		</div>
 
-		@if($records['feature_detail'] != null)
+		@if($records['feature_detail'] !== false)
 			@component('admin_views.crud.feature.components.edit_detail', ['detail' => $records['feature_detail'], 'languages' => $records['languages'], 'categories' => $records['categories']])
 			@endcomponent
 		@endif
 
-		<button type="submit" class="btn btn-primary">{{ trans('button_input.create') }}</button>
+		<div class="btn-group">
+			<button type="submit" class="btn btn-primary">{{ trans('button_input.create') }}</button>
+		</div>
+		<div class="btn-group">
+			<div class="dropdown">
+				<button class="btn btn-outline-primary dropdown-toggle" type="button" id="language_selection" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					Feature Details
+				</button>
+				<div class="dropdown-menu" aria-labelledby="language_selection">
+					@foreach($records['languages'] as $language)
+						<a class="dropdown-item" href="{{ $language->id }}"><span class="text-uppercase mr-2 text-primary">{{ $language->accept_language }}</span> {{ $language->name }}
+						</a>
+					@endforeach
+				</div>
+			</div>
+		</div>
 	</form>
 @endsection

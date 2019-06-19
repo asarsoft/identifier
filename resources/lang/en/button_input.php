@@ -16,6 +16,7 @@ return [
     'priority' => 'Priority',
     'feature_type' => 'Feature Type',
     'category_id' => 'Category',
+    'language_id' => 'Language',
 
     'name' => 'Name',
     'description' => 'Description',

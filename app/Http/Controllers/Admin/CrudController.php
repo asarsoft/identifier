@@ -28,6 +28,7 @@ class CrudController extends Controller
 
 	public $model = null;
 	public $success = true;
+	public $child = false;
 
 	/**
 	 * Display a listing of the resource.
@@ -183,9 +184,13 @@ class CrudController extends Controller
 				$data[$object['model_name']] = $records;
 			}
 
-			if ($parameter != null)
-			{
+			if ($this->child != null && $parameter != null)
+			{ // if the child is required and this data should have child, we return it either as null or the data itself, if it is not null, it means this child was not created yet
 				$data[$this->child['name']] = $this->child['model']::where($this->module_foreign, $id)->where($this->child['parameter'], $parameter)->first();
+			}
+			elseif ($this->child != null)
+			{ // ===> Setting the child to true if the child is not required in the request, this means it has a child but but not asked for
+				$data[$this->child['name']] = false;
 			}
 
 			return view($this->edit_view, ['records' => $data, 'record' => $record]);
