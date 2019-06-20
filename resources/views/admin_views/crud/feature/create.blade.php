@@ -3,7 +3,7 @@
 @section('content')
 	@component('admin_views.components.crud_actions', ['module' => 'feature'])
 	@endcomponent
-	<form class="mb-4" method="post" action="{{ route('store-feature') }}" enctype="multipart/form-data">
+	<form class="mb-4" method="post" action="{{ route('store-feature', true) }}" enctype="multipart/form-data">
 		@csrf
 		<div class="form-group col-md-2 mx-0 px-0">
 			<label for="icon">

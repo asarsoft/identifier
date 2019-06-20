@@ -2,7 +2,6 @@
 
 <h4 class="mb-3">Feature Details</h4>
 
-<form>
 	<div class="form-row">
 		@component('admin_views.components.forms.type_text', ['field_name' => 'name', 'class' => 'col-md-7', 'value' => @$detail->name])
 		@endcomponent
@@ -26,4 +25,3 @@
 
 	@component('admin_views.components.text_editor', ['field_name' => 'description'])
 	@endcomponent
-</form>

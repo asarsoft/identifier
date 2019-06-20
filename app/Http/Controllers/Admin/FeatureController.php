@@ -50,35 +50,6 @@ class FeatureController extends CrudController
 
 	public $show_route = "show-feature";
 
-	/**
-	 * Update the Feature itself
-	 * @param $id
-	 * @param Request $request
-	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-	 */
-	public function update($id, Request $request)
-	{
-		$feature = Feature::find($id);
-		if ($feature)
-		{
-			$feature_validator = $request->validate([
-				'category_id' => 'required|numeric',
-				'min_price' => 'nullable|numeric|max:1000000',
-				'max_price' => 'nullable|numeric|max:1000000',
-				'approximate_time' => 'required|numeric|max:1000000',
-				'difficulty' => 'required|numeric|max:100|min:0',
-				'priority' => 'required|numeric|max:100000',
-			]);
-
-
-			if ($feature->update($feature_validator))
-			{
-				$toast_messages = $this->toast_message('delete');
-
-				return view('admin_view.crud.feature.show', ['feature' => $feature])->with(['toast_messages' => $toast_messages]);
-			}
-		}
-	}
 
 	public function edit_detail($id)
 	{
@@ -91,7 +62,7 @@ class FeatureController extends CrudController
 
 	public function parameters()
 	{
-		$rules = [
+		$parameters = [
 			'feature' => [
 				'rules' => [
 					'category_id' => 'required|numeric',
@@ -103,7 +74,7 @@ class FeatureController extends CrudController
 				],
 				'name' => 'fish',
 				'model' => Feature::class,
-				'image' => 'icon'
+				'image' => ['name' => 'icon', 'disk' => 'feature']
 			],
 			'feature_detail' => [
 				'rules' => [
@@ -117,6 +88,32 @@ class FeatureController extends CrudController
 			],
 		];
 
-		return $rules;
+		$parameters = [
+				'name' => 'feature',
+				'model' => Feature::class,
+				'image' => ['name' => 'icon', 'disk' => 'feature'],
+				'rules' => [
+					'category_id' => 'required|numeric',
+					'min_price' => 'nullable|numeric|max:1000000',
+					'max_price' => 'nullable|numeric|max:1000000',
+					'approximate_time' => 'required|numeric|max:1000000',
+					'difficulty' => 'required|numeric|max:100|min:0',
+					'priority' => 'required|numeric|max:100000',
+				],
+				'sub_modules' => [
+					'feature_detail' => [
+						'model' => FeatureDetail::class,
+						'name' => 'feature_details',
+						'rules' => [
+							'language_id' => 'required',
+							'name' => 'required|max:199',
+							'description' => 'nullable|max:1000000',
+							'feature_type' => 'required|max:199',
+						],
+					],
+				]
+		];
+
+		return $parameters;
 	}
 }

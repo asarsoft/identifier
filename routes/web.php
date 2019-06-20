@@ -41,8 +41,8 @@ Route::group(['middleware' => 'language_required'], function ()
                 Route::get('/create', 'Admin\FeatureController@create')->name('create-feature');
                 Route::get('/edit/{id}/{parameter?}', 'Admin\FeatureController@edit')->name('edit-feature');
 
-                Route::post('/store', 'Admin\FeatureController@store')->name('store-feature');
-                Route::post('/update', 'Admin\FeatureController@update')->name('update-feature');
+                Route::post('/store/{sub_model?}', 'Admin\FeatureController@store')->name('store-feature');
+                Route::post('/update/{id}/{sub_model?}', 'Admin\FeatureController@update')->name('update-feature');
 
                 Route::get('/destroy/{id?}', 'Admin\FeatureController@destroy')->name('destroy-feature');
                 Route::get('/restore/{id?}', 'Admin\FeatureController@restore')->name('restore-feature');

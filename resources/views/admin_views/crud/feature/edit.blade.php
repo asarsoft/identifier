@@ -3,7 +3,7 @@
 @section('content')
 	@component('admin_views.components.crud_actions', ['module' => 'feature'])
 	@endcomponent
-	<form class="mb-4" method="post" action="{{ route('update-feature') }}" enctype="multipart/form-data">
+	<form class="mb-4" method="post" action="{{ route('update-feature', ['id' => $record->id, 'sub_model' => @$records['feature_detail']->id]) }}" enctype="multipart/form-data">
 		@csrf
 		<div class="form-group col-md-2 mx-0 px-0">
 			<label for="icon">
@@ -53,7 +53,7 @@
 				</button>
 				<div class="dropdown-menu" aria-labelledby="language_selection">
 					@foreach($records['languages'] as $language)
-						<a class="dropdown-item" href="{{ $language->id }}"><span class="text-uppercase mr-2 text-primary">{{ $language->accept_language }}</span> {{ $language->name }}
+						<a class="dropdown-item" href="{{ route('edit-feature', ['id' => $record->id, 'parameter' => $language->id]) }}"><span class="text-uppercase mr-2 text-primary">{{ $language->accept_language }}</span> {{ $language->name }}
 						</a>
 					@endforeach
 				</div>

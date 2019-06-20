@@ -74,14 +74,24 @@ class CrudController extends Controller
 	/**
 	 * Store a newly created resource in storage.
 	 *
+	 * @param $sub_model
 	 * @param \Illuminate\Http\Request $request
 	 * @return \Illuminate\Http\Response
 	 */
-	public function store(Request $request)
+	public function store(Request $request, $sub_model = null)
 	{
-		if ($this->parameters())
-		{// ===> Parameters should be defined inside each Controller that uses this method
-			foreach ($this->parameters() as $object)
+		$parameters = $this->parameters();
+		$primary_object_validation = Validator::make($request->all(), $parameters['rules']);
+
+		if ($primary_object_validation->fails())
+		{
+			return redirect()->back()->withErrors($primary_object_validation->errors())->withInput(Input::all());
+		}
+
+		// ===> main model validation was successful
+		if ($parameters['sub_modules'] && $sub_model != null)
+		{ // ===> If the module has sub modules, than attempt to create them as well
+			foreach ($parameters['sub_modules'] as $object)
 			{
 				$validator = Validator::make($request->all(), $object['rules']);
 				if ($validator->fails())
@@ -89,31 +99,35 @@ class CrudController extends Controller
 					return redirect()->back()->withErrors($validator->errors())->withInput(Input::all());
 				}
 			}
-
-			foreach ($this->parameters() as $object)
-			{
-				$record = $request->only(array_keys($object['rules']));
-				if (@$object['image'] && $request->hasFile($object['image']))
-				{
-					$path = $request->file($object['image'])->store('', ['disk' => 'feature']);
-					$record = array_merge($record, [$object['image'] => $path]);
-				}
-
-				if (@$object['sub_model'])
-				{
-					$record = array_merge($record, [$this->module_foreign => $this->primary]);
-					$object['model']::create($record);
-				}
-				else
-				{
-					$stored = $object['model']::create($record);
-					$this->primary = $stored->id;
-				}
-			}
-
-			$toast_messages = $this->toast_message('create');
-			Session::flash('toast_messages', $toast_messages);
 		}
+
+		$primary_object = $request->only(array_keys($parameters['rules']));
+
+		if ($parameters['image'] && $request->hasFile($parameters['image']['name']))
+		{ // ===> If the object has image, store it
+			$path = $request->file($parameters['image']['name'])->store('', [
+				'disk' => $parameters['image']['disk']
+			]);
+			$primary_object = array_merge($primary_object, [$parameters['image']['name'] => $path]);
+		}
+		// ===> store the object
+		$stored_primary_object = $parameters['model']::create($primary_object);
+
+		if ($stored_primary_object)
+		{
+			// ===> check if object was created, than assign object id to $this->primary
+			$this->primary = $stored_primary_object->id;
+
+			foreach ($parameters['sub_modules'] as $module)
+			{ // ===> Loop through all of the sub modules and create them.
+				$record = $request->only(array_keys($module['rules']));
+				$module_data = array_merge($record, [$this->module_foreign => $this->primary]);
+				$module['model']::create($module_data);
+			}
+		}
+
+		$toast_messages = $this->toast_message('create');
+		Session::flash('toast_messages', $toast_messages);
 
 		return redirect()->route($this->show_route, $this->primary);
 	}
@@ -199,6 +213,55 @@ class CrudController extends Controller
 		{
 			abort(404);
 		}
+	}
+
+	/**
+	 * @param $id
+	 * @param null $sub_model
+	 * @param Request $request
+	 * @return \Illuminate\Http\RedirectResponse
+	 */
+	public function update($id, Request $request, $sub_model = null)
+	{
+		$feature = $this->model::find($id);
+		if ($feature)
+		{ // ===> Check if this record exists
+			foreach ($this->parameters() as $object)
+			{ // ===> validated the request by the parameters
+				$validator = Validator::make($request->all(), $object['rules']);
+				if ($validator->fails())
+				{
+					return redirect()->back()->withErrors($validator->errors())->withInput(Input::all());
+				}
+			}
+
+			foreach ($this->parameters()['module'] as $object)
+			{ // ===> Update each module with the validated fields
+				$record = $request->only(array_keys($object['rules']));
+				if (@$object['image'] && $request->hasFile($object['image']))
+				{ // ===> If the given object has image field, upload image than merge the image name into array
+					$path = $request->file($object['image'])->store('', ['disk' => $object['image']['disk']]);
+					$record = array_merge($record, [$object['image']['name'] => $path]);
+				}
+
+				if (@$object['sub_model'])
+				{
+					$record = array_merge($record, [$this->module_foreign => $this->primary]);
+					$object['model']::where($this->module_foreign, $this->primary)->updateOrCreate($record);
+				}
+				else
+				{
+					$object['model']::where('id', $id)->update($record);
+					$this->primary = $id;
+				}
+			}
+
+			$toast_messages = $this->toast_message('update');
+			Session::flash('toast_messages', $toast_messages);
+		}
+
+		return redirect()->route($this->show_route, $this->primary);
+
 	}
 
 
