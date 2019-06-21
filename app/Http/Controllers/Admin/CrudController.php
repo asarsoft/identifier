@@ -268,8 +268,7 @@ class CrudController extends Controller
 				foreach ($parameters['sub_modules'] as $module)
 				{ // ===> Loop through all of the sub modules and create them.
 					$record = $request->only(array_keys($module['rules']));
-					//					$module['model']::updateOrCreate([$this->module_foreign => $this->primary, $module['differ_by'] => $sub_model], $record);
-					array_merge($record, [$this->module_foreign => $this->primary]);
+					$module['model']::where($this->module_foreign, $this->primary)->where($module['differ_by'], $sub_model)->update($record);
 				}
 			}
 
