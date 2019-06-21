@@ -8,7 +8,7 @@
 </div>
 
 <div class="form-row">
-	@component('admin_views.components.forms.select', ['field_name' => 'language_id', 'options' => $languages, 'name' => @$detail->name, 'selected' => @$detail->language_id])
+	@component('admin_views.components.forms.select', ['field_name' => 'language_id', 'options' => $languages, 'selected' => @$detail->language_id])
 	@endcomponent
 
 	@component('admin_views.components.forms.type_text', ['field_name' => 'feature_type', 'class' => 'col-md-2', 'value' =>  @$detail->feature_type])
