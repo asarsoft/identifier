@@ -44,12 +44,12 @@
 		@endif
 
 		<div class="btn-group">
-			<button type="submit" class="btn btn-primary">{{ trans('button_input.create') }}</button>
+			<button type="submit" class="btn btn-primary">{{ trans('button_input.update') }}</button>
 		</div>
 		<div class="btn-group">
 			<div class="dropdown">
 				<button class="btn btn-outline-primary dropdown-toggle" type="button" id="language_selection" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					Feature Details
+					{{ trans('button_input.feature_details') }}
 				</button>
 				<div class="dropdown-menu" aria-labelledby="language_selection">
 					@foreach($records['languages'] as $language)

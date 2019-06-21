@@ -20,9 +20,11 @@ return [
 
     'name' => 'Name',
     'description' => 'Description',
+    'feature_details' => 'Feature Details',
     'icon' => 'Icon',
 
     'create' => 'Create',
+    'update' => 'Update',
 
     'hours' => 'Hours',
 

@@ -62,31 +62,31 @@ class FeatureController extends CrudController
 
 	public function parameters()
 	{
-		$parameters = [
-			'feature' => [
-				'rules' => [
-					'category_id' => 'required|numeric',
-					'min_price' => 'nullable|numeric|max:1000000',
-					'max_price' => 'nullable|numeric|max:1000000',
-					'approximate_time' => 'required|numeric|max:1000000',
-					'difficulty' => 'required|numeric|max:100|min:0',
-					'priority' => 'required|numeric|max:100000',
-				],
-				'name' => 'fish',
-				'model' => Feature::class,
-				'image' => ['name' => 'icon', 'disk' => 'feature']
-			],
-			'feature_detail' => [
-				'rules' => [
-					'language_id' => 'required',
-					'name' => 'required|max:199',
-					'description' => 'nullable|max:1000000',
-					'feature_type' => 'required|max:199',
-				],
-				'model' => FeatureDetail::class,
-				'sub_model' => true
-			],
-		];
+//		$parameters = [
+//			'feature' => [
+//				'rules' => [
+//					'category_id' => 'required|numeric',
+//					'min_price' => 'nullable|numeric|max:1000000',
+//					'max_price' => 'nullable|numeric|max:1000000',
+//					'approximate_time' => 'required|numeric|max:1000000',
+//					'difficulty' => 'required|numeric|max:100|min:0',
+//					'priority' => 'required|numeric|max:100000',
+//				],
+//				'name' => 'fish',
+//				'model' => Feature::class,
+//				'image' => ['name' => 'icon', 'disk' => 'feature']
+//			],
+//			'feature_detail' => [
+//				'rules' => [
+//					'language_id' => 'required',
+//					'name' => 'required|max:199',
+//					'description' => 'nullable|max:1000000',
+//					'feature_type' => 'required|max:199',
+//				],
+//				'model' => FeatureDetail::class,
+//				'sub_model' => true
+//			],
+//		];
 
 		$parameters = [
 				'name' => 'feature',
@@ -104,6 +104,7 @@ class FeatureController extends CrudController
 					'feature_detail' => [
 						'model' => FeatureDetail::class,
 						'name' => 'feature_details',
+						'differ_by' => 'language_id',
 						'rules' => [
 							'language_id' => 'required',
 							'name' => 'required|max:199',
