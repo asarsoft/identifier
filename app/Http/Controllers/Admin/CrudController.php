@@ -264,7 +264,6 @@ class CrudController extends Controller
 
 			if ($stored_primary_object && $sub_model != null)
 			{ // ===> check if object was created, than assign object id to $this->primary
-
 				foreach ($parameters['sub_modules'] as $module)
 				{ // ===> Loop through all of the sub modules and create them.
 					$record = $request->only(array_keys($module['rules']));
@@ -283,7 +282,6 @@ class CrudController extends Controller
 			abort(404);
 		}
 	}
-
 
 	/**
 	 * A default image rule

@@ -15,5 +15,5 @@
 	@endcomponent
 </div>
 
-@component('admin_views.components.text_editor', ['field_name' => 'description'])
+@component('admin_views.components.text_editor', ['field_name' => 'description', 'value' => @$detail->description])
 @endcomponent

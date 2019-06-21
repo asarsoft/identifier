@@ -13,7 +13,8 @@
     <script>
         var field_name = '{{ $field_name }}';
         $('#' + field_name).summernote({
-            placeholder: 'Desctiption',
+            placeholder: '{{ trans('button_input.'.@$field_name) }}',
+            value: '{{ @$value }}',
             tabsize: 2,
             height: 200
         });
