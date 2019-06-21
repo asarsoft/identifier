@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="ea2b836b-4a90-4720-ac77-7c1747a25d8d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/CrudController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/CrudController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin_views/components/text_editor.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin_views/components/text_editor.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin_views/crud/feature/components/edit_detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin_views/crud/feature/components/edit_detail.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -72,8 +70,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/admin_views/components/text_editor.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="15" column="63" selection-start-line="15" selection-start-column="63" selection-end-line="15" selection-end-column="63" />
+            <state relative-caret-position="207">
+              <caret line="9" column="18" selection-end-line="20" />
             </state>
           </provider>
         </entry>
@@ -644,7 +642,7 @@
       <workItem from="1560956265094" duration="632000" />
       <workItem from="1561012102899" duration="14772000" />
       <workItem from="1561129324784" duration="5663000" />
-      <workItem from="1561143853960" duration="931000" />
+      <workItem from="1561143853960" duration="1658000" />
     </task>
     <task id="LOCAL-00001" summary="primary interface and user table was created">
       <created>1559596691236</created>
@@ -779,11 +777,18 @@
       <option name="project" value="LOCAL" />
       <updated>1561134958907</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Edit Description was translated">
+      <created>1561145026487</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1561145026487</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="191298000" />
+    <option name="totallyTimeSpent" value="192025000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
@@ -802,8 +807,8 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
-      <window_info anchor="bottom" id="Version Control" order="9" weight="0.5084507" />
-      <window_info active="true" anchor="bottom" x="164" y="123" width="1667" height="940" id="Terminal" order="10" sideWeight="0.4997233" type="WINDOWED" visible="true" weight="0.19137749" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="9" visible="true" weight="0.50757575" />
+      <window_info anchor="bottom" x="154" y="133" width="1687" height="940" id="Terminal" order="10" sideWeight="0.4997233" type="WINDOWED" visible="true" weight="0.19137749" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5002767" side_tool="true" weight="0.33874458" />
       <window_info anchor="bottom" id="Messages" order="12" />
       <window_info anchor="bottom" id="Command Line Tools Console" order="13" weight="0.31966352" />
@@ -886,7 +891,8 @@
     <MESSAGE value="parameters were recreated in a more reliable format" />
     <MESSAGE value="Updating record with no sub models is complete" />
     <MESSAGE value="Updating sub modules are complete" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updating sub modules are complete" />
+    <MESSAGE value="Edit Description was translated" />
+    <option name="LAST_COMMIT_MESSAGE" value="Edit Description was translated" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/resources/views/admin_views/includes/admin_side_navbar.blade.php">
@@ -1264,8 +1270,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/admin_views/components/text_editor.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="15" column="63" selection-start-line="15" selection-start-column="63" selection-end-line="15" selection-end-column="63" />
+        <state relative-caret-position="207">
+          <caret line="9" column="18" selection-end-line="20" />
         </state>
       </provider>
     </entry>
