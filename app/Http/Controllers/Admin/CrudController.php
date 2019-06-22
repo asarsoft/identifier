@@ -131,9 +131,8 @@ class CrudController extends Controller
 		}
 
 		$toast_messages = $this->toast_message('create');
-		Session::flash('toast_messages', $toast_messages);
 
-		return redirect()->route($this->show_route, $this->primary);
+		return redirect()->route($this->show_route, $this->primary)->with('toast_messages', $toast_messages);
 	}
 
 	/**
@@ -150,9 +149,8 @@ class CrudController extends Controller
 		}
 
 		$toast_messages = $this->toast_message('restore');
-		Session::flash('toast_messages', $toast_messages);
 
-		return redirect()->back();
+		return redirect()->back()->with('toast_message', $toast_messages);
 	}
 
 	/**
@@ -176,9 +174,8 @@ class CrudController extends Controller
 		$this->model::where('id', $id)->delete();
 
 		$toast_messages = $this->toast_message('delete');
-		Session::flash('toast_messages', $toast_messages);
 
-		return redirect()->back();
+		return redirect()->back()->with('toast_message', $toast_messages);
 	}
 
 	/**
@@ -286,9 +283,8 @@ class CrudController extends Controller
 			}
 
 			$toast_messages = $this->toast_message('create');
-			Session::flash('toast_messages', $toast_messages);
 
-			return redirect()->route($this->show_route, $this->primary);
+			return redirect()->route($this->show_route, $this->primary)->with('toast_message', $toast_messages);
 		}
 
 		else

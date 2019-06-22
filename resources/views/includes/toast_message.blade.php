@@ -1,6 +1,6 @@
-@if(session()->has('toast_messages'))
+@if(session()->has('toast_message'))
     <div style="position: fixed; bottom: 1rem; right: 1rem; z-index: 1031;">
-        @foreach(session()->get('toast_messages') as $toast_message)
+        @foreach(session()->get('toast_message') as $toast_message)
             <div class="toast" role="alert" aria-live="assertive" data-delay="2750" aria-atomic="true">
                 <div class="toast-header">
                     <img src="{{ asset('application_images/welcome/asar.jpg') }}" style="width:1.26rem;"
