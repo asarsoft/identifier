@@ -3,14 +3,16 @@
 namespace App\Traits;
 
 use App\Models\Log;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 trait Loggable
 {
 	public static function bootLoggable()
 	{
 		static::creating(function ($model) {
-			Log::create([
+			DB::table('logs')->insert([
 				'user_id' => Auth::id(),
 				'email' => Auth::user()->email,
 				'ip' => request()->ip(),
@@ -22,7 +24,7 @@ trait Loggable
 			]);
 		});
 		static::updating(function ($model) {
-			Log::create([
+			DB::table('logs')->insert([
 				'user_id' => Auth::id(),
 				'email' => Auth::user()->email,
 				'ip' => request()->ip(),
@@ -34,7 +36,7 @@ trait Loggable
 			]);
 		});
 		static::deleted(function ($model) {
-			Log::create([
+			DB::table('logs')->insert([
 				'user_id' => Auth::id(),
 				'email' => Auth::user()->email,
 				'ip' => request()->ip(),
@@ -46,7 +48,7 @@ trait Loggable
 			]);
 		});
 		static::restored(function ($model) {
-			Log::create([
+			DB::table('logs')->insert([
 				'user_id' => Auth::id(),
 				'email' => Auth::user()->email,
 				'ip' => request()->ip(),
@@ -55,6 +57,7 @@ trait Loggable
 				'type' => 'restored',
 				'before' => 'not defined',
 				'after' => 'not defined',
+				'created_at' => Carbon::now()
 			]);
 		});
 	}

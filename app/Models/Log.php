@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Log extends Model
 {
-    use GenerateGuid, SoftDeletes;
     protected $guarded = [];
 
     //
