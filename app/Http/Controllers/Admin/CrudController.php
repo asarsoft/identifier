@@ -12,12 +12,9 @@ class CrudController extends Controller
 {
 
 	protected $relationships = [];
-	protected $child_relations = [];
 
 	protected $trashed_child = [];
 	protected $trashed_children = [];
-
-	protected $rules = null;
 
 	public $primary = null;
 
