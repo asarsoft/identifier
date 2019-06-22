@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    protected $success = false;
+    public $success = false;
 
     public function view_login()
     {

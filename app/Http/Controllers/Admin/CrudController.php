@@ -142,7 +142,7 @@ class CrudController extends Controller
 	 */
 	public function restore($id)
 	{
-		$record = $this->model::onlyTrashed()->where('id', $id)->restore();
+		$record = $this->model::onlyTrashed()->find($id)->restore();
 		if (!$record)
 		{
 			$this->success = false;
@@ -171,7 +171,7 @@ class CrudController extends Controller
 	 */
 	public function destroy($id)
 	{
-		$this->model::where('id', $id)->delete();
+		$this->model::find($id)->delete();
 
 		$toast_messages = $this->toast_message('delete');
 
@@ -188,7 +188,7 @@ class CrudController extends Controller
 	 */
 	public function edit($id, $parameter = null)
 	{
-		$record = $this->model::with($this->relationships)->where('id', $id)->first();
+		$record = $this->model::with($this->relationships)->find($id)->first();
 		if ($record != null)
 		{
 			$data = ['feature_detail' => null];
@@ -224,7 +224,7 @@ class CrudController extends Controller
 	 */
 	public function update($id, Request $request, $sub_model = null)
 	{
-		$record = $this->model::where('id', $id)->first();
+		$record = $this->model::find($id)->first();
 
 		if ($record != null)
 		{

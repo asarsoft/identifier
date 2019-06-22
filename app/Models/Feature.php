@@ -4,12 +4,13 @@ namespace App\Models;
 
 use App\Models\FeatureDetail;
 use App\Models\Concerns\GenerateGuid;
+use App\Traits\Loggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Feature extends Model
 {
-    use GenerateGuid, SoftDeletes;
+    use GenerateGuid, SoftDeletes, Loggable;
     protected $guarded = [];
 
     /**
