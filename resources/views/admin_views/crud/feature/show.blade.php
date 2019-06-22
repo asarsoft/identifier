@@ -17,4 +17,5 @@
 				</a>
 			</p>
 		@endcomponent
+	</div>
 @endsection

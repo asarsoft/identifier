@@ -78,12 +78,12 @@ class CrudController extends Controller
 	public function store(Request $request, $sub_model = null)
 	{
 		$parameters = $this->parameters();
-		$primary_object_validation = Validator::make($request->all(), $parameters['rules']);
-
-		if ($primary_object_validation->fails())
+		$validator = Validator::make($request->all(), $parameters['rules']);
+		if ($validator->fails())
 		{
-			return redirect()->back()->withErrors($primary_object_validation->errors())->withInput(Input::all());
+			return redirect()->back()->withErrors($validator->errors())->withInput(Input::all());
 		}
+
 
 		// ===> main model validation was successful
 		if ($parameters['sub_modules'] && $sub_model != null)
@@ -101,7 +101,14 @@ class CrudController extends Controller
 		$primary_object = $request->only(array_keys($parameters['rules']));
 
 		if ($parameters['image'] && $request->hasFile($parameters['image']['name']))
-		{ // ===> If the object has image, store it
+		{ // ===> If the object has image, validate and store it
+			$validator = Validator::make($request->only($parameters['image']['name']), $this->image_rule());
+			if ($validator->fails())
+			{
+				return redirect()->back()->withErrors($validator->errors())->withInput(Input::all());
+			}
+
+
 			$path = $request->file($parameters['image']['name'])->store('', [
 				'disk' => $parameters['image']['disk']
 			]);
@@ -148,7 +155,6 @@ class CrudController extends Controller
 		return redirect()->back();
 	}
 
-
 	/**
 	 * indexing deleted records to be restored
 	 *
@@ -167,10 +173,11 @@ class CrudController extends Controller
 	 */
 	public function destroy($id)
 	{
-		$record = $this->model::where('id', $id)->delete();
+		$this->model::where('id', $id)->delete();
 
 		$toast_messages = $this->toast_message('delete');
 		Session::flash('toast_messages', $toast_messages);
+
 		return redirect()->back();
 	}
 
@@ -225,12 +232,13 @@ class CrudController extends Controller
 		if ($record != null)
 		{
 			$parameters = $this->parameters();
-			$primary_object_validation = Validator::make($request->all(), $parameters['rules']);
 
-			if ($primary_object_validation->fails())
+			$validator = Validator::make($request->all(), $parameters['rules']);
+			if ($validator->fails())
 			{
-				return redirect()->back()->withErrors($primary_object_validation->errors())->withInput(Input::all());
+				return redirect()->back()->withErrors($validator->errors())->withInput(Input::all());
 			}
+
 
 			// ===> main model validation was successful
 			if ($parameters['sub_modules'] && $sub_model != null)
@@ -242,16 +250,25 @@ class CrudController extends Controller
 					{
 						return redirect()->back()->withErrors($validator->errors())->withInput(Input::all());
 					}
+
 				}
 			}
 
 			$primary_object = $request->only(array_keys($parameters['rules']));
 
 			if ($parameters['image'] && $request->hasFile($parameters['image']['name']))
-			{ // ===> If the object has image, store it
+			{ // ===> If the object has image, Validated and store it
+
+				$validator = Validator::make($request->only($parameters['image']['name']), $this->image_rule());
+				if ($validator->fails())
+				{
+					return redirect()->back()->withErrors($validator->errors())->withInput(Input::all());
+				}
+
 				$path = $request->file($parameters['image']['name'])->store('', [
 					'disk' => $parameters['image']['disk']
 				]);
+
 				$primary_object = array_merge($primary_object, [$parameters['image']['name'] => $path]);
 			}
 			// ===> store the object
@@ -284,7 +301,7 @@ class CrudController extends Controller
 	 * A default image rule
 	 * @return array
 	 */
-	public function image_rule()
+	function image_rule()
 	{
 		return [
 			'image' => 'nullable|image|max:2048',
