@@ -2,20 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ea2b836b-4a90-4720-ac77-7c1747a25d8d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/admin_views/crud/category/components/edit_detail.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin_views/crud/category/create.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin_views/crud/category/edit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin_views/crud/category/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin_views/crud/category/recycle.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin_views/crud/category/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Category.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Feature.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Feature.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_06_05_162956_create_categories_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_06_05_162956_create_categories_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/en/button_input.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/button_input.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/en/page_names.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/page_names.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin_views/includes/admin_side_navbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin_views/includes/admin_side_navbar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin_views/crud/category/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin_views/crud/category/edit.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -73,16 +60,16 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/admin_views/crud/category/edit.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="332">
-              <caret line="29" column="67" selection-start-line="29" selection-start-column="67" selection-end-line="29" selection-end-column="67" />
+            <state relative-caret-position="115">
+              <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/admin_views/crud/category/components/edit_detail.blade.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="207">
@@ -236,7 +223,6 @@
         <option value="$PROJECT_DIR$/app/Models/Category.php" />
         <option value="$PROJECT_DIR$/app/Models/Feature.php" />
         <option value="$PROJECT_DIR$/resources/views/admin_views/crud/category/components/edit_detail.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin_views/crud/category/edit.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin_views/crud/category/recycle.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin_views/crud/category/show.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin_views/includes/admin_side_navbar.blade.php" />
@@ -248,6 +234,7 @@
         <option value="$PROJECT_DIR$/resources/lang/en/page_names.php" />
         <option value="$PROJECT_DIR$/resources/views/admin_views/crud/category/create.blade.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_06_05_162956_create_categories_table.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin_views/crud/category/edit.blade.php" />
       </list>
     </option>
   </component>
@@ -636,7 +623,7 @@
       <workItem from="1561143853960" duration="3410000" />
       <workItem from="1561185092648" duration="12877000" />
       <workItem from="1561231298310" duration="9000" />
-      <workItem from="1561231309491" duration="13893000" />
+      <workItem from="1561231309491" duration="14092000" />
     </task>
     <task id="LOCAL-00001" summary="primary interface and user table was created">
       <created>1559596691236</created>
@@ -813,11 +800,18 @@
       <option name="project" value="LOCAL" />
       <updated>1561237363165</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Category index and Create is working properly">
+      <created>1561301124822</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1561301124822</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="220556000" />
+    <option name="totallyTimeSpent" value="220755000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
@@ -901,7 +895,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="primary interface and user table was created" />
     <MESSAGE value="Database was created" />
     <MESSAGE value="User middleware, and dashboard was created" />
     <MESSAGE value="Language and Category Seeders were created, along side Language middleware implementation" />
@@ -926,7 +919,8 @@
     <MESSAGE value="Logging user actions with full data was complete" />
     <MESSAGE value="Logging was optimised, none necessary fields were created and insertion of new log was converted to Query Builder Rather than Eloquent" />
     <MESSAGE value="Toast message dashes were removed, and replaced temporarily with 'now'" />
-    <option name="LAST_COMMIT_MESSAGE" value="Toast message dashes were removed, and replaced temporarily with 'now'" />
+    <MESSAGE value="Category index and Create is working properly" />
+    <option name="LAST_COMMIT_MESSAGE" value="Category index and Create is working properly" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/resources/views/layouts/app.blade.php">
@@ -1270,17 +1264,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin_views/crud/category/edit.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="332">
-          <caret line="29" column="67" selection-start-line="29" selection-start-column="67" selection-end-line="29" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/admin_views/crud/category/components/edit_detail.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="207">
           <caret line="9" column="22" lean-forward="true" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin_views/crud/category/edit.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
         </state>
       </provider>
     </entry>

@@ -3,6 +3,7 @@
 @section('content')
 	@component('admin_views.components.crud_actions', ['module' => 'category'])
 	@endcomponent
+	{{ dd($record) }}
 	<form class="mb-4" method="post" action="{{ route('update-category', ['id' => $record->id, 'sub_model' => @$records['category_detail']->id]) }}" enctype="multipart/form-data">
 		@csrf
 		<div class="form-group col-md-2 mx-0 px-0">
@@ -19,7 +20,7 @@
 		@endcomponent
 
 		<div class="form-row">
-			@component('admin_views.components.forms.select', ['field_name' => 'parent_id', 'options' => $records['categories'], 'name' => $record->category->detail->name, 'selected' => $record->category_id])
+			@component('admin_views.components.forms.select', ['field_name' => 'parent_id', 'options' => $records['categories'], 'name' => @$record->category->detail->name, 'selected' => $record->category_id])
 			@endcomponent
 
 			@component('admin_views.components.forms.type_text', ['field_name' => 'title', 'class' => 'col-md-2', 'value' => $record->title])
