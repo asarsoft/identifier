@@ -10,14 +10,10 @@
                     {{$category->title}}
                     <div class="badge badge-primary badge-pill">
                         <p class="text-success d-flex align-items-center">
-                            <a href="{{ route('edit-feature', $category->id) }}"
+                            <a href="{{ route('restore-category', $category->id) }}"
                                class="btn mr-2 btn-sm btn-outline-primary btn-lg"
                                role="button" aria-pressed="true">
                                 <i class="fas fa-pencil-alt"></i>
-                            </a>
-                            <a href="{{ route('destroy-feature', $category->id) }}" class="btn btn-sm btn-outline-danger btn-lg"
-                               role="button" aria-pressed="true">
-                                <i class="fas fa-trash-alt"></i>
                             </a>
                         </p>
                     </div>

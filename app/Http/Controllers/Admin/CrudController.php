@@ -160,7 +160,7 @@ class CrudController extends Controller
 	 */
 	public function recycle()
 	{
-		$records = $this->model::onlyTrashed()->with($this->trashed_children)->get();
+		$records = $this->model::onlyTrashed()->with($this->relationships)->get();
 		return view($this->recycle_view, ['records' => $records]);
 	}
 
