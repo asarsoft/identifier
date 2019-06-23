@@ -33,7 +33,7 @@ class Category extends Model
 	 */
 	public function category()
 	{
-		return $this->belongsTo(Category::class)->with('detail');
+		return $this->belongsTo(Category::class, 'parent_id', 'id')->with('detail');
 	}
 
 	/**

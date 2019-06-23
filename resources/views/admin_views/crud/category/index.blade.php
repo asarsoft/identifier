@@ -12,7 +12,7 @@
 							@component('admin_views.components.image', ['image' => $category->icon, 'width' => '', 'height' => '2rem', 'class' => 'rounded border mr-2'])
 							@endcomponent
 							{{ $category->detail->name }}
-							<span class="badge badge-success">{{ $category->category ? $category->category->detail->name : null}}</span>
+							<span class="badge badge-success">{{ $category->category ? trans('button_input.parent_id').': '.$category->category->detail->name : null}}</span>
 							<a href="{{ route('edit-category', $category->id) }}"
 							   class="btn mr-1 btn-sm btn-outline-primary btn-lg"
 							   role="button" aria-pressed="true">

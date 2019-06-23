@@ -11,10 +11,10 @@ use Illuminate\Support\Facades\Validator;
 class CrudController extends Controller
 {
 
-	protected $relationships = [];
+	public $relationships = [];
 
-	protected $trashed_child = [];
-	protected $trashed_children = [];
+	public $trashed_child = [];
+	public $trashed_children = [];
 
 	public $primary = null;
 
@@ -112,7 +112,7 @@ class CrudController extends Controller
 			$path = $request->file($parameters['image']['name'])->store('', [
 				'disk' => $parameters['image']['disk']
 			]);
-			$primary_object = array_merge($primary_object, [$parameters['image']['name'] => $path]);
+			$primary_object = array_merge($primary_object, [$parameters['image']['name'] => $parameters['image']['disk'].'/'.$path]);
 		}
 		// ===> store the object
 		$stored_primary_object = $parameters['model']::create($primary_object);
@@ -165,7 +165,7 @@ class CrudController extends Controller
 	}
 
 	/**session
-	 * The function Soft deletes features
+	 * The function Soft deletes record
 	 * @param $id
 	 * @return \Illuminate\Http\RedirectResponse
 	 */
@@ -188,10 +188,10 @@ class CrudController extends Controller
 	 */
 	public function edit($id, $parameter = null)
 	{
-		$record = $this->model::with($this->relationships)->find($id)->first();
+		$record = $this->model::with($this->relationships)->find($id);
 		if ($record != null)
 		{
-			$data = ['feature_detail' => null];
+			$data = ['category_detail' => null];
 
 			foreach ($this->manage_objects as $object)
 			{
