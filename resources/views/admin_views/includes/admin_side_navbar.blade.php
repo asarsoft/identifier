@@ -38,7 +38,7 @@
                 </a>
             </li>
              <li class="nav-item">
-                <a class="nav-link s_b_anchor" href="#">
+                <a class="nav-link s_b_anchor" href="{{ route('index-category') }}">
                     <i class="mr-2 s_b_icons fas fa-code-branch"></i>
                     Categories
                 </a>

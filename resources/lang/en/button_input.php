@@ -17,6 +17,7 @@ return [
     'feature_type' => 'Feature Type',
     'category_id' => 'Category',
     'language_id' => 'Language',
+    'parent_id' => 'Parent',
 
     'name' => 'Name',
     'description' => 'Description',
@@ -27,6 +28,8 @@ return [
     'update' => 'Update',
 
     'hours' => 'Hours',
+
+    'title' => 'Title',
 
     'all' => 'All',
 ];

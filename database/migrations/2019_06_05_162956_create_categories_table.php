@@ -31,7 +31,7 @@ class CreateCategoriesTable extends Migration
 			$table->string('guid');
 
 			$table->string('name');
-			$table->string('description')->nullable();
+			$table->text('description');
 
 			$table->integer('language_id');
 			$table->integer('category_id');

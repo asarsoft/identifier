@@ -47,6 +47,22 @@ Route::group(['middleware' => 'language_required'], function ()
                 Route::get('/destroy/{id?}', 'Admin\FeatureController@destroy')->name('destroy-feature');
                 Route::get('/restore/{id?}', 'Admin\FeatureController@restore')->name('restore-feature');
             });
+
+            Route::prefix('category')->group(function ()
+            {
+                Route::get('/', 'Admin\CategoryController@index')->name('index-category');
+                Route::get('/recycle', 'Admin\CategoryController@recycle')->name('recycle-category');
+                Route::get('/show/{id}', 'Admin\CategoryController@show')->name('show-category');
+
+                Route::get('/create', 'Admin\CategoryController@create')->name('create-category');
+                Route::get('/edit/{id}/{parameter?}', 'Admin\CategoryController@edit')->name('edit-category');
+
+                Route::post('/store/{sub_model?}', 'Admin\CategoryController@store')->name('store-category');
+                Route::post('/update/{id}/{sub_model?}', 'Admin\CategoryController@update')->name('update-category');
+
+                Route::get('/destroy/{id?}', 'Admin\CategoryController@destroy')->name('destroy-category');
+                Route::get('/restore/{id?}', 'Admin\CategoryController@restore')->name('restore-category');
+            });
         });
     });
 });

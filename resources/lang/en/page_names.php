@@ -8,6 +8,13 @@ return [
     'edit-feature' => 'Edit Feature',
     'update-feature' => 'Edit Feature',
 
+    'create-category' => 'Create Category',
+    'index-category' => 'Index Category',
+    'recycle-category' => 'Recycle Category',
+    'show-category' => 'Show Category',
+    'edit-category' => 'Edit Category',
+    'update-category' => 'Edit Category',
+
     'dashboard-admin' => 'Admin Dashboard',
 
 ];
