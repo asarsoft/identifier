@@ -41,7 +41,7 @@
 				</button>
 				<div class="dropdown-menu" aria-labelledby="language_selection">
 					@foreach($records['languages'] as $language)
-						<a class="dropdown-item" href="{{ route('edit-category', ['id' => $record->id, 'parameter' => $language->id]) }}"><span class="text-uppercase mr-2 text-primary">{{ $language->accept_language }}</span> {{ $language->name }}
+						<a class="dropdown-item" href="{{ route('edit-category', ['id' => $record->id, 'parameter' => $language->id]) }}"><span class="text-uppercase mr-2 text-primary">{{ $language->language_code }}</span> {{ $language->name }}
 						</a>
 					@endforeach
 				</div>

@@ -17,18 +17,18 @@ class BeforeLanguage
      */
     public function handle($request, Closure $next)
     {
-        $accept_language = session('accept_language');
+        $language_code = session('language_code');
         $language_id = session('language_id');
 
         // ===> Session fails to provide language
-        if ($accept_language === null || $language_id === null)
+        if ($language_code === null || $language_id === null)
         {
             // ===> User is authenticated
             if (Auth::check())
             {
                 $language = Language::where('id', Auth::user()->language_id)->first();
                 $cookie = Cookie::forever('language_id', $language->id);
-                session(['accept_language' => $language->accept_language, 'language_id' => $language->id]);
+                session(['language_code' => $language->language_code, 'language_id' => $language->id]);
             }
 
             // ===> User is not authenticated
@@ -38,7 +38,7 @@ class BeforeLanguage
                 if (Cookie::get('language_id') != null)
                 {
                     $language = Language::where('id', Cookie::get('language_id'))->first();
-                    session(['accept_language' => $language->accept_language, 'language_id' => $language->id]);
+                    session(['language_code' => $language->language_code, 'language_id' => $language->id]);
                     $cookie = Cookie::forever('language_id', $language->id);
                 }
 
@@ -46,13 +46,13 @@ class BeforeLanguage
                 else
                 {
                     // ===> Read Language from browser
-                    $http_accept_language = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
-                    $language = Language::where('accept_language', $http_accept_language)->first();
+                    $http_language_code = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+                    $language = Language::where('language_code', $http_language_code)->first();
 
                     // ===> Browser Language is valid
                     if ($language != null)
                     {
-                        session(['accept_language' => $language->accept_language, 'language_id' => $language->id]);
+                        session(['language_code' => $language->language_code, 'language_id' => $language->id]);
                         $cookie = Cookie::forever('language_id', $language->id);
                     }
 
@@ -65,15 +65,15 @@ class BeforeLanguage
                         // todo let user select language.
                         $language = Language::orderBy('id', 'asc')->first();
                         $cookie = Cookie::forever('language_id', $language->id);
-                        session(['accept_language' => $language->accept_language, 'language_id' => $language->id]);
+                        session(['language_code' => $language->language_code, 'language_id' => $language->id]);
                     }
                 }
             }
-            App::setlocale($language->accept_language);
+            App::setlocale($language->language_code);
             return $next($request)->cookie($cookie);
         }
 
-        App::setlocale($accept_language);
+        App::setlocale($language_code);
         return $next($request);
     }
 }
