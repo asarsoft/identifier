@@ -3,6 +3,8 @@
 @section('content')
     @component('admin_views.components.crud_actions', ['module' => 'category'])
     @endcomponent
+    @component('admin_views.components.list', ['records' => $records, 'module' => 'category'])
+    @endcomponent
     <div class="row my-5">
         <ul class="list-group">
             @foreach($records as $category)
