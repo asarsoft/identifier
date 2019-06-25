@@ -86,21 +86,25 @@ class Feature extends Model
 					'type' => 'number',
 					'max' => '1000000',
 					'straight_attributes' => 'required',
+					'available_in' => ['index', 'create', 'update', 'edit'],
 				],
 				'approximate_time' => [
 					'type' => 'number',
 					'max' => '1000000',
 					'straight_attributes' => 'required',
+					'available_in' => ['index', 'create', 'update', 'edit'],
 				],
 				'difficulty' => [
 					'type' => 'number',
 					'max' => '1000000',
 					'straight_attributes' => 'required',
+					'available_in' => ['index', 'create', 'update', 'edit'],
 				],
 				'priority' => [
 					'type' => 'number',
 					'max' => '1000000',
 					'straight_attributes' => 'required',
+					'available_in' => ['index', 'create', 'update', 'edit'],
 				],
 			],
 			'sub_models' => [

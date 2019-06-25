@@ -2,16 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ea2b836b-4a90-4720-ac77-7c1747a25d8d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/admin_views/components/default/image.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin_views/components/default/number.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin_views/components/default/select.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin_views/components/default/text_editor.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin_views/components/default/textarea.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin_views/components/field_render.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin_views/schemes/index_scheme.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/CrudController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/CrudController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Feature.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Feature.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin_views/components/default/text.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin_views/components/default/text.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin_views/components/default/image.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin_views/components/default/index/image.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin_views/components/default/number.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin_views/components/default/index/number.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin_views/components/default/select.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin_views/components/default/index/select.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin_views/components/default/text.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin_views/components/default/index/text.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin_views/components/default/text_editor.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin_views/components/default/index/text_editor.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin_views/components/default/textarea.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin_views/components/default/index/textarea.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin_views/components/field_render.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin_views/components/field_render.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin_views/crud/default/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin_views/crud/default/index.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -31,20 +31,20 @@
       <content type="file-editors">
         <state>
           <leaf>
-            <file pinned="false" current-in-tab="false">
+            <file pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/resources/views/admin_views/components/lazy_list.blade.php">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="414">
-                    <caret line="18" column="36" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="36" />
+                  <state relative-caret-position="552">
+                    <caret line="24" column="26" lean-forward="true" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
                   </state>
                 </provider>
               </entry>
             </file>
-            <file pinned="false" current-in-tab="true">
+            <file pinned="false" current-in-tab="false">
               <entry file="file://$PROJECT_DIR$/app/Models/Feature.php">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="169">
-                    <caret line="70" column="33" selection-start-line="70" selection-start-column="21" selection-end-line="70" selection-end-column="33" />
+                  <state relative-caret-position="284">
+                    <caret line="69" column="56" lean-forward="true" selection-start-line="69" selection-start-column="56" selection-end-line="69" selection-end-column="56" />
                     <folding>
                       <element signature="e#30#67#0#PHP" expanded="true" />
                     </folding>
@@ -74,8 +74,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/admin_views/crud/default/index.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="69">
-              <caret line="3" column="44" selection-start-line="3" selection-start-column="44" selection-end-line="3" selection-end-column="44" />
+            <state relative-caret-position="437">
+              <caret line="19" column="13" lean-forward="true" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -84,13 +84,22 @@
         <entry file="file://$PROJECT_DIR$/resources/views/admin_views/components/field_render.blade.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="138">
-              <caret line="6" column="72" lean-forward="true" selection-start-line="6" selection-start-column="72" selection-end-line="6" selection-end-column="72" />
+              <caret line="6" column="2" lean-forward="true" selection-start-line="6" selection-start-column="2" selection-end-line="6" selection-end-column="2" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/admin_views/components/default/textarea.blade.php">
+        <entry file="file://$PROJECT_DIR$/resources/views/admin_views/schemes/index_scheme.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="529">
+              <caret line="23" column="8" lean-forward="true" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/admin_views/components/default/index/textarea.blade.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="23">
               <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
@@ -99,7 +108,7 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/admin_views/components/default/image.blade.php">
+        <entry file="file://$PROJECT_DIR$/resources/views/admin_views/components/default/index/image.blade.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="138">
               <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
@@ -111,48 +120,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/admin_views/components/default/text.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="23">
-              <caret line="1" selection-start-line="1" selection-end-line="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/admin_views/components/default/select.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="23">
-              <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/admin_views/components/default/number.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret selection-end-line="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/admin_views/components/crud_actions.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="92">
-              <caret line="4" column="76" lean-forward="true" selection-start-line="4" selection-start-column="76" selection-end-line="4" selection-end-column="76" />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>model_detail</find>
-      <find>php</find>
       <find>if</find>
       <find>parameters</find>
       <find>parameters()</find>
@@ -181,6 +152,8 @@
       <find>disk</find>
       <find>accept_language</find>
       <find>avai</find>
+      <find>act</find>
+      <find>action</find>
     </findStrings>
     <replaceStrings>
       <replace>')}}&quot; rel=&quot;stylesheet&quot;&gt;</replace>
@@ -226,8 +199,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/resources/views/admin_views/crud/feature/component/edit_detail.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin_views/crud/feature/edit_detail.blade.php" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/resources/views/admin_views/crud/feature/recycle.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin_views/crud/feature/create.blade.php" />
@@ -263,20 +234,22 @@
         <option value="$PROJECT_DIR$/resources/views/admin_views/crud/category/recycle.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin_views/components/image.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin_views/components/list.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin_views/components/lazy_list.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin_views/crud/category/index.blade.php" />
         <option value="$PROJECT_DIR$/app/Models/FeatureDetail.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/FeatureController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/CrudController.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin_views/crud/default/index.blade.php" />
-        <option value="$PROJECT_DIR$/app/Models/Feature.php" />
         <option value="$PROJECT_DIR$/resources/views/admin_views/components/default/number.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin_views/components/default/select.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin_views/components/default/text.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin_views/components/default/text_editor.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin_views/components/default/textarea.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin_views/components/field_render.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin_views/components/default/image.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin_views/components/default/text.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin_views/components/lazy_list.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin_views/components/default/index/schemes/index_scheme.blade.php" />
+        <option value="$PROJECT_DIR$/app/Models/Feature.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin_views/schemes/index_scheme.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin_views/crud/default/index.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin_views/components/field_render.blade.php" />
       </list>
     </option>
   </component>
@@ -530,6 +503,16 @@
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
               <item name="admin_views" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="default" type="462c0819:PsiDirectoryNode" />
+              <item name="index" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="asarsoft" type="b2602c69:ProjectViewProjectNode" />
+              <item name="asarsoft" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="admin_views" type="462c0819:PsiDirectoryNode" />
               <item name="crud" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -539,7 +522,7 @@
               <item name="views" type="462c0819:PsiDirectoryNode" />
               <item name="admin_views" type="462c0819:PsiDirectoryNode" />
               <item name="crud" type="462c0819:PsiDirectoryNode" />
-              <item name="category" type="462c0819:PsiDirectoryNode" />
+              <item name="default" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="asarsoft" type="b2602c69:ProjectViewProjectNode" />
@@ -547,7 +530,7 @@
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
               <item name="admin_views" type="462c0819:PsiDirectoryNode" />
-              <item name="includes" type="462c0819:PsiDirectoryNode" />
+              <item name="schemes" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="asarsoft" type="b2602c69:ProjectViewProjectNode" />
@@ -618,19 +601,19 @@
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.PHP" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/resources/views/admin_views" />
+      <recent name="$PROJECT_DIR$/resources/views/admin_views/components/default/index" />
+      <recent name="C:\Users\Agil\Desktop\asarsoft\storage\app\public" />
+      <recent name="C:\Users\Agil\Desktop\asarsoft\resources\views\admin_views\crud" />
+      <recent name="C:\Users\Agil\Desktop\asarsoft\app\Models" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/resources/views/admin_views/components" />
       <recent name="$PROJECT_DIR$/resources/views/admin_views/crud" />
       <recent name="$PROJECT_DIR$" />
       <recent name="C:\Users\Agil\Desktop\asarsoft\resources\views\admin_views\components" />
       <recent name="C:\Users\Agil\Desktop\asarsoft\resources\views\admin_views\crud\feature" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Agil\Desktop\asarsoft\storage\app\public" />
-      <recent name="C:\Users\Agil\Desktop\asarsoft\resources\views\admin_views\crud" />
-      <recent name="C:\Users\Agil\Desktop\asarsoft\app\Models" />
-      <recent name="C:\Users\Agil\Desktop\asarsoft\resources\views\admin_views\components" />
-      <recent name="C:\Users\Agil\Desktop\asarsoft\resources\views\admin_views\includes" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -681,7 +664,7 @@
       <workItem from="1561231309491" duration="18057000" />
       <workItem from="1561382083204" duration="5786000" />
       <workItem from="1561405258122" duration="5442000" />
-      <workItem from="1561441807122" duration="15770000" />
+      <workItem from="1561441807122" duration="20343000" />
     </task>
     <task id="LOCAL-00001" summary="primary interface and user table was created">
       <created>1559596691236</created>
@@ -907,11 +890,18 @@
       <option name="project" value="LOCAL" />
       <updated>1561461708801</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="field_render component was created">
+      <created>1561469940313</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1561469940313</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="251718000" />
+    <option name="totallyTimeSpent" value="256291000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
@@ -931,7 +921,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.09848485" />
-      <window_info anchor="bottom" x="1943" y="121" width="1837" height="853" id="Terminal" order="10" sideWeight="0.4997233" type="WINDOWED" visible="true" weight="0.19137749" />
+      <window_info anchor="bottom" x="67" y="121" width="1837" height="853" id="Terminal" order="10" sideWeight="0.4997233" type="WINDOWED" visible="true" weight="0.19137749" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5002767" side_tool="true" weight="0.33874458" />
       <window_info anchor="bottom" id="Messages" order="12" />
       <window_info anchor="bottom" id="Command Line Tools Console" order="13" weight="0.31966352" />
@@ -995,7 +985,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Post recycle was complete" />
     <MESSAGE value="Menu Added to the create page" />
     <MESSAGE value="Merge commit '10dc33d'" />
     <MESSAGE value="Commented" />
@@ -1020,19 +1009,10 @@
     <MESSAGE value="Category Recycle, Restore, Edit, Update, Create, Delete was complete" />
     <MESSAGE value="Language seeder was created, and accept_language field in languages table was replaced with language_code" />
     <MESSAGE value="fields were created inside Model" />
-    <option name="LAST_COMMIT_MESSAGE" value="fields were created inside Model" />
+    <MESSAGE value="field_render component was created" />
+    <option name="LAST_COMMIT_MESSAGE" value="field_render component was created" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/Traits/Loggable.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="28" column="47" lean-forward="true" selection-start-line="28" selection-start-column="47" selection-end-line="28" selection-end-column="47" />
-          <folding>
-            <element signature="e#30#49#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.env">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="23">
@@ -1316,27 +1296,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin_views/components/default/text_editor.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/admin_views/components/default/index/text_editor.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="23">
           <caret line="1" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin_views/components/lazy_list.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="18" column="36" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/Feature.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="70" column="33" selection-start-line="70" selection-start-column="21" selection-end-line="70" selection-end-column="33" />
-          <folding>
-            <element signature="e#30#67#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1347,28 +1310,66 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin_views/crud/default/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="3" column="44" selection-start-line="3" selection-start-column="44" selection-end-line="3" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin_views/components/default/textarea.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/admin_views/components/default/index/textarea.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="23">
           <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin_views/components/default/text.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/admin_views/components/default/index/number.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        <state>
+          <caret selection-end-line="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin_views/components/default/image.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/admin_views/components/default/index/select.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin_views/components/default/index/text.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="13" lean-forward="true" selection-start-column="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/Feature.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="284">
+          <caret line="69" column="56" lean-forward="true" selection-start-line="69" selection-start-column="56" selection-end-line="69" selection-end-column="56" />
+          <folding>
+            <element signature="e#30#67#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin_views/components/lazy_list.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="552">
+          <caret line="24" column="26" lean-forward="true" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin_views/schemes/index_scheme.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="529">
+          <caret line="23" column="8" lean-forward="true" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin_views/crud/default/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="19" column="13" lean-forward="true" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin_views/components/default/index/image.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="138">
           <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
@@ -1379,24 +1380,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin_views/components/default/number.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin_views/components/default/select.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/admin_views/components/field_render.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="138">
-          <caret line="6" column="72" lean-forward="true" selection-start-line="6" selection-start-column="72" selection-end-line="6" selection-end-column="72" />
+          <caret line="6" column="2" lean-forward="true" selection-start-line="6" selection-start-column="2" selection-end-line="6" selection-end-column="2" />
         </state>
       </provider>
     </entry>
