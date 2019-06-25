@@ -1,9 +1,6 @@
 @extends('layouts.admin_master')
 
 @section('content')
-	{{--	@component('admin_views.schemes.index_scheme', ['records' => $records, 'fields' => $fields, 'action' => 'index'])--}}
-	{{--	@endcomponent--}}
-
 	@component('admin_views.components.crud_actions', ['module' => $fields['model']])
 	@endcomponent
 
@@ -13,7 +10,7 @@
 			@foreach($fields['fields'] as $header_key => $header_value)
 				@if(@$header_value['available_in'] && in_array('index', $header_value['available_in'], true))
 					<th>
-						{{ $header_key }}
+						{{ trans('button_input.'.$header_key) }}
 					</th>
 				@endif
 			@endforeach
@@ -26,7 +23,9 @@
 				@foreach($fields['fields'] as $key => $value)
 					@if(@$value['available_in'] && in_array('index', $value['available_in'], true))
 						<td>
-							@component('admin_views.components.field_render', ['records' => $records, 'fields' => $fields, 'action' => 'index'])
+							@component('admin_views.components.field_render', [
+							'record' => $record, 'key' => $key, 'parameters' => $value, 'action' => 'index'
+							])
 							@endcomponent
 						</td>
 					@endif
@@ -35,5 +34,4 @@
 		@endforeach
 		</tbody>
 	</table>
-
 @endsection
