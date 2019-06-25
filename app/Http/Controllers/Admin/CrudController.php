@@ -21,7 +21,7 @@ class CrudController extends Controller
 	public $module_foreign = null;
 
 	public $show_view = null;
-	public $index_view = null;
+	public $index_view = 'admin_views.crud.feature.index';
 
 	public $model = null;
 	public $success = true;
@@ -34,8 +34,9 @@ class CrudController extends Controller
 	 */
 	public function index()
 	{
+		$model = new $this->model;
 		$records = $this->model::with($this->relationships)->get();
-		return view($this->index_view, ['records' => $records]);
+		return view($this->index_view, ['records' => $records->toArray(), 'fields' => $model->fields(), 'sub_models' => $model->sub_models()]);
 	}
 
 	/**
