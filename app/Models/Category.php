@@ -55,4 +55,61 @@ class Category extends Model
 	{
 		return $this->hasMany(FeatureDetail::class)->withTrashed();
 	}
+
+	public function fields()
+	{
+		return [
+			'model' => 'category',
+			'fields' => [
+				'id' => [
+					'type' => 'number',
+					'max' => '1000000',
+					'straight_attributes' => 'required',
+					'available_in' => ['show'],
+				],
+				'icon' => [
+					'type' => 'image',
+					'straight_attributes' => 'required',
+					'available_in' => ['index', 'create', 'update', 'edit'],
+				],
+				'guid' => [
+					'type' => 'text',
+					'straight_attributes' => 'required',
+					'available_in' => ['show'],
+				],
+				'parent_id' => [
+					'type' => 'select',
+					'belongs' => 'categories',
+					'straight_attributes' => 'required',
+					'available_in' => ['index', 'create', 'update', 'edit'],
+				],
+				'title' => [
+					'type' => 'text',
+					'straight_attributes' => 'required',
+					'available_in' => ['index', 'create', 'update', 'edit'],
+				]
+			],
+			'sub_models' => [
+				$this->sub_models()
+			]
+		];
+	}
+
+	/**
+	 * Returns sub models of the given object, which than allows us
+	 * to display in wherever we need
+	 * @return array
+	 */
+	function sub_models()
+	{
+		$sub_model = new CategoryDetail();
+		return [
+			'category_detail' => [
+				'title' => 'name',
+				'fields' => $sub_model->fields(),
+				'available_in' => ['index', 'create', 'update', 'delete'],
+			]
+		];
+	}
+
 }

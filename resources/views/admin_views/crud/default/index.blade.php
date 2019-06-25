@@ -23,9 +23,12 @@
 				@foreach($fields['fields'] as $key => $value)
 					@if(@$value['available_in'] && in_array('index', $value['available_in'], true))
 						<td>
-							@component('admin_views.components.field_render', [
-							'record' => $record, 'key' => $key, 'parameters' => $value, 'action' => 'index'
-							])
+							@component('admin_views.components.default.index.'.$value['type'],
+								[
+									'record' => $record[$key],
+									'parameters' => $value,
+									'name' => $key,
+								])
 							@endcomponent
 						</td>
 					@endif

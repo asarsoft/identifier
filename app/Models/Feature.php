@@ -66,7 +66,6 @@ class Feature extends Model
 			'fields' => [
 				'icon' => [
 					'type' => 'image',
-					'disk' => 'feature',
 					'straight_attributes' => 'required',
 					'available_in' => ['index', 'create', 'update', 'edit'],
 				],

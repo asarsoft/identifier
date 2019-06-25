@@ -1,7 +1,7 @@
-@component('admin_views.components.default.'.$action.'.'.$parameters['type'],
-[
-	'record' => $record[$key],
-	'parameters' => $parameters,
-	'name' => $key,
-])
+@component('admin_views.components.default.index.'.$value['type'],
+	[
+		'record' => $record[$key],
+		'parameters' => $parameters,
+		'name' => $key,
+	])
 @endcomponent

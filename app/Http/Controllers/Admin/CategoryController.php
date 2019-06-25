@@ -20,7 +20,7 @@ class CategoryController extends CrudController
 	public $trashed_child = ['trashed_detail'];
 	public $trashed_children = ['trashed_details'];
 
-	public $index_view = 'admin_views.crud.category.index';
+//	public $index_view = 'admin_views.crud.category.index';
 	public $recycle_view = 'admin_views.crud.category.recycle';
 	public $show_view = 'admin_views.crud.category.show';
 	public $create_view = 'admin_views.crud.category.create';
