@@ -1,9 +1,9 @@
-@if($record != null)
+@if($record[$key] != null)
 	<img class="{{ @$class }} rounded-circle"
 	     @if(@$parameters['disk'])
-	     src="{{asset('storage/'. @$parameters['disk'].'/'.$record)}}"
+	     src="{{asset('storage/'. @$parameters['disk'].'/'.$record[$key])}}"
 	     @else
-	     src="{{asset('storage/'.$record)}}"
+	     src="{{asset('storage/'.$record[$key])}}"
 	     @endif
 	     style="width: {{ @$width ? $width : '1.5rem' }}; height: {{ @$height ? $height : '1.5rem' }}" alt="asarsoft">
 @else

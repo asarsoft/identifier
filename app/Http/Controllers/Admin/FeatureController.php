@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Identifiers\FeatureIdentifier;
 use App\Models\FeatureDetail;
 use App\Models\Category;
 use App\Models\Feature;
@@ -10,6 +11,9 @@ use App\Models\Language;
 class FeatureController extends CrudController
 {
 	public $module_name = 'feature';
+
+	public $identifier = FeatureIdentifier::class;
+
 	public $model = Feature::class;
 
 	public $module_foreign = 'feature_id';

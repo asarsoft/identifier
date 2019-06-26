@@ -79,7 +79,8 @@ class Category extends Model
 				],
 				'parent_id' => [
 					'type' => 'select',
-					'belongs' => 'categories',
+					'belongs' => 'category',
+					'options' => 'categories',
 					'straight_attributes' => 'required',
 					'available_in' => ['index', 'create', 'update', 'edit'],
 				],
@@ -105,7 +106,6 @@ class Category extends Model
 		$sub_model = new CategoryDetail();
 		return [
 			'category_detail' => [
-				'title' => 'name',
 				'fields' => $sub_model->fields(),
 				'available_in' => ['index', 'create', 'update', 'delete'],
 			]

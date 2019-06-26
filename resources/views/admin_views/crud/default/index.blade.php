@@ -25,9 +25,10 @@
 						<td>
 							@component('admin_views.components.default.index.'.$value['type'],
 								[
-									'record' => $record[$key],
+									'record' => $record,
 									'parameters' => $value,
-									'name' => $key,
+									'key' => $key,
+									'record_content' => $record
 								])
 							@endcomponent
 						</td>

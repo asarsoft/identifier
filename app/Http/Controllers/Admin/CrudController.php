@@ -27,6 +27,8 @@ class CrudController extends Controller
 	public $success = true;
 	public $child = false;
 
+	public $identifier = null;
+
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -34,9 +36,9 @@ class CrudController extends Controller
 	 */
 	public function index()
 	{
-		$model = new $this->model;
+		$identifier = new $this->identifier;
 		$records = $this->model::with($this->relationships)->get();
-		return view($this->index_view, ['records' => $records->toArray(), 'fields' => $model->fields()]);
+		return view($this->index_view, ['records' => $records->toArray(), 'fields' => $identifier->fields(), 'identifier' => $identifier]);
 	}
 
 	/**
