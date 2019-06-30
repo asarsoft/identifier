@@ -1,2 +1,1 @@
-{{ dd($record[$parameters['belongs']]) }}
-{{ $record }}
+{{ $record[$parameters['belongs']][$parameters['title']] }}

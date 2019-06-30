@@ -4,13 +4,13 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
 class CrudController extends Controller
 {
-
 	public $relationships = [];
 
 	public $trashed_child = [];
@@ -36,9 +36,35 @@ class CrudController extends Controller
 	 */
 	public function index()
 	{
+		// ===> Identifier of the given controller.
 		$identifier = new $this->identifier;
-		$records = $this->model::with($this->relationships)->get();
-		return view($this->index_view, ['records' => $records->toArray(), 'fields' => $identifier->fields(), 'identifier' => $identifier]);
+
+		// ===> fields of the given identifier
+		$identifier_fields = $identifier->fields();
+
+		// === children to be assigned
+		$children = [];
+
+		foreach ($identifier_fields['fields'] as $key => $field)
+		{
+			if (isset($field['belongs']))
+			{
+				$child_identifier = new $field['identifier'];
+				$children[$key] = ['relationship' => $field['belongs'], 'identifier' => $child_identifier];
+
+				$identifier_fields['fields'][$key]['title'] = $child_identifier->title;
+			}
+		}
+
+		$relationships = Arr::pluck($children, 'relationship');
+
+		$records = $identifier->model::with($relationships)->get();
+		return view($this->index_view, [
+			'records' => $records->toArray(),
+			'fields' => $identifier_fields,
+			'identifier' => $identifier,
+			'children' => $children
+		]);
 	}
 
 	/**
@@ -67,7 +93,8 @@ class CrudController extends Controller
 	 */
 	public function show($id)
 	{
-		$record = $this->model::with($this->relationships)->where('id', $id)->first();
+		$identifier = new $this->identifier;
+		$record = $identifier->model::with($this->relationships)->where('id', $id)->first();
 		return view($this->show_view, ['record' => $record]);
 	}
 
@@ -115,7 +142,7 @@ class CrudController extends Controller
 			$path = $request->file($parameters['image']['name'])->store('', [
 				'disk' => $parameters['image']['disk']
 			]);
-			$primary_object = array_merge($primary_object, [$parameters['image']['name'] => $parameters['image']['disk'].'/'.$path]);
+			$primary_object = array_merge($primary_object, [$parameters['image']['name'] => $parameters['image']['disk'] . '/' . $path]);
 		}
 		// ===> store the object
 		$stored_primary_object = $parameters['model']::create($primary_object);
@@ -145,7 +172,8 @@ class CrudController extends Controller
 	 */
 	public function restore($id)
 	{
-		$record = $this->model::onlyTrashed()->find($id)->restore();
+		$identifier = new $this->identifier;
+		$record = $identifier->model::onlyTrashed()->find($id)->restore();
 		if (!$record)
 		{
 			$this->success = false;
@@ -163,7 +191,8 @@ class CrudController extends Controller
 	 */
 	public function recycle()
 	{
-		$records = $this->model::onlyTrashed()->with($this->relationships)->get();
+		$identifier = new $this->identifier;
+		$records = $identifier->model::onlyTrashed()->with($this->relationships)->get();
 		return view($this->recycle_view, ['records' => $records]);
 	}
 
@@ -174,7 +203,8 @@ class CrudController extends Controller
 	 */
 	public function destroy($id)
 	{
-		$this->model::find($id)->delete();
+		$identifier = new $this->identifier;
+		$identifier->model::find($id)->delete();
 
 		$toast_messages = $this->toast_message('delete');
 
@@ -191,7 +221,8 @@ class CrudController extends Controller
 	 */
 	public function edit($id, $parameter = null)
 	{
-		$record = $this->model::with($this->relationships)->find($id);
+		$identifier = new $this->identifier;
+		$record = $identifier->model::with($this->relationships)->find($id);
 		if ($record != null)
 		{
 			$data = ['category_detail' => null];
@@ -227,7 +258,8 @@ class CrudController extends Controller
 	 */
 	public function update($id, Request $request, $sub_model = null)
 	{
-		$record = $this->model::find($id)->first();
+		$identifier = new $this->identifier;
+		$record = $identifier->model::find($id)->first();
 
 		if ($record != null)
 		{
@@ -272,7 +304,7 @@ class CrudController extends Controller
 				$primary_object = array_merge($primary_object, [$parameters['image']['name'] => $path]);
 			}
 			// ===> store the object
-			$stored_primary_object = $this->model::find($id)->update($primary_object);
+			$stored_primary_object = $identifier->model::find($id)->update($primary_object);
 			// ===> Assign the primary to use it dynamically
 			$this->primary = $id;
 

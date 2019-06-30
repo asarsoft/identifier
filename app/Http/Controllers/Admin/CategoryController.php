@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Identifiers\CategoryIdentifier;
 use App\Models\Category;
 use App\Models\CategoryDetail;
 use App\Models\Language;
 
 class CategoryController extends CrudController
 {
-
 	public $module_name = 'category';
-	public $model = Category::class;
+
+	public $identifier = CategoryIdentifier::class;
 
 	public $module_foreign = 'category_id';
 

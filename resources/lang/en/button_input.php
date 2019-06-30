@@ -24,6 +24,8 @@ return [
     'feature_details' => 'Feature Details',
     'icon' => 'Icon',
 
+	'category_details' => 'Category Details',
+
     'create' => 'Create',
     'update' => 'Update',
 

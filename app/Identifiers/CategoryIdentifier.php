@@ -1,11 +1,14 @@
 <?php
 namespace App\Identifiers;
 
+use App\Models\Category;
 use App\Models\CategoryDetail;
 
 class CategoryIdentifier extends BaseIdentifier
 {
 	public $title = 'title';
+	public $model = Category::class;
+	public $relationships = ['details', 'category'];
 
 	public function fields()
 	{

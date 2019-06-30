@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Identifiers\FeatureIdentifier;
 use App\Models\Concerns\GenerateGuid;
 use App\Traits\Loggable;
 use Illuminate\Database\Eloquent\Model;
@@ -11,6 +12,14 @@ class Feature extends Model
 {
 	use GenerateGuid, SoftDeletes, Loggable;
 	protected $guarded = [];
+
+	/**
+	 * identifier
+	 */
+	public function identifier()
+	{
+		FeatureIdentifier::class;
+	}
 
 	/**
 	 * Detail in the user's language
@@ -26,6 +35,7 @@ class Feature extends Model
 	 * All of the details
 	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
 	 */
+
 	public function details()
 	{
 		return $this->hasMany(FeatureDetail::class);

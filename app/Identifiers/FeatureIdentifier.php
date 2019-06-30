@@ -1,11 +1,14 @@
 <?php
 namespace App\Identifiers;
 
-use App\Models\CategoryDetail;
+use App\Models\Feature;
+use App\Models\FeatureDetail;
 
 class FeatureIdentifier extends BaseIdentifier
 {
-	public $title = 'id';
+	public $title = 'title';
+	public $model = Feature::class;
+	public $relationships = ['details', 'category'];
 
 	public function fields()
 	{
@@ -20,9 +23,16 @@ class FeatureIdentifier extends BaseIdentifier
 				'category_id' => [
 					'type' => 'select',
 					'belongs' => 'category',
+					'identifier' => CategoryIdentifier::class,
 					'options' => 'categories',
 					'straight_attributes' => 'required',
 					'available_in' => ['index', 'create', 'update', 'edit'],
+				],
+				'details' => [
+					'type' => 'select',
+					'options' => 'details',
+					'straight_attributes' => 'required',
+					'available_in' => ['create', 'update', 'edit'],
 				],
 				'min_price' => [
 					'type' => 'number',
@@ -63,9 +73,9 @@ class FeatureIdentifier extends BaseIdentifier
 
 	function sub_models()
 	{
-		$sub_model = new CategoryDetail();
+		$sub_model = new FeatureDetail();
 		return [
-			'category_detail' => [
+			'feature_detail' => [
 				'fields' => $sub_model->fields(),
 				'available_in' => ['index', 'create', 'update', 'delete'],
 			]

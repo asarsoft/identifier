@@ -12,15 +12,4 @@ class AdminCrudController extends Controller
     protected $model = null;
 
     protected $index_view = null;
-
-    /**
-     * Returns Feature List Page
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function index()
-    {
-        $data = $this->model::with($this->index_relations)->get();
-        return view($this->index_view, ['data' => $data]);
-    }
-
 }
