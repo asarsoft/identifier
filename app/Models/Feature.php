@@ -7,6 +7,7 @@ use App\Models\Concerns\GenerateGuid;
 use App\Traits\Loggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Arr;
 
 class Feature extends Model
 {
@@ -28,7 +29,9 @@ class Feature extends Model
 	public function detail()
 	{
 		$language = Language::find(session('language_id'));
-		return $this->hasOne(FeatureDetail::class)->where('language_id', $language->id);
+		$detail = $this->hasOne(FeatureDetail::class)->where('language_id', $language->id)->withDefault($this->default_details());
+
+		return $detail;
 	}
 
 	/**
@@ -67,5 +70,21 @@ class Feature extends Model
 	public function trashed_details()
 	{
 		return $this->hasMany(FeatureDetail::class)->withTrashed();
+	}
+
+	function default_details()
+	{
+		$default = [
+			'id' => "~",
+			'guid' => "~",
+			'name' => "~",
+			'description' => "~",
+			'language_id' => "~",
+			'category_id' => "~",
+			'deleted_at' => null,
+			'created_at' => null,
+			'updated_at' => null,
+		];
+		return $default;
 	}
 }
