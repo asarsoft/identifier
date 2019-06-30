@@ -12,8 +12,6 @@ class FeatureController extends CrudController
 {
 	public $identifier = FeatureIdentifier::class;
 
-	public $module_foreign = 'feature_id';
-
 	public $relationships = ['details', 'category'];
 	public $child_relations = ['details'];
 

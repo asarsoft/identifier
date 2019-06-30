@@ -12,9 +12,7 @@ class CategoryController extends CrudController
 	public $module_name = 'category';
 
 	public $identifier = CategoryIdentifier::class;
-
-	public $module_foreign = 'category_id';
-
+	
 	public $relationships = ['details', 'category'];
 	public $child_relations = ['details'];
 

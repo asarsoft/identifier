@@ -18,8 +18,6 @@ class CrudController extends Controller
 
 	public $primary = null;
 
-	public $module_foreign = null;
-
 	public $show_view = null;
 	public $index_view = 'admin_views.crud.default.index';
 
@@ -38,7 +36,6 @@ class CrudController extends Controller
 	{
 		// ===> Identifier of the given controller.
 		$identifier = new $this->identifier;
-
 		// ===> fields of the given identifier
 		$identifier_fields = $identifier->fields();
 
@@ -108,6 +105,11 @@ class CrudController extends Controller
 	 */
 	public function store(Request $request, $sub_model = null)
 	{
+		// ===> Identifier of the given controller.
+		$identifier = new $this->identifier;
+		// ===> fields of the given identifier
+		$identifier_fields = $identifier->fields();
+
 		$parameters = $this->parameters();
 		$validator = Validator::make($request->all(), $parameters['rules']);
 		if ($validator->fails())
@@ -156,7 +158,7 @@ class CrudController extends Controller
 			foreach ($parameters['sub_modules'] as $module)
 			{ // ===> Loop through all of the sub modules and create them.
 				$record = $request->only(array_keys($module['rules']));
-				$module_data = array_merge($record, [$this->module_foreign => $this->primary]);
+				$module_data = array_merge($record, [$identifier_fields['model'].'_id' => $this->primary]);
 				$module['model']::create($module_data);
 			}
 		}
@@ -222,7 +224,11 @@ class CrudController extends Controller
 	 */
 	public function edit($id, $parameter = null)
 	{
+		// ===> Identifier of the given controller.
 		$identifier = new $this->identifier;
+		// ===> fields of the given identifier
+		$identifier_fields = $identifier->fields();
+
 		$record = $identifier->model::with($this->relationships)->find($id);
 		if ($record != null)
 		{
@@ -236,7 +242,7 @@ class CrudController extends Controller
 
 			if ($this->child != null && $parameter != null)
 			{ // if the child is required and this data should have child, we return it either as null or the data itself, if it is not null, it means this child was not created yet
-				$data[$this->child['name']] = $this->child['model']::where($this->module_foreign, $id)->where($this->child['parameter'], $parameter)->first();
+				$data[$this->child['name']] = $this->child['model']::where($identifier_fields['model'].'_id', $id)->where($this->child['parameter'], $parameter)->first();
 			}
 			elseif ($this->child != null)
 			{ // ===> Setting the child to true if the child is not required in the request, this means it has a child but but not asked for
@@ -259,7 +265,11 @@ class CrudController extends Controller
 	 */
 	public function update($id, Request $request, $sub_model = null)
 	{
+		// ===> Identifier of the given controller.
 		$identifier = new $this->identifier;
+		// ===> fields of the given identifier
+		$identifier_fields = $identifier->fields();
+
 		$record = $identifier->model::find($id)->first();
 
 		if ($record != null)
@@ -314,7 +324,7 @@ class CrudController extends Controller
 				foreach ($parameters['sub_modules'] as $module)
 				{ // ===> Loop through all of the sub modules and create them.
 					$record = $request->only(array_keys($module['rules']));
-					$module['model']::where($this->module_foreign, $this->primary)->where($module['differ_by'], $sub_model)->update($record);
+					$module['model']::where($identifier_fields['model'].'_id', $this->primary)->where($module['differ_by'], $sub_model)->update($record);
 				}
 			}
 
