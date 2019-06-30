@@ -10,8 +10,6 @@ use App\Models\Language;
 
 class FeatureController extends CrudController
 {
-	public $module_name = 'feature';
-
 	public $identifier = FeatureIdentifier::class;
 
 	public $module_foreign = 'feature_id';
