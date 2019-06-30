@@ -6,7 +6,7 @@ use App\Models\FeatureDetail;
 
 class FeatureIdentifier extends BaseIdentifier
 {
-	public $title = 'title';
+	public $title = 'id';
 	public $model = Feature::class;
 	public $relationships = ['details', 'category'];
 
