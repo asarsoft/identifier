@@ -15,6 +15,11 @@ class FeatureIdentifier extends BaseIdentifier
 		return [
 			'model' => 'feature',
 			'fields' => [
+				'id' => [
+					'type' => 'number',
+					'straight_attributes' => 'required',
+					'available_in' => ['index'],
+				],
 				'icon' => [
 					'type' => 'image',
 					'straight_attributes' => 'required',

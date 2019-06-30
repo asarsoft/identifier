@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Identifiers;
 
 use App\Models\Category;
@@ -34,6 +35,7 @@ class CategoryIdentifier extends BaseIdentifier
 				'parent_id' => [
 					'type' => 'select',
 					'belongs' => 'category',
+					'identifier' => CategoryIdentifier::class,
 					'options' => 'categories',
 					'straight_attributes' => 'required',
 					'available_in' => ['index', 'create', 'update', 'edit'],

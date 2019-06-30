@@ -30,7 +30,7 @@
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
             @include('admin_views.includes.admin_side_navbar')
             @yield('content')
-            @include('admin_views.includes.admin_footer')
+{{--            @include('admin_views.includes.admin_footer')--}}
         </main>
     </div>
 </div>

@@ -77,5 +77,15 @@
                 </a>
             </li>
         </ul>
+        <footer>
+            <div class="p-3">
+                <div class="d-flex border-top">
+                    <p class="mb-0 mt-3 text-dark">&copy; {{ now()->year }}
+                        <b>{{ trans('app.name') }}</b> <br>
+                        <span class="small text-muted">{{ trans('heading.all_rights_reserved') }}</span>
+                    </p>
+                </div>
+            </div>
+        </footer>
     </div>
 </nav>

@@ -53,6 +53,7 @@ class CrudController extends Controller
 				$children[$key] = ['relationship' => $field['belongs'], 'identifier' => $child_identifier];
 
 				$identifier_fields['fields'][$key]['title'] = $child_identifier->title;
+				$identifier_fields['fields'][$key]['model'] = $child_identifier->fields()['model'];
 			}
 		}
 
