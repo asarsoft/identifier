@@ -1,3 +1,3 @@
 <b>
-	{{ $record[$key] ? "# ".$record[$key] : "—" }}
+	{{ $record[$key] ? $record[$key] : "—" }}
 </b>
