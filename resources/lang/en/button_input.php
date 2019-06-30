@@ -35,4 +35,5 @@ return [
     'title' => 'Title',
 
     'all' => 'All',
+    'actions' => 'Actions',
 ];

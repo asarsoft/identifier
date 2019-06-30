@@ -8,6 +8,9 @@
 				</th>
 			@endif
 		@endforeach
+			<th>
+				{{ trans('button_input.actions') }}
+			</th>
 	</tr>
 	</thead>
 
@@ -28,6 +31,17 @@
 					</td>
 				@endif
 			@endforeach
+			<td>
+				<a href="{{ route('edit-'.$model, $record['id']) }}"
+				   class="btn mr-2 btn-sm btn-outline-primary btn-lg"
+				   role="button" aria-pressed="true">
+					<i class="fas fa-pencil-alt"></i>
+				</a>
+				<a href="{{ route('destroy-'.$model, $record['id']) }}" class="btn btn-sm btn-outline-danger btn-lg"
+				   role="button" aria-pressed="true">
+					<i class="fas fa-trash-alt"></i>
+				</a>
+			</td>
 		</tr>
 	@endforeach
 	</tbody>
