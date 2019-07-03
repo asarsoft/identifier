@@ -29,17 +29,18 @@ class CrudController extends Controller
 
 	/**
 	 * Display a listing of the resource.
-	 *
+	 * @param $identifier Identifier of the given controller.
+	 * @param $identifier_fields Identifier fields of the given controller.
+	 * @param $children children of model to be assigned
+	 * 
 	 * @return \Illuminate\Http\Response
 	 */
 	public function index()
 	{
-		// ===> Identifier of the given controller.
 		$identifier = new $this->identifier;
-		// ===> fields of the given identifier
+
 		$identifier_fields = $identifier->fields();
 
-		// === children to be assigned
 		$children = [];
 
 		foreach ($identifier_fields['fields'] as $key => $field)
@@ -57,6 +58,7 @@ class CrudController extends Controller
 		$relationships = Arr::pluck($children, 'relationship');
 
 		$records = $identifier->model::with($relationships)->get();
+		
 		return view($this->index_view, [
 			'records' => $records->toArray(),
 			'fields' => $identifier_fields,
