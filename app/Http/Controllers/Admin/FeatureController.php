@@ -59,6 +59,13 @@ class FeatureController extends CrudController
 
 				$identifier_fields['fields'][$key]['records'] = $field_identifier->model::all();
 			}
+
+			elseif (@$value['hasOne'] && in_array('create', $value['available_in'], true))
+			{
+				$field_identifier = new $value['identifier'];
+
+				$identifier_fields['fields'][$key]['fields'] = $field_identifier->fields();
+			}
 		}
 
 		dd($identifier_fields);

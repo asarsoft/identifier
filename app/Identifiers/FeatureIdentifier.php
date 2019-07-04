@@ -40,8 +40,8 @@ class FeatureIdentifier extends BaseIdentifier
 				],
 				'details' => [
 					'type' => 'select',
-					'has_one' => 'detail',
-					'identifier' => 'asd',
+					'hasOne' => 'detail',
+					'identifier' => FeatureDetailIdentifier::class,
 					'available_in' => ['create', 'show', 'edit'],
 				],
 				'min_price' => [
