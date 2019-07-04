@@ -19,8 +19,8 @@ trait Loggable
 				'loggable_guid' => $model->guid,
 				'loggable_type' => $model->getTable(),
 				'type' => 'creating',
-				'before' => 'not defined',
-				'after' => 'not defined',
+				'record' => serialize($model->attributes),
+				'created_at' => Carbon::now()
 			]);
 		});
 		static::updating(function ($model) {
@@ -31,8 +31,8 @@ trait Loggable
 				'loggable_guid' => $model->guid,
 				'loggable_type' => $model->getTable(),
 				'type' => 'updating',
-				'before' => serialize($model->getOriginal()),
-				'after' => serialize($model->attributes),
+				'record' => serialize($model->attributes),
+				'created_at' => Carbon::now()
 			]);
 		});
 		static::deleted(function ($model) {
@@ -43,8 +43,8 @@ trait Loggable
 				'loggable_guid' => $model->guid,
 				'loggable_type' => $model->getTable(),
 				'type' => 'deleted',
-				'before' => 'not defined',
-				'after' => 'not defined',
+				'record' => 'not defined',
+				'created_at' => Carbon::now()
 			]);
 		});
 		static::restored(function ($model) {
@@ -55,8 +55,7 @@ trait Loggable
 				'loggable_guid' => $model->guid,
 				'loggable_type' => $model->getTable(),
 				'type' => 'restored',
-				'before' => 'not defined',
-				'after' => 'not defined',
+				'record' => 'not defined',
 				'created_at' => Carbon::now()
 			]);
 		});

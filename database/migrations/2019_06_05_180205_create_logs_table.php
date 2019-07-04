@@ -24,8 +24,7 @@ class CreateLogsTable extends Migration
 			$table->string('loggable_type')->comment('User, Project, Order, Feature');
 			$table->string('type')->comment('create, update, forceDelete, softDelete');
 
-			$table->text('before');
-			$table->text('after');
+			$table->text('record')->comment('incoming record to be stored, if it;s being updated than this is the new data');
 
 			$table->timestamp('created_at')->nullable();
 		});
