@@ -3,12 +3,13 @@
 namespace App\Models;
 
 use App\Models\Concerns\GenerateGuid;
+use App\Traits\Loggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Category extends Model
 {
-	use GenerateGuid, SoftDeletes;
+	use GenerateGuid, SoftDeletes, Loggable;
 	protected $guarded = [];
 	protected $table = 'categories';
 

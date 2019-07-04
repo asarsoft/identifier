@@ -16,8 +16,7 @@ class CreateLogsTable extends Migration
 		Schema::create('logs', function (Blueprint $table) {
 			$table->bigIncrements('id');
 
-			$table->bigInteger('user_id')->nullable();
-			$table->string('email')->nullable();
+			$table->bigInteger('user_id')->nullable()->comment('in case user is not logged in than user id field should be null');
 			$table->string('ip')->nullable();
 
 			$table->string('loggable_guid');

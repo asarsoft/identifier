@@ -13,8 +13,7 @@ trait Loggable
 	{
 		static::creating(function ($model) {
 			DB::table('logs')->insert([
-				'user_id' => Auth::id(),
-				'email' => Auth::user()->email,
+				'user_id' => Auth::check() ? Auth::id() : null,
 				'ip' => request()->ip(),
 				'loggable_guid' => $model->guid,
 				'loggable_type' => $model->getTable(),
@@ -25,8 +24,7 @@ trait Loggable
 		});
 		static::updating(function ($model) {
 			DB::table('logs')->insert([
-				'user_id' => Auth::id(),
-				'email' => Auth::user()->email,
+				'user_id' => Auth::check() ? Auth::id() : null,
 				'ip' => request()->ip(),
 				'loggable_guid' => $model->guid,
 				'loggable_type' => $model->getTable(),
@@ -37,8 +35,7 @@ trait Loggable
 		});
 		static::deleted(function ($model) {
 			DB::table('logs')->insert([
-				'user_id' => Auth::id(),
-				'email' => Auth::user()->email,
+				'user_id' => Auth::check() ? Auth::id() : null,
 				'ip' => request()->ip(),
 				'loggable_guid' => $model->guid,
 				'loggable_type' => $model->getTable(),
@@ -49,8 +46,7 @@ trait Loggable
 		});
 		static::restored(function ($model) {
 			DB::table('logs')->insert([
-				'user_id' => Auth::id(),
-				'email' => Auth::user()->email,
+				'user_id' => Auth::check() ? Auth::id() : null,
 				'ip' => request()->ip(),
 				'loggable_guid' => $model->guid,
 				'loggable_type' => $model->getTable(),
