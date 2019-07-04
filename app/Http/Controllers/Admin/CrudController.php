@@ -29,10 +29,10 @@ class CrudController extends Controller
 
 	/**
 	 * Display a listing of the resource.
-	 * @param $identifier Identifier of the given controller.
-	 * @param $identifier_fields Identifier fields of the given controller.
-	 * @param $children children of model to be assigned
-	 * 
+	 * $identifier Identifier of the given controller.
+	 * $identifier_fields Identifier fields of the given controller.
+	 * $children children of model to be assigned
+	 *
 	 * @return \Illuminate\Http\Response
 	 */
 	public function index()
@@ -58,7 +58,7 @@ class CrudController extends Controller
 		$relationships = Arr::pluck($children, 'relationship');
 
 		$records = $identifier->model::with($relationships)->get();
-		
+
 		return view($this->index_view, [
 			'records' => $records->toArray(),
 			'fields' => $identifier_fields,
@@ -160,7 +160,7 @@ class CrudController extends Controller
 			foreach ($parameters['sub_modules'] as $module)
 			{ // ===> Loop through all of the sub modules and create them.
 				$record = $request->only(array_keys($module['rules']));
-				$module_data = array_merge($record, [$identifier_fields['model'].'_id' => $this->primary]);
+				$module_data = array_merge($record, [$identifier_fields['model'] . '_id' => $this->primary]);
 				$module['model']::create($module_data);
 			}
 		}
@@ -244,7 +244,7 @@ class CrudController extends Controller
 
 			if ($this->child != null && $parameter != null)
 			{ // if the child is required and this data should have child, we return it either as null or the data itself, if it is not null, it means this child was not created yet
-				$data[$this->child['name']] = $this->child['model']::where($identifier_fields['model'].'_id', $id)->where($this->child['parameter'], $parameter)->first();
+				$data[$this->child['name']] = $this->child['model']::where($identifier_fields['model'] . '_id', $id)->where($this->child['parameter'], $parameter)->first();
 			}
 			elseif ($this->child != null)
 			{ // ===> Setting the child to true if the child is not required in the request, this means it has a child but but not asked for
@@ -326,7 +326,7 @@ class CrudController extends Controller
 				foreach ($parameters['sub_modules'] as $module)
 				{ // ===> Loop through all of the sub modules and create them.
 					$record = $request->only(array_keys($module['rules']));
-					$module['model']::where($identifier_fields['model'].'_id', $this->primary)->where($module['differ_by'], $sub_model)->update($record);
+					$module['model']::where($identifier_fields['model'] . '_id', $this->primary)->where($module['differ_by'], $sub_model)->update($record);
 				}
 			}
 

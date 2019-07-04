@@ -8,9 +8,9 @@
 				</th>
 			@endif
 		@endforeach
-			<th>
-				<i class="fas fa-toolbox mr-2"></i>{{ trans('button_input.actions') }}
-			</th>
+		<th>
+			<i class="fas fa-toolbox mr-2"></i>{{ trans('button_input.actions') }}
+		</th>
 	</tr>
 	</thead>
 

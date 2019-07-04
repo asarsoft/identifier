@@ -1,19 +1,17 @@
 <?php
 namespace App\Identifiers;
 
-use App\Models\Feature;
 use App\Models\FeatureDetail;
 
-class FeatureIdentifier extends BaseIdentifier
+class FeatureDetailIdentifier extends BaseIdentifier
 {
-	public $title = 'id';
-	public $model = Feature::class;
-	public $relationships = ['details', 'category'];
+	public $title = 'name';
+	public $model = FeatureDetail::class;
 
 	public function fields()
 	{
 		return [
-			'model' => 'feature',
+			'model' => 'feature_detail',
 			'fields' => [
 				'id' => [
 					'type' => 'number',
@@ -25,52 +23,47 @@ class FeatureIdentifier extends BaseIdentifier
 					'straight_attributes' => 'required',
 					'available_in' => [],
 				],
-				'category_id' => [
+				'feature_id' => [
 					'type' => 'select',
-					'belongs' => 'category',
-					'identifier' => CategoryIdentifier::class,
-					'options' => 'categories',
+					'belongs' => 'feature',
+					'identifier' => FeatureIdentifier::class,
+					'straight_attributes' => 'required',
+					'available_in' => ['index', 'show', 'edit'],
+				],
+				'language_id' => [
+					'type' => 'select',
+					'belongs' => 'language',
+					'identifier' => LanguageIdentifier::class,
 					'straight_attributes' => 'required',
 					'available_in' => ['index', 'create', 'show', 'edit'],
 				],
-				'icon' => [
-					'type' => 'image',
+				'name' => [
+					'type' => 'text',
 					'straight_attributes' => 'required',
 					'available_in' => ['index', 'create', 'show', 'edit'],
 				],
-				'details' => [
-					'type' => 'select',
-					'has_one' => 'detail',
-					'identifier' => 'asd',
+				'description' => [
+					'type' => 'text_editor',
+					'straight_attributes' => 'required',
 					'available_in' => ['create', 'show', 'edit'],
 				],
-				'min_price' => [
-					'type' => 'number',
-					'max' => '1000000',
+				'feature_type' => [
+					'type' => 'text',
 					'straight_attributes' => 'required',
 					'available_in' => ['index', 'create', 'show', 'edit'],
 				],
-				'max_price' => [
-					'type' => 'number',
-					'max' => '1000000',
+				'deleted_at' => [
+					'type' => 'date',
 					'straight_attributes' => 'required',
 					'available_in' => ['index', 'create', 'show', 'edit'],
 				],
-				'approximate_time' => [
-					'type' => 'number',
-					'max' => '1000000',
+				'created_at' => [
+					'type' => 'date',
 					'straight_attributes' => 'required',
 					'available_in' => ['index', 'create', 'show', 'edit'],
 				],
-				'difficulty' => [
-					'type' => 'number',
-					'max' => '1000000',
-					'straight_attributes' => 'required',
-					'available_in' => ['index', 'create', 'show', 'edit'],
-				],
-				'priority' => [
-					'type' => 'number',
-					'max' => '1000000',
+				'updated_at' => [
+					'type' => 'date',
 					'straight_attributes' => 'required',
 					'available_in' => ['index', 'create', 'show', 'edit'],
 				],

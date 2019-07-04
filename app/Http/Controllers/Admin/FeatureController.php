@@ -18,7 +18,7 @@ class FeatureController extends CrudController
 	public $trashed_child = ['trashed_detail'];
 	public $trashed_children = ['trashed_details'];
 
-//	public $index_view = 'admin_views.crud.feature.index';
+	//	public $index_view = 'admin_views.crud.feature.index';
 	public $recycle_view = 'admin_views.crud.feature.recycle';
 	public $show_view = 'admin_views.crud.feature.show';
 	public $create_view = 'admin_views.crud.feature.create';
@@ -44,6 +44,27 @@ class FeatureController extends CrudController
 		'model' => FeatureDetail::class,
 		'parameter' => 'language_id'
 	];
+
+	public function create()
+	{
+		$identifier = new $this->identifier;
+
+		$identifier_fields = $identifier->fields();
+
+		foreach ($identifier_fields['fields'] as $key => $value)
+		{
+			if (@$value['belongs'] && in_array('create', $value['available_in'], true))
+			{
+				$field_identifier = new $value['identifier'];
+
+				$identifier_fields['fields'][$key]['records'] = $field_identifier->model::all();
+			}
+		}
+
+		dd($identifier_fields);
+
+		return view('default.create')->with(['fields' => $identifier_fields]);
+	}
 
 	public function parameters()
 	{
