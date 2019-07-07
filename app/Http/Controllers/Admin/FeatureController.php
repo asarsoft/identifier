@@ -19,9 +19,7 @@ class FeatureController extends CrudController
 
 		$reproduced_fields = $this->reproduce_create($identifier);
 
-		dd($reproduced_fields);
-
-		return view('default.create')->with(['fields' => $identifier_fields]);
+		return view('default.create')->with(['fields' => $reproduced_fields]);
 	}
 
 	public function index()
@@ -48,6 +46,7 @@ class FeatureController extends CrudController
 		]);
 	}
 
+	//todo get rid of the re-caller function if it does not define anything that can not be done in the main function
 	public function reproduce_create($identifier)
 	{
 		$reproduced_fields = $identifier->fields();
