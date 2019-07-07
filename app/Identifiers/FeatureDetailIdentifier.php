@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Identifiers;
 
 use App\Models\FeatureDetail;
@@ -11,62 +12,49 @@ class FeatureDetailIdentifier extends BaseIdentifier
 	public function fields()
 	{
 		return [
-			'model' => 'feature_detail',
-			'fields' => [
-				'id' => [
-					'type' => 'number',
-					'straight_attributes' => 'required',
-					'available_in' => ['index'],
-				],
-				'guid' => [
-					'type' => 'text',
-					'straight_attributes' => 'required',
-					'available_in' => [],
-				],
-				'feature_id' => [
-					'type' => 'select',
-					'belongs' => 'feature',
-					'identifier' => FeatureIdentifier::class,
-					'straight_attributes' => 'required',
-					'available_in' => ['index', 'show', 'edit'],
-				],
-				'language_id' => [
-					'type' => 'select',
-					'belongs' => 'language',
-					'identifier' => LanguageIdentifier::class,
-					'straight_attributes' => 'required',
-					'available_in' => ['index', 'create', 'show', 'edit'],
-				],
-				'name' => [
-					'type' => 'text',
-					'straight_attributes' => 'required',
-					'available_in' => ['index', 'create', 'show', 'edit'],
-				],
-				'description' => [
-					'type' => 'text_editor',
-					'straight_attributes' => 'required',
-					'available_in' => ['create', 'show', 'edit'],
-				],
-				'feature_type' => [
-					'type' => 'text',
-					'straight_attributes' => 'required',
-					'available_in' => ['index', 'create', 'show', 'edit'],
-				],
-				'deleted_at' => [
-					'type' => 'date',
-					'straight_attributes' => 'required',
-					'available_in' => ['index', 'create', 'show', 'edit'],
-				],
-				'created_at' => [
-					'type' => 'date',
-					'straight_attributes' => 'required',
-					'available_in' => ['index', 'create', 'show', 'edit'],
-				],
-				'updated_at' => [
-					'type' => 'date',
-					'straight_attributes' => 'required',
-					'available_in' => ['index', 'create', 'show', 'edit'],
-				],
+			'id' => [
+				'type' => 'number',
+				'available_in' => ['index'],
+			],
+			'guid' => [
+				'type' => 'text',
+				'available_in' => ['index'],
+			],
+			'feature_id' => [
+				'type' => 'belongsTo',
+				'method' => 'feature',
+				'identifier' => FeatureIdentifier::class,
+				'available_in' => ['create', 'index', 'show', 'edit'],
+			],
+			'language_id' => [
+				'type' => 'belongsTo',
+				'method' => 'feature',
+				'identifier' => LanguageIdentifier::class,
+				'available_in' => [],
+			],
+			'name' => [
+				'type' => 'text',
+				'available_in' => ['index', 'create', 'show', 'edit'],
+			],
+			'description' => [
+				'type' => 'text_editor',
+				'available_in' => ['create', 'show', 'edit'],
+			],
+			'feature_type' => [
+				'type' => 'text',
+				'available_in' => ['index', 'create', 'show', 'edit'],
+			],
+			'deleted_at' => [
+				'type' => 'date',
+				'available_in' => ['index', 'create', 'show', 'edit'],
+			],
+			'created_at' => [
+				'type' => 'date',
+				'available_in' => ['index', 'create', 'show', 'edit'],
+			],
+			'updated_at' => [
+				'type' => 'date',
+				'available_in' => ['index', 'create', 'show', 'edit'],
 			],
 		];
 	}

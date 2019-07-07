@@ -11,15 +11,15 @@ use Illuminate\Support\Facades\Validator;
 
 class CrudController extends Controller
 {
-	public $relationships = [];
+	public $index_view = 'admin_views.crud.default.index';
 
+	public $relationships = [];
 	public $trashed_child = [];
+
 	public $trashed_children = [];
 
 	public $primary = null;
-
 	public $show_view = null;
-	public $index_view = 'admin_views.crud.default.index';
 
 	public $model = null;
 	public $success = true;
@@ -28,42 +28,29 @@ class CrudController extends Controller
 	public $identifier = null;
 
 	/**
-	 * Display a listing of the resource.
-	 * $identifier Identifier of the given controller.
-	 * $identifier_fields Identifier fields of the given controller.
-	 * $children children of model to be assigned
-	 *
-	 * @return \Illuminate\Http\Response
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
 	 */
 	public function index()
 	{
 		$identifier = new $this->identifier;
 
-		$identifier_fields = $identifier->fields();
+		$reproduced_fields = $identifier->fields();
 
-		$children = [];
-
-		foreach ($identifier_fields['fields'] as $key => $field)
+		foreach ($reproduced_fields as $key => $value)
 		{
-			if (isset($field['belongs']))
+			if ($value['type'] == 'belongsTo' && @$value['available_in'] && in_array('index', $value['available_in'], true))
 			{
-				$child_identifier = new $field['identifier'];
-				$children[$key] = ['relationship' => $field['belongs'], 'identifier' => $child_identifier];
-
-				$identifier_fields['fields'][$key]['title'] = $child_identifier->title;
-				$identifier_fields['fields'][$key]['model'] = $child_identifier->fields()['model'];
+				$reproduced_fields = $this->belongsToReproduce($reproduced_fields, $key);
 			}
 		}
 
-		$relationships = Arr::pluck($children, 'relationship');
+		$data = $identifier->model::all();
 
-		$records = $identifier->model::with($relationships)->get();
-
-		return view($this->index_view, [
-			'records' => $records->toArray(),
-			'fields' => $identifier_fields,
+		return view($this->index_view)->with([
+			'model' => strtolower(class_basename($identifier->model)),
+			'data' => $data,
 			'identifier' => $identifier,
-			'children' => $children
+			'fields' => $reproduced_fields
 		]);
 	}
 
@@ -339,16 +326,5 @@ class CrudController extends Controller
 		{
 			abort(404);
 		}
-	}
-
-	/**
-	 * A default image rule
-	 * @return array
-	 */
-	function image_rule()
-	{
-		return [
-			'image' => 'nullable|image|max:2048',
-		];
 	}
 }

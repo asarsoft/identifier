@@ -3,12 +3,26 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Identifiers\FeatureIdentifier;
-use App\Models\FeatureDetail;
-use App\Models\Feature;
 
 class FeatureController extends CrudController
 {
 	public $identifier = FeatureIdentifier::class;
+
+	/**
+	 * this is the create view method
+	 * @param $relation
+	 * @return mixed
+	 */
+	public function create($relation = null)
+	{
+		$identifier = new $this->identifier;
+
+		$reproduced_fields = $this->reproduce_create($identifier);
+
+		dd($reproduced_fields);
+
+		return view('default.create')->with(['fields' => $identifier_fields]);
+	}
 
 	public function index()
 	{
@@ -34,87 +48,54 @@ class FeatureController extends CrudController
 		]);
 	}
 
-	/**
-	 * Reproducing belongs to filed to have the selectable data in it
-	 *
-	 * @param $identifier_fields , Identifier fields
-	 * @param $key , is the key for the identifier field
-	 * @param bool $load_data , when assigned, it will load the data for the given belongsTo field identifier
-	 * @return mixed returns reproduced identifier
-	 */
-	public function belongsToReproduce($identifier_fields, $key, $load_data = false)
+	public function reproduce_create($identifier)
 	{
-		$identifier = new $identifier_fields[$key]['identifier'];
+		$reproduced_fields = $identifier->fields();
 
-		if ($load_data)
+		foreach ($reproduced_fields as $key => $value)
 		{
-			$data = $identifier->model::all();
-
-			$identifier_fields[$key]['data'] = $data;
+			if (in_array($value['type'], $this->relational_fields, true))
+			{
+				if (@$value['available_in'] && in_array('create', $value['available_in'], true))
+				{
+					$reproduced_fields = $this->{$value['type']."Reproduce"}($reproduced_fields, $key, "create");
+				}
+			}
 		}
 
-		$identifier_fields[$key]['title'] = $identifier->title;
-
-		return $identifier_fields;
+		return $reproduced_fields;
 	}
 
-	//	public function create()
+
+	//	public function parameters()
 	//	{
-	//		$identifier = new $this->identifier;
-	//
-	//		$identifier_fields = $identifier->fields();
-	//
-	//		foreach ($identifier_fields['fields'] as $key => $value)
-	//		{
-	//			if (@$value['belongs'] && in_array('create', $value['available_in'], true))
-	//			{
-	//				$field_identifier = new $value['identifier'];
-	//
-	//				$identifier_fields['fields'][$key]['records'] = $field_identifier->model::all();
-	//			}
-	//
-	//			elseif (@$value['hasOne'] && in_array('create', $value['available_in'], true))
-	//			{
-	//				$field_identifier = new $value['identifier'];
-	//
-	//				$identifier_fields['fields'][$key]['fields'] = $field_identifier->fields();
-	//			}
-	//		}
-	//
-	//		dd($identifier_fields);
-	//
-	//		return view('default.create')->with(['fields' => $identifier_fields]);
+	//		return [
+	//			'name' => 'feature',
+	//			'model' => Feature::class,
+	//			'image' => ['name' => 'icon', 'disk' => 'feature'],
+	//			'rules' => [
+	//				'category_id' => 'required|numeric',
+	//				'min_price' => 'nullable|numeric|max:1000000',
+	//				'max_price' => 'nullable|numeric|max:1000000',
+	//				'approximate_time' => 'required|numeric|max:1000000',
+	//				'difficulty' => 'required|numeric|max:100|min:0',
+	//				'priority' => 'required|numeric|max:100000',
+	//			],
+	//			'sub_modules' => [
+	//				'feature_detail' => [
+	//					'model' => FeatureDetail::class,
+	//					'name' => 'feature_details',
+	//					'differ_by' => 'language_id',
+	//					'rules' => [
+	//						'language_id' => 'required',
+	//						'name' => 'required|max:199',
+	//						'description' => 'nullable|max:1000000',
+	//						'feature_type' => 'required|max:199',
+	//					],
+	//				],
+	//			]
+	//		];
 	//	}
-
-	public function parameters()
-	{
-		return [
-			'name' => 'feature',
-			'model' => Feature::class,
-			'image' => ['name' => 'icon', 'disk' => 'feature'],
-			'rules' => [
-				'category_id' => 'required|numeric',
-				'min_price' => 'nullable|numeric|max:1000000',
-				'max_price' => 'nullable|numeric|max:1000000',
-				'approximate_time' => 'required|numeric|max:1000000',
-				'difficulty' => 'required|numeric|max:100|min:0',
-				'priority' => 'required|numeric|max:100000',
-			],
-			'sub_modules' => [
-				'feature_detail' => [
-					'model' => FeatureDetail::class,
-					'name' => 'feature_details',
-					'differ_by' => 'language_id',
-					'rules' => [
-						'language_id' => 'required',
-						'name' => 'required|max:199',
-						'description' => 'nullable|max:1000000',
-						'feature_type' => 'required|max:199',
-					],
-				],
-			]
-		];
-	}
 
 	/**
 	 * Fields are used for indexing, showing, creating, and updating records
