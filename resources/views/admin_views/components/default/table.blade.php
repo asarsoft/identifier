@@ -15,7 +15,7 @@
 	</thead>
 
 	<tbody>
-	@foreach($records as $record)
+	@foreach($data as $record)
 		<tr>
 			@foreach($fields as $key => $value)
 				@if(@$value['available_in'] && in_array('index', $value['available_in'], true))

@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Identifiers;
 
 use App\Models\Feature;
@@ -11,68 +12,50 @@ class FeatureIdentifier extends BaseIdentifier
 	public function fields()
 	{
 		return [
-			'model' => 'feature',
-			'fields' => [
-				'id' => [
-					'type' => 'number',
-					'straight_attributes' => 'required',
-					'available_in' => ['index'],
-				],
-				'guid' => [
-					'type' => 'text',
-					'straight_attributes' => 'required',
-					'available_in' => [],
-				],
-				'category_id' => [
-					'type' => 'select',
-					'belongs' => 'category',
-					'identifier' => CategoryIdentifier::class,
-					'options' => 'categories',
-					'straight_attributes' => 'required',
-					'available_in' => ['index', 'create', 'show', 'edit'],
-				],
-				'icon' => [
-					'type' => 'image',
-					'driver' => "feature",
-					'straight_attributes' => 'required',
-					'available_in' => ['index', 'create', 'show', 'edit'],
-				],
-				'feature_details' => [
-					'type' => 'select',
-					'hasOne' => 'feature_details',
-					'identifier' => FeatureDetailIdentifier::class,
-					'available_in' => ['create', 'show', 'edit'],
-				],
-				'min_price' => [
-					'type' => 'number',
-					'max' => '1000000',
-					'straight_attributes' => 'required',
-					'available_in' => ['index', 'create', 'show', 'edit'],
-				],
-				'max_price' => [
-					'type' => 'number',
-					'max' => '1000000',
-					'straight_attributes' => 'required',
-					'available_in' => ['index', 'create', 'show', 'edit'],
-				],
-				'approximate_time' => [
-					'type' => 'number',
-					'max' => '1000000',
-					'straight_attributes' => 'required',
-					'available_in' => ['index', 'create', 'show', 'edit'],
-				],
-				'difficulty' => [
-					'type' => 'number',
-					'max' => '1000000',
-					'straight_attributes' => 'required',
-					'available_in' => ['index', 'create', 'show', 'edit'],
-				],
-				'priority' => [
-					'type' => 'number',
-					'max' => '1000000',
-					'straight_attributes' => 'required',
-					'available_in' => ['index', 'create', 'show', 'edit'],
-				],
+			'id' => [
+				'type' => 'number',
+				'available_in' => ['index', 'show'],
+			],
+			'guid' => [
+				'type' => 'text',
+				'available_in' => ['show'],
+			],
+			'category_id' => [
+				'type' => 'belongsTo',
+				'method' => 'category',
+				'identifier' => CategoryIdentifier::class,
+				'available_in' => ['index', 'create', 'show', 'edit'],
+			],
+			'icon' => [
+				'type' => 'image',
+				'driver' => "feature",
+				'available_in' => ['index', 'create', 'show', 'edit'],
+			],
+			'min_price' => [
+				'type' => 'number',
+				'available_in' => ['index', 'create', 'show', 'edit'],
+			],
+			'max_price' => [
+				'type' => 'number',
+				'available_in' => ['index', 'create', 'show', 'edit'],
+			],
+			'approximate_time' => [
+				'type' => 'number',
+				'available_in' => ['index', 'create', 'show', 'edit'],
+			],
+			'difficulty' => [
+				'type' => 'number',
+				'available_in' => ['index', 'create', 'show', 'edit'],
+			],
+			'priority' => [
+				'type' => 'number',
+				'available_in' => ['index', 'create', 'show', 'edit'],
+			],
+			'feature_details' => [
+				'type' => 'belongsTo',
+				'method' => 'feature_details',
+				'identifier' => FeatureDetailIdentifier::class,
+				'available_in' => ['create', 'show', 'edit'],
 			],
 		];
 	}

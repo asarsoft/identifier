@@ -4,74 +4,87 @@ namespace App\Http\Controllers\Admin;
 
 use App\Identifiers\FeatureIdentifier;
 use App\Models\FeatureDetail;
-use App\Models\Category;
 use App\Models\Feature;
-use App\Models\Language;
 
 class FeatureController extends CrudController
 {
 	public $identifier = FeatureIdentifier::class;
 
-	public $relationships = ['details', 'category'];
-	public $child_relations = ['details'];
-
-	public $trashed_child = ['trashed_detail'];
-	public $trashed_children = ['trashed_details'];
-
-	//	public $index_view = 'admin_views.crud.feature.index';
-	public $recycle_view = 'admin_views.crud.feature.recycle';
-	public $show_view = 'admin_views.crud.feature.show';
-	public $create_view = 'admin_views.crud.feature.create';
-	public $edit_view = 'admin_views.crud.feature.edit';
-
-	public $show_route = "show-feature";
-
-	public $manage_objects = [
-		[
-			'model' => Category::class,
-			'sub_models' => ['detail'],
-			'model_name' => 'categories'
-		],
-		[
-			'model' => Language::class,
-			'sub_models' => [],
-			'model_name' => 'languages'
-		]
-	];
-
-	public $child = [
-		'name' => 'feature_detail',
-		'model' => FeatureDetail::class,
-		'parameter' => 'language_id'
-	];
-
-	public function create()
+	public function index()
 	{
 		$identifier = new $this->identifier;
 
-		$identifier_fields = $identifier->fields();
+		$reproduced_fields = $identifier->fields();
 
-		foreach ($identifier_fields['fields'] as $key => $value)
+		foreach ($reproduced_fields as $key => $value)
 		{
-			if (@$value['belongs'] && in_array('create', $value['available_in'], true))
+			if ($value['type'] == 'belongsTo' && @$value['available_in'] && in_array('index', $value['available_in'], true))
 			{
-				$field_identifier = new $value['identifier'];
-
-				$identifier_fields['fields'][$key]['records'] = $field_identifier->model::all();
-			}
-
-			elseif (@$value['hasOne'] && in_array('create', $value['available_in'], true))
-			{
-				$field_identifier = new $value['identifier'];
-
-				$identifier_fields['fields'][$key]['fields'] = $field_identifier->fields();
+				$reproduced_fields = $this->belongsToReproduce($reproduced_fields, $key);
 			}
 		}
 
-		dd($identifier_fields);
+		$data = $identifier->model::all();
 
-		return view('default.create')->with(['fields' => $identifier_fields]);
+		return view($this->index_view)->with([
+			'model' => strtolower(class_basename($identifier->model)),
+			'data' => $data,
+			'identifier' => $identifier,
+			'fields' => $reproduced_fields
+		]);
 	}
+
+	/**
+	 * Reproducing belongs to filed to have the selectable data in it
+	 *
+	 * @param $identifier_fields , Identifier fields
+	 * @param $key , is the key for the identifier field
+	 * @param bool $load_data , when assigned, it will load the data for the given belongsTo field identifier
+	 * @return mixed returns reproduced identifier
+	 */
+	public function belongsToReproduce($identifier_fields, $key, $load_data = false)
+	{
+		$identifier = new $identifier_fields[$key]['identifier'];
+
+		if ($load_data)
+		{
+			$data = $identifier->model::all();
+
+			$identifier_fields[$key]['data'] = $data;
+		}
+
+		$identifier_fields[$key]['title'] = $identifier->title;
+
+		return $identifier_fields;
+	}
+
+	//	public function create()
+	//	{
+	//		$identifier = new $this->identifier;
+	//
+	//		$identifier_fields = $identifier->fields();
+	//
+	//		foreach ($identifier_fields['fields'] as $key => $value)
+	//		{
+	//			if (@$value['belongs'] && in_array('create', $value['available_in'], true))
+	//			{
+	//				$field_identifier = new $value['identifier'];
+	//
+	//				$identifier_fields['fields'][$key]['records'] = $field_identifier->model::all();
+	//			}
+	//
+	//			elseif (@$value['hasOne'] && in_array('create', $value['available_in'], true))
+	//			{
+	//				$field_identifier = new $value['identifier'];
+	//
+	//				$identifier_fields['fields'][$key]['fields'] = $field_identifier->fields();
+	//			}
+	//		}
+	//
+	//		dd($identifier_fields);
+	//
+	//		return view('default.create')->with(['fields' => $identifier_fields]);
+	//	}
 
 	public function parameters()
 	{
