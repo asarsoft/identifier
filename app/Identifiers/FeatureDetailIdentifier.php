@@ -68,20 +68,6 @@ class FeatureDetailIdentifier extends BaseIdentifier
 					'available_in' => ['index', 'create', 'show', 'edit'],
 				],
 			],
-			'sub_models' => [
-				$this->sub_models()
-			]
-		];
-	}
-
-	function sub_models()
-	{
-		$sub_model = new FeatureDetail();
-		return [
-			'feature_detail' => [
-				'fields' => $sub_model->fields(),
-				'available_in' => ['index', 'create', 'show', 'delete'],
-			]
 		];
 	}
 }

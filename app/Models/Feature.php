@@ -39,7 +39,7 @@ class Feature extends Model
 	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
 	 */
 
-	public function details()
+	public function feature_details()
 	{
 		return $this->hasMany(FeatureDetail::class);
 	}

@@ -2,13 +2,11 @@
 namespace App\Identifiers;
 
 use App\Models\Feature;
-use App\Models\FeatureDetail;
 
 class FeatureIdentifier extends BaseIdentifier
 {
 	public $title = 'id';
 	public $model = Feature::class;
-	public $relationships = ['details', 'category'];
 
 	public function fields()
 	{
@@ -35,12 +33,13 @@ class FeatureIdentifier extends BaseIdentifier
 				],
 				'icon' => [
 					'type' => 'image',
+					'driver' => "feature",
 					'straight_attributes' => 'required',
 					'available_in' => ['index', 'create', 'show', 'edit'],
 				],
-				'details' => [
+				'feature_details' => [
 					'type' => 'select',
-					'hasOne' => 'detail',
+					'hasOne' => 'feature_details',
 					'identifier' => FeatureDetailIdentifier::class,
 					'available_in' => ['create', 'show', 'edit'],
 				],
@@ -75,20 +74,6 @@ class FeatureIdentifier extends BaseIdentifier
 					'available_in' => ['index', 'create', 'show', 'edit'],
 				],
 			],
-			'sub_models' => [
-				$this->sub_models()
-			]
-		];
-	}
-
-	function sub_models()
-	{
-		$sub_model = new FeatureDetail();
-		return [
-			'feature_detail' => [
-				'fields' => $sub_model->fields(),
-				'available_in' => ['index', 'create', 'show', 'delete'],
-			]
 		];
 	}
 }
