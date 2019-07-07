@@ -30,7 +30,7 @@ class FeatureDetailIdentifier extends BaseIdentifier
 				'type' => 'belongsTo',
 				'method' => 'feature',
 				'identifier' => LanguageIdentifier::class,
-				'available_in' => [],
+				'available_in' => ["index", "create", "edit", "show"],
 			],
 			'name' => [
 				'type' => 'text',
