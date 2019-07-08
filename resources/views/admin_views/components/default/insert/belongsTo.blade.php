@@ -7,5 +7,3 @@
 		<option value="{{ $option["id"] }}">{{ $option[$field['title']] }}</option>
 	@endforeach
 </select>
-
-{{ dd($field) }}
