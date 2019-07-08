@@ -31,6 +31,29 @@ class Controller extends BaseController
 	}
 
 	/**
+	 * @param $identifier
+	 * @param string $method
+	 * @return mixed
+	 */
+	public function reproduce_identifier($identifier, $method = "index")
+	{
+		$reproduced_fields = $identifier->fields();
+
+		foreach ($reproduced_fields as $key => $value)
+		{
+			if (in_array($value['type'], $this->relational_fields, true))
+			{
+				if (@$value['available_in'] && in_array($method, $value['available_in'], true))
+				{
+					$reproduced_fields = $this->{$value['type']."Reproduce"}($reproduced_fields, $key, "create");
+				}
+			}
+		}
+
+		return $reproduced_fields;
+	}
+
+	/**
 	 * Reproducing belongs to filed to have the selectable data in it
 	 *
 	 * @param $identifier_fields , Identifier fields

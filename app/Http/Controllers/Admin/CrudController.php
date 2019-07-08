@@ -12,18 +12,21 @@ use Illuminate\Support\Facades\Validator;
 class CrudController extends Controller
 {
 	public $index_view = 'admin_views.crud.default.index';
-
-	public $relationships = [];
-	public $trashed_child = [];
-
-	public $trashed_children = [];
-
-	public $primary = null;
-	public $show_view = null;
-
-	public $model = null;
-	public $success = true;
-	public $child = false;
+	public $create_view = 'admin_views.crud.default.create';
+	public $show_view = 'admin_views.crud.default.show';
+	public $edit_view = 'admin_views.crud.default.edit';
+//
+//	public $relationships = [];
+//	public $trashed_child = [];
+//
+//	public $trashed_children = [];
+//
+//	public $primary = null;
+//	public $show_view = null;
+//
+//	public $model = null;
+//	public $success = true;
+//	public $child = false;
 
 	public $identifier = null;
 
@@ -55,20 +58,20 @@ class CrudController extends Controller
 	}
 
 	/**
-	 * Returns Feature Create page
-	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+	 * this is the create view method
+	 * @param $relation
+	 * @return mixed
 	 */
-	public function create()
+	public function create($relation = null)
 	{
-		$data = [];
+		$identifier = new $this->identifier;
 
-		foreach ($this->manage_objects as $object)
-		{
-			$records = $object['model']::with($object['sub_models'])->get();
-			$data[$object['model_name']] = $records;
-		}
+		$reproduced_fields = $this->reproduce_identifier($identifier, 'create');
 
-		return view($this->create_view, ['records' => $data]);
+		return view($this->create_view)->with([
+			'model' => strtolower(class_basename($identifier->model)),
+			'fields' => $reproduced_fields,
+		]);
 	}
 
 
