@@ -15,6 +15,7 @@ return [
     'edit-category' => 'Edit Category',
     'update-category' => 'Edit Category',
 
-    'dashboard-admin' => 'Admin Dashboard',
+    'feature_details' => 'Feature Details',
 
+    'dashboard-admin' => 'Admin Dashboard',
 ];

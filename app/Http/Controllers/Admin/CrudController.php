@@ -59,10 +59,9 @@ class CrudController extends Controller
 
 	/**
 	 * this is the create view method
-	 * @param $relation
 	 * @return mixed
 	 */
-	public function create($relation = null)
+	public function create()
 	{
 		$identifier = new $this->identifier;
 
@@ -84,7 +83,9 @@ class CrudController extends Controller
 	public function show($id)
 	{
 		$identifier = new $this->identifier;
+
 		$record = $identifier->model::with($this->relationships)->where('id', $id)->first();
+
 		return view($this->show_view, ['record' => $record]);
 	}
 
