@@ -17,6 +17,20 @@ class FeatureController extends CrudController
 
 		$identifier_rules = $identifier->rules();
 
+		$identifier_fields = $identifier->fields();
+
+		$sortables = $this->validated_data($this->identifier, $request);
+
+		foreach ($sortables as $storable)
+		{
+			$success = $storable['model']::create($storable['data']);
+			if (!$success)
+			{
+				return null;
+				//log the error
+			}
+		}
+
 		$validator = Validator::make($request->all(), $identifier_rules);
 
 		if ($validator->fails())
@@ -27,38 +41,47 @@ class FeatureController extends CrudController
 		$store_data = $request->only(array_keys($identifier_rules));
 
 
-		$identifier_fields = $identifier->fields();
-
 		foreach ($identifier_fields as $key => $parameters)
 		{
 			if ($parameters['type'] == 'image' && $request->hasFile($key))
 			{
 				$path = $request->file($key)->store('', ['disk' => $parameters['disk']]);
 
-				$store_data[$key] = $parameters['disk'].'/'.$path;
+				$store_data[$key] = $parameters['disk'] . '/' . $path;
 			}
 		}
 
 		$identifier->model::create($store_data);
 
-		dd($request->all(), $identifier_fields, $identifier_rules, $store_data);
 	}
 
-	public function reproduce_identifier($identifier, $method = "index")
+	public function validated_data($identifier, Request $data)
 	{
-		$reproduced_fields = $identifier->fields();
+		$identifier = new $identifier;
 
-		foreach ($reproduced_fields as $key => $value)
+		$rules = $identifier->rules();
+
+		$validator = Validator::make($data->all(), $rules);
+
+		if ($validator->fails())
 		{
-			if (in_array($value['type'], $this->relational_fields, true))
+			return ['success' => false, 'errors' => $validator->errors()];
+		}
+
+		$storable = [];
+
+		foreach ($identifier->fields() as $field_key => $field_value)
+		{
+			if (in_array($field_value['type'], $this->pivot_or_child, true))
 			{
-				if (@$value['available_in'] && in_array($method, $value['available_in'], true))
-				{
-					$reproduced_fields = $this->{$value['type'] . "Reproduce"}($reproduced_fields, $key, "create");
-				}
+				dd($field_value, $data);
+				$storable_data = $this->validated_data($identifier, $data);
+				$storable[$storable_data['model']] = $storable_data['data'];
 			}
 		}
 
-		return $reproduced_fields;
+		$storable = ['model' => $identifier->model, 'data' => $data->only(array_keys($rules))];
+
+		return $storable;
 	}
 }
