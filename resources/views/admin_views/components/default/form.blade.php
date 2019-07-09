@@ -12,6 +12,4 @@
 				@endcomponent
 		@endif
 	@endforeach
-
-	<button type="submit" class="btn btn-primary">{{ trans('button_input.create') }}</button>
 </form>

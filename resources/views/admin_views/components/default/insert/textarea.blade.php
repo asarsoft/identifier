@@ -3,9 +3,11 @@
 <link href="{{ asset('application_css/external/summernote/summernote-bs4.css') }}" rel="stylesheet">
 @endsection
 
-<div class="mb-4">
-    <label for="{{ $key }}">{{ trans('button_input.'.$key) }}</label>
-    <textarea id="{{ $key }}" name="{{ $key }}">{{@$record}}</textarea>
+<div class="form-group">
+    <div class="mb-4">
+        <label for="{{ $key }}">{{ trans('button_input.'.$key) }}</label>
+        <textarea id="{{ $key }}" name="{{ $key }}">{{@$record}}</textarea>
+    </div>
 </div>
 
 @section('script')

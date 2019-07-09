@@ -1,4 +1,4 @@
-<div class="form-row">
+<div class="form-group">
 	<label for="{{ $key }}">
 		{{ trans('button_input.'.$key) }}
 	</label>

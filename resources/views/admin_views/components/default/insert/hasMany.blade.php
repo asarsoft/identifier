@@ -1,5 +1,3 @@
-
-
 <hr class="my-4">
 
 <h4 class="mb-3">{{ trans('page_names.'.$key) }}</h4>

@@ -24,7 +24,7 @@ class FeatureDetailIdentifier extends BaseIdentifier
 				'type' => 'belongsTo',
 				'method' => 'feature',
 				'identifier' => FeatureIdentifier::class,
-				'available_in' => ['create', 'index', 'show', 'edit'],
+				'available_in' => ['index', 'show', 'edit'],
 			],
 			'language_id' => [
 				'type' => 'belongsTo',
@@ -46,15 +46,15 @@ class FeatureDetailIdentifier extends BaseIdentifier
 			],
 			'deleted_at' => [
 				'type' => 'date',
-				'available_in' => ['index', 'create', 'show', 'edit'],
+				'available_in' => ['index', 'show'],
 			],
 			'created_at' => [
 				'type' => 'date',
-				'available_in' => ['index', 'create', 'show', 'edit'],
+				'available_in' => ['index', 'show'],
 			],
 			'updated_at' => [
 				'type' => 'date',
-				'available_in' => ['index', 'create', 'show', 'edit'],
+				'available_in' => ['index', 'show'],
 			],
 		];
 	}

@@ -19,11 +19,16 @@ return [
     'category_id' => 'Category',
     'language_id' => 'Language',
     'parent_id' => 'Parent',
+    'feature_id' => 'Feature',
+    
 
     'name' => 'Name',
     'description' => 'Description',
     'feature_details' => 'Feature Details',
     'icon' => 'Icon',
+    'deleted_at' => 'Deleted At',
+    'updated_at' => 'Updated At',
+    'created_at' => 'Created At',
 
 	'category_details' => 'Category Details',
 

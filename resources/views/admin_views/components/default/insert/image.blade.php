@@ -1,4 +1,4 @@
-<div class="form-group col-md-2 mx-0 px-0">
+<div class="form-group">
     <label for="{{ $key }}">
         <span role="button" class="btn btn-outline-primary">
             <i class="mr-2 fas fa-image"></i>
