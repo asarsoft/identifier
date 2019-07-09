@@ -7,6 +7,11 @@
     <div class="mb-4">
         <label for="{{ $key }}">{{ trans('button_input.'.$key) }}</label>
         <textarea id="{{ $key }}" name="{{ $key }}">{{@$record}}</textarea>
+        @if ($errors->has($key))
+            <div class="invalid-feedback d-block">
+                {{ $errors->first($key) }}
+            </div>
+        @endif
     </div>
 </div>
 

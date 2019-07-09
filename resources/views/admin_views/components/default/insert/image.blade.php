@@ -7,6 +7,12 @@
     </label>
     
     <input class="d-none" name="{{ $key }}" id="{{ $key }}" type="file">
+    
+    @if ($errors->has($key))
+        <div class="invalid-feedback d-block">
+            {{ $errors->first($key) }}
+        </div>
+    @endif
 </div>
 @if(@$record)
     @component('admin_views.components.image', [

@@ -5,8 +5,8 @@
         placeholder="{{ trans('button_input.'.$key) }}" value="{{ old($key) ? old($key) : @$record }}">
 
     @if ($errors->has($key))
-    <div class="invalid-feedback d-block">
-        {{ $errors->first($key) }}
-    </div>
+        <div class="invalid-feedback d-block">
+            {{ $errors->first($key) }}
+        </div>
     @endif
 </div>

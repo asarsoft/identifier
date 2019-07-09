@@ -17,4 +17,9 @@
             @endforeach
         @endif
     </select>
+    @if ($errors->has($key))
+        <div class="invalid-feedback d-block">
+            {{ $errors->first($key) }}
+        </div>
+    @endif
 </div>
