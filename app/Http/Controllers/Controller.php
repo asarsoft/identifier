@@ -14,6 +14,7 @@ class Controller extends BaseController
 	public $module_name = 'non_registered';
 	public $success = true;
 	public $relational_fields = ['belongsTo', 'belongsToMany', 'hasOne', 'hasMany', 'manyToMany'];
+	public $pivot_or_child = ['belongsToMany', 'hasOne', 'hasMany', 'manyToMany'];
 
 	// ===> Limit prevents recursive functions from entering infinite loop
 	public $limit = 6;
