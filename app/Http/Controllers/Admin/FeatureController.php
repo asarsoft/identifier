@@ -4,55 +4,43 @@ namespace App\Http\Controllers\Admin;
 
 use App\Identifiers\FeatureIdentifier;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
 
 class FeatureController extends CrudController
 {
 	public $identifier = FeatureIdentifier::class;
+	public $success = true;
 
 	public function store(Request $request, $relation = null)
 	{
 		$identifier = new $this->identifier;
 
-		$identifier_rules = $identifier->rules();
+		$validated = $this->validated_data($this->identifier, $request);
 
-		$identifier_fields = $identifier->fields();
-
-		$sortables = $this->validated_data($this->identifier, $request);
-
-		foreach ($sortables as $storable)
+		if ($this->success === true)
 		{
-			$success = $storable['model']::create($storable['data']);
-			if (!$success)
+
+			dd($validated);
+
+		}
+		else
+		{
+			$errors = null;
+
+			foreach ($validated as $item)
 			{
-				return null;
-				//log the error
+				if ($item['errors'] != null)
+				{
+					$errors = $errors ? $errors : $item['errors'];
+					//dd($errors);
+					array_merge($errors->getMessageBag()->messages(), $item['errors']->getMessageBag()->messages());
+				}
 			}
+
+			dd($errors, $validated);
+
+			return redirect()->back()->withInput($request->all())->withErrors($errors);
 		}
-
-		$validator = Validator::make($request->all(), $identifier_rules);
-
-		if ($validator->fails())
-		{
-			return redirect()->back()->withErrors($validator->errors())->withInput($request->all());
-		}
-
-		$store_data = $request->only(array_keys($identifier_rules));
-
-
-		foreach ($identifier_fields as $key => $parameters)
-		{
-			if ($parameters['type'] == 'image' && $request->hasFile($key))
-			{
-				$path = $request->file($key)->store('', ['disk' => $parameters['disk']]);
-
-				$store_data[$key] = $parameters['disk'] . '/' . $path;
-			}
-		}
-
-		$identifier->model::create($store_data);
-
 	}
 
 	public function validated_data($identifier, Request $data)
@@ -63,24 +51,29 @@ class FeatureController extends CrudController
 
 		$validator = Validator::make($data->all(), $rules);
 
-		if ($validator->fails())
-		{
-			return ['success' => false, 'errors' => $validator->errors()];
-		}
-
-		$storable = [];
-
 		foreach ($identifier->fields() as $field_key => $field_value)
 		{
 			if (in_array($field_value['type'], $this->pivot_or_child, true))
 			{
-				dd($field_value, $data);
-				$storable_data = $this->validated_data($identifier, $data);
-				$storable[$storable_data['model']] = $storable_data['data'];
+				$sub_identifier = new $field_value['identifier'];
+
+				$storable_data = $this->validated_data($sub_identifier, $data);
+
+				$storable = array_values($storable_data);
 			}
 		}
 
-		$storable = ['model' => $identifier->model, 'data' => $data->only(array_keys($rules))];
+		if ($validator->fails())
+		{
+			$this->success = false;
+
+			$storable[] = ['errors' => $validator->errors()];
+		}
+
+		else
+		{
+			$storable[] = ['errors' => null, 'model' => $identifier->model, 'data' => $data->only(array_keys($rules))];
+		}
 
 		return $storable;
 	}
