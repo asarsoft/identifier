@@ -5,6 +5,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/FeatureController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/FeatureController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Identifiers/FeatureDetailIdentifier.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Identifiers/FeatureDetailIdentifier.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Identifiers/FeatureIdentifier.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Identifiers/FeatureIdentifier.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,19 +25,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Identifiers/FeatureIdentifier.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="218">
-              <caret line="62" lean-forward="true" selection-start-line="62" selection-end-line="74" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/CrudController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="333">
-              <caret line="109" column="83" selection-start-line="109" selection-start-column="83" selection-end-line="109" selection-end-column="83" />
+            <state relative-caret-position="386">
+              <caret line="107" column="32" lean-forward="true" selection-start-line="107" selection-start-column="32" selection-end-line="107" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -44,8 +36,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/FeatureController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="310">
-              <caret line="39" column="34" selection-start-line="39" selection-start-column="34" selection-end-line="39" selection-end-column="34" />
+            <state relative-caret-position="345">
+              <caret line="42" column="12" selection-start-line="42" selection-start-column="12" selection-end-line="42" selection-end-column="12" />
               <folding>
                 <element signature="e#46#84#0#PHP" expanded="true" />
               </folding>
@@ -56,8 +48,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Identifiers/FeatureDetailIdentifier.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="517">
-              <caret line="70" column="5" lean-forward="true" selection-start-line="70" selection-start-column="5" selection-end-line="70" selection-end-column="5" />
+            <state relative-caret-position="524">
+              <caret line="65" column="38" selection-start-line="65" selection-start-column="38" selection-end-line="65" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -292,7 +284,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -544,6 +535,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -637,14 +629,9 @@
       <workItem from="1562651878758" duration="143000" />
       <workItem from="1562680385639" duration="7483000" />
       <workItem from="1562701870327" duration="135000" />
-      <workItem from="1562739563263" duration="9651000" />
-    </task>
-    <task id="LOCAL-00013" summary="Edit view data vas injected">
-      <created>1560786079542</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1560786079542</updated>
+      <workItem from="1562739563263" duration="9709000" />
+      <workItem from="1562824966885" duration="26000" />
+      <workItem from="1562826393200" duration="3263000" />
     </task>
     <task id="LOCAL-00014" summary="edit function was moved to CRUD Controller">
       <created>1560870038746</created>
@@ -982,17 +969,24 @@
       <option name="project" value="LOCAL" />
       <updated>1562701992986</updated>
     </task>
-    <option name="localTasksCounter" value="62" />
+    <task id="LOCAL-00062" summary="Feature Detail Identifier rules updated">
+      <created>1562770843308</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1562770843309</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="362881000" />
+    <option name="totallyTimeSpent" value="366228000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49891776" visible="true" weight="0.2241284" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49891776" visible="true" weight="0.22966242" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" sideWeight="0.5005258" side_tool="true" weight="0.25933832" />
       <window_info id="npm" order="3" sideWeight="0.50108224" side_tool="true" weight="0.25345877" />
@@ -1006,7 +1000,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.09848485" />
-      <window_info active="true" anchor="bottom" x="67" y="151" width="1853" height="853" id="Terminal" order="10" sideWeight="0.4997233" visible="true" weight="0.24567099" />
+      <window_info active="true" anchor="bottom" x="67" y="151" width="1853" height="853" id="Terminal" order="10" sideWeight="0.4997233" visible="true" weight="0.18831168" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5002767" side_tool="true" weight="0.33874458" />
       <window_info anchor="bottom" id="Messages" order="12" />
       <window_info anchor="bottom" id="Command Line Tools Console" order="13" weight="0.31966352" />
@@ -1070,7 +1064,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Identifier logic was implemented to define fields and all other parameters for the given model" />
     <MESSAGE value="Select field was created for the identifier" />
     <MESSAGE value="Number field was created for the identifier. Footer added to Admin Side bar" />
     <MESSAGE value="&quot;Sharp&quot; symbol was removed from number component" />
@@ -1095,7 +1088,8 @@
     <MESSAGE value="BelongsTo dd removed and bootstrap form row was created" />
     <MESSAGE value="Storing item using identifiers is complete, but sub items are not considered yet" />
     <MESSAGE value="Store function was edited to store all of the related items, validated_data function is in progress" />
-    <option name="LAST_COMMIT_MESSAGE" value="Store function was edited to store all of the related items, validated_data function is in progress" />
+    <MESSAGE value="Feature Detail Identifier rules updated" />
+    <option name="LAST_COMMIT_MESSAGE" value="Feature Detail Identifier rules updated" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php">
@@ -1421,29 +1415,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Identifiers/FeatureIdentifier.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="62" lean-forward="true" selection-start-line="62" selection-end-line="74" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Identifiers/FeatureDetailIdentifier.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="517">
-          <caret line="70" column="5" lean-forward="true" selection-start-line="70" selection-start-column="5" selection-end-line="70" selection-end-column="5" />
+        <state relative-caret-position="248">
+          <caret line="61" lean-forward="true" selection-start-line="61" selection-end-line="61" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/CrudController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="333">
-          <caret line="109" column="83" selection-start-line="109" selection-start-column="83" selection-end-line="109" selection-end-column="83" />
+        <state relative-caret-position="386">
+          <caret line="107" column="32" lean-forward="true" selection-start-line="107" selection-start-column="32" selection-end-line="107" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Identifiers/FeatureDetailIdentifier.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="524">
+          <caret line="65" column="38" selection-start-line="65" selection-start-column="38" selection-end-line="65" selection-end-column="38" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/FeatureController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="39" column="34" selection-start-line="39" selection-start-column="34" selection-end-line="39" selection-end-column="34" />
+        <state relative-caret-position="345">
+          <caret line="42" column="12" selection-start-line="42" selection-start-column="12" selection-end-line="42" selection-end-column="12" />
           <folding>
             <element signature="e#46#84#0#PHP" expanded="true" />
           </folding>

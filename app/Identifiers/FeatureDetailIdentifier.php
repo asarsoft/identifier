@@ -63,7 +63,7 @@ class FeatureDetailIdentifier extends BaseIdentifier
 	{
 		return [
 			'feature_id' => 'nullable',
-			'language_id' => 'required|numeric|max:199',
+			'language_id' => 'nullable|numeric|max:199',
 			'name' => 'required|max:199',
 			'description' => 'required|max:1000000',
 			'feature_type' => 'required|max:199',

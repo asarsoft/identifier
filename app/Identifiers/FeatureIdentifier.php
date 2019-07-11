@@ -64,8 +64,8 @@ class FeatureIdentifier extends BaseIdentifier
 	{
 		return [
 			'category_id' => 'required|numeric',
-			'min_price' => 'nullable|numeric|max:1000000',
-			'max_price' => 'nullable|numeric|max:1000000',
+			'min_price' => 'required|numeric|max:1000000',
+			'max_price' => 'required|numeric|max:1000000',
 			'approximate_time' => 'required|numeric|max:1000000',
 			'difficulty' => 'required|numeric|max:100|min:0',
 			'priority' => 'required|numeric|max:100000',

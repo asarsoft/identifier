@@ -5,12 +5,18 @@ namespace App\Http\Controllers\Admin;
 use App\Identifiers\FeatureIdentifier;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use stdClass;
 
 class FeatureController extends CrudController
 {
 	public $identifier = FeatureIdentifier::class;
 	public $success = true;
 
+	/**
+	 * @param Request $request
+	 * @param null $relation
+	 * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
+	 */
 	public function store(Request $request, $relation = null)
 	{
 		$identifier = new $this->identifier;
@@ -19,9 +25,7 @@ class FeatureController extends CrudController
 
 		if ($this->success === true)
 		{
-
 			dd($validated);
-
 		}
 		else
 		{
@@ -32,12 +36,10 @@ class FeatureController extends CrudController
 				if ($item['errors'] != null)
 				{
 					$errors = $errors ? $errors : $item['errors'];
-					//dd($errors);
-					array_merge($errors->getMessageBag()->messages(), $item['errors']->getMessageBag()->messages());
+
+					$errors->merge($item['errors']);
 				}
 			}
-
-			dd($errors, $validated);
 
 			return redirect()->back()->withInput($request->all())->withErrors($errors);
 		}
