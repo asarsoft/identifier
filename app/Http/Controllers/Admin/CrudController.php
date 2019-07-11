@@ -15,18 +15,27 @@ class CrudController extends Controller
 	public $create_view = 'admin_views.crud.default.create';
 	public $show_view = 'admin_views.crud.default.show';
 	public $edit_view = 'admin_views.crud.default.edit';
-//
-//	public $relationships = [];
-//	public $trashed_child = [];
-//
-//	public $trashed_children = [];
-//
-//	public $primary = null;
-//	public $show_view = null;
-//
-//	public $model = null;
-//	public $success = true;
-//	public $child = false;
+
+	public $show_route = '';
+
+	public function __construct()
+	{
+		$identifier = new $this->identifier;
+
+		$this->show_route = 'show-'.strtolower(class_basename($identifier->model));
+	}
+	//
+	//	public $relationships = [];
+	//	public $trashed_child = [];
+	//
+	//	public $trashed_children = [];
+	//
+	//	public $primary = null;
+	//	public $show_view = null;
+	//
+	//	public $model = null;
+	//	public $success = true;
+	//	public $child = false;
 
 	public $identifier = null;
 

@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Identifiers\FeatureIdentifier;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use stdClass;
 
 class FeatureController extends CrudController
 {
@@ -19,14 +18,13 @@ class FeatureController extends CrudController
 	 */
 	public function store(Request $request, $relation = null)
 	{
-		$identifier = new $this->identifier;
-
-		$validated = $this->validated_data($this->identifier, $request);
+		$validated = $this->validated_data($this->identifier, $request, true);
 
 		if ($this->success === true)
 		{
-			dd($validated);
+			$id = $this->store_and_upload($validated);
 		}
+
 		else
 		{
 			$errors = null;
@@ -43,11 +41,21 @@ class FeatureController extends CrudController
 
 			return redirect()->back()->withInput($request->all())->withErrors($errors);
 		}
+
+		return redirect()->route($this->show_route, $id);
 	}
 
-	public function validated_data($identifier, Request $data)
+	/**
+	 * @param $identifier
+	 * @param Request $data
+	 * @param bool $primary
+	 * @return array
+	 */
+	public function validated_data($identifier, Request $data, $primary = false)
 	{
 		$identifier = new $identifier;
+
+		$images = null;
 
 		$rules = $identifier->rules();
 
@@ -59,9 +67,12 @@ class FeatureController extends CrudController
 			{
 				$sub_identifier = new $field_value['identifier'];
 
-				$storable_data = $this->validated_data($sub_identifier, $data);
+				$storable = array_values($this->validated_data($sub_identifier, $data));
+			}
 
-				$storable = array_values($storable_data);
+			elseif ($field_value['type'] == "image")
+			{
+				$images[] = array_merge($field_value, ['name' => $field_key]);
 			}
 		}
 
@@ -74,9 +85,53 @@ class FeatureController extends CrudController
 
 		else
 		{
-			$storable[] = ['errors' => null, 'model' => $identifier->model, 'data' => $data->only(array_keys($rules))];
+			$storable[] = [
+				'primary' => $primary,
+				'errors' => null,
+				'model' => $identifier->model,
+				'images' => $images,
+				'data' => $data->only(array_keys($rules))
+			];
 		}
 
 		return $storable;
+	}
+
+	public function store_and_upload($data)
+	{
+		$id = null;
+
+		foreach ($data as $record)
+		{
+			if ($record['images'] != null)
+			{
+				foreach ($record['images'] as $image)
+				{
+					$image_field_name = $record['images'][$image['name']];
+
+					$path = $request->file($record['data'][$image_field_name])->store('', [
+						'disk' => $image['disk']
+					]);
+
+					$record['data'][$image_field_name] = $path;
+				}
+			}
+
+			if (!$record['primary'])
+			{
+				$record['data'][strtolower(class_basename($record['model'])) . '_id'] = $id;
+
+				$record['model']::create([$record['data']]);
+			}
+
+			else
+			{
+				$stored = $record['model']::create([$record['data']]);
+
+				$id = $stored->id;
+			}
+		}
+
+		return $id;
 	}
 }

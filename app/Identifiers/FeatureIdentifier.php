@@ -69,7 +69,7 @@ class FeatureIdentifier extends BaseIdentifier
 			'approximate_time' => 'required|numeric|max:1000000',
 			'difficulty' => 'required|numeric|max:100|min:0',
 			'priority' => 'required|numeric|max:100000',
-			'icon' => 'nullable|image|max:2048'
+			'icon' => 'nullable|image|max:2048',
 		];
 	}
 }
