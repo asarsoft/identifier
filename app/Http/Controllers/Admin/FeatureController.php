@@ -121,12 +121,12 @@ class FeatureController extends CrudController
 			{
 				$record['data'][strtolower(class_basename($record['model'])) . '_id'] = $id;
 
-				$record['model']::create([$record['data']]);
+				$record['model']::create($record['data']);
 			}
 
 			else
 			{
-				$stored = $record['model']::create([$record['data']]);
+				$stored = $record['model']::create($record['data']);
 
 				$id = $stored->id;
 			}
