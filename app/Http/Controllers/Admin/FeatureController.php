@@ -18,7 +18,7 @@ class FeatureController extends CrudController
 	 */
 	public function store(Request $request, $relation = null)
 	{
-		$validated = $this->validated_data($this->identifier, $request, true);
+		$validated = $this->validated_data($this->identifier, $request);
 
 		if ($this->success === true)
 		{
@@ -27,19 +27,7 @@ class FeatureController extends CrudController
 
 		else
 		{
-			$errors = null;
-
-			foreach ($validated as $item)
-			{
-				if ($item['errors'] != null)
-				{
-					$errors = $errors ? $errors : $item['errors'];
-
-					$errors->merge($item['errors']);
-				}
-			}
-
-			return redirect()->back()->withInput($request->all())->withErrors($errors);
+			return redirect()->back()->withInput($request->all())->withErrors($validated['errors']);
 		}
 
 		return redirect()->route($this->show_route, $id);
@@ -48,14 +36,15 @@ class FeatureController extends CrudController
 	/**
 	 * @param $identifier
 	 * @param Request $data
-	 * @param bool $primary
 	 * @return array
 	 */
-	public function validated_data($identifier, Request $data, $primary = false)
+	public function validated_data($identifier, Request $data)
 	{
-		$identifier = new $identifier;
-
 		$images = null;
+		$sub_data = null;
+		$errors = null;
+
+		$identifier = new $identifier;
 
 		$rules = $identifier->rules();
 
@@ -67,30 +56,41 @@ class FeatureController extends CrudController
 			{
 				$sub_identifier = new $field_value['identifier'];
 
-				$storable = array_values($this->validated_data($sub_identifier, $data));
+				$validate_sub_data = $this->validated_data($sub_identifier, $data);
+
+				$sub_data[] = $validate_sub_data;
+
+				if (@$validate_sub_data['errors'])
+				{
+					$this->success = false;
+
+					$errors = $errors ? $errors->merge($validate_sub_data['errors']) : $validate_sub_data['errors'];
+				}
 			}
 
-			elseif ($field_value['type'] == "image")
+			if ($field_value['type'] == "image")
 			{
 				$images[] = array_merge($field_value, ['name' => $field_key]);
 			}
 		}
 
-		if ($validator->fails())
+		if (!$this->success || $validator->fails())
 		{
 			$this->success = false;
 
-			$storable[] = ['errors' => $validator->errors()];
+			$errors = $errors ? $errors->merge($validator->errors()) : $validator->errors();
+
+			$storable['errors'] = $errors;
 		}
 
 		else
 		{
-			$storable[] = [
-				'primary' => $primary,
+			$storable = [
 				'errors' => null,
 				'model' => $identifier->model,
 				'images' => $images,
-				'data' => $data->only(array_keys($rules))
+				'data' => $data->only(array_keys($rules)),
+				'sub_data' => $sub_data
 			];
 		}
 
@@ -100,6 +100,8 @@ class FeatureController extends CrudController
 	public function store_and_upload($data)
 	{
 		$id = null;
+
+		dd($data);
 
 		foreach ($data as $record)
 		{
@@ -119,7 +121,7 @@ class FeatureController extends CrudController
 
 			if (!$record['primary'])
 			{
-				$record['data'][strtolower(class_basename($record['model'])) . '_id'] = $id;
+				$record['data'][$primary_key] = $id;
 
 				$record['model']::create($record['data']);
 			}
