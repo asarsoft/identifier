@@ -99,75 +99,25 @@ class CrudController extends Controller
 	}
 
 	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @param $sub_model
-	 * @param \Illuminate\Http\Request $request
-	 * @return \Illuminate\Http\Response
+	 * @param Request $request
+	 * @param null $relation
+	 * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
 	 */
-	public function store(Request $request, $sub_model = null)
+	public function store(Request $request, $relation = null)
 	{
-		// ===> Identifier of the given controller.
-		$identifier = new $this->identifier;
-		// ===> fields of the given identifier
-		$identifier_fields = $identifier->fields();
+		$validated = $this->validated_data($this->identifier, $request);
 
-		$parameters = $this->parameters();
-		$validator = Validator::make($request->all(), $parameters['rules']);
-		if ($validator->fails())
+		if ($this->success === true)
 		{
-			return redirect()->back()->withErrors($validator->errors())->withInput(Input::all());
+			$id = $this->store_and_upload($validated);
 		}
 
-
-		// ===> main model validation was successful
-		if ($parameters['sub_modules'] && $sub_model != null)
-		{ // ===> If the module has sub modules, than attempt to create them as well
-			foreach ($parameters['sub_modules'] as $object)
-			{
-				$validator = Validator::make($request->all(), $object['rules']);
-				if ($validator->fails())
-				{
-					return redirect()->back()->withErrors($validator->errors())->withInput(Input::all());
-				}
-			}
-		}
-
-		$primary_object = $request->only(array_keys($parameters['rules']));
-
-		if ($parameters['image'] && $request->hasFile($parameters['image']['name']))
-		{ // ===> If the object has image, validate and store it
-			$validator = Validator::make($request->only($parameters['image']['name']), $this->image_rule());
-			if ($validator->fails())
-			{
-				return redirect()->back()->withErrors($validator->errors())->withInput(Input::all());
-			}
-
-
-			$path = $request->file($parameters['image']['name'])->store('', [
-				'disk' => $parameters['image']['disk']
-			]);
-			$primary_object = array_merge($primary_object, [$parameters['image']['name'] => $parameters['image']['disk'] . '/' . $path]);
-		}
-		// ===> store the object
-		$stored_primary_object = $parameters['model']::create($primary_object);
-
-		if ($stored_primary_object)
+		else
 		{
-			// ===> check if object was created, than assign object id to $this->primary
-			$this->primary = $stored_primary_object->id;
-
-			foreach ($parameters['sub_modules'] as $module)
-			{ // ===> Loop through all of the sub modules and create them.
-				$record = $request->only(array_keys($module['rules']));
-				$module_data = array_merge($record, [$identifier_fields['model'] . '_id' => $this->primary]);
-				$module['model']::create($module_data);
-			}
+			return redirect()->back()->withInput($request->all())->withErrors($validated['errors']);
 		}
 
-		$toast_messages = $this->toast_message('create');
-
-		return redirect()->route($this->show_route, $this->primary)->with('toast_messages', $toast_messages);
+		return redirect()->route($this->show_route, ['id' => $id]);
 	}
 
 	/**
