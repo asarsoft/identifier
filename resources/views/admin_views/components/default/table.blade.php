@@ -32,17 +32,17 @@
 				@endif
 			@endforeach
 			<td>
-				<a href="{{ route('show-'.$model, $record['id']) }}"
+				<a href="{{ route($model.'.show', $record['id']) }}"
 				   class="btn mr-2 btn-sm btn-outline-info btn-lg"
 				   role="button" aria-pressed="true">
 					<i class="fas fa-clipboard-list"></i>
 				</a>
-				<a href="{{ route('edit-'.$model, $record['id']) }}"
+				<a href="{{ route($model.'.edit', $record['id']) }}"
 				   class="btn mr-2 btn-sm btn-outline-primary btn-lg"
 				   role="button" aria-pressed="true">
 					<i class="fas fa-pencil-alt"></i>
 				</a>
-				<a href="{{ route('destroy-'.$model, $record['id']) }}" class="btn btn-sm btn-outline-danger btn-lg"
+				<a href="{{ route($model.'.destroy', $record['id']) }}" class="btn btn-sm btn-outline-danger btn-lg"
 				   role="button" aria-pressed="true">
 					<i class="fas fa-trash-alt"></i>
 				</a>

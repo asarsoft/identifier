@@ -1,19 +1,28 @@
 <?php
 
 return [
-    'create-feature' => 'Create Feature',
-    'index-feature' => 'Index Features',
-    'recycle-feature' => 'Recycle Features',
-    'show-feature' => 'Show Feature',
-    'edit-feature' => 'Edit Feature',
-    'update-feature' => 'Edit Feature',
+	'feature' => 'Feature',
+    'feature-create' => 'Create Feature',
+    'feature-index' => 'Index Features',
+    'feature-recycle' => 'Recycle Features',
+    'feature-show' => 'Show Feature',
+    'feature-edit' => 'Edit Feature',
+    'feature-update' => 'Edit Feature',
 
-    'create-category' => 'Create Category',
-    'index-category' => 'Index Category',
-    'recycle-category' => 'Recycle Category',
-    'show-category' => 'Show Category',
-    'edit-category' => 'Edit Category',
-    'update-category' => 'Edit Category',
+	'category' => 'Category',
+	'category-create' => 'Create Category',
+	'category-index' => 'Index Category',
+	'category-recycle' => 'Recycle Category',
+	'category-show' => 'Show Category',
+	'category-edit' => 'Edit Category',
+	'category-update' => 'Edit Category',
+
+    'create' => 'Create',
+    'index' => 'Index',
+    'recycle' => 'Recycle Bin',
+    'show' => 'Show',
+    'edit' => 'Edit',
+    'update' => 'Update',
 
     'feature_details' => 'Feature Details',
 

@@ -25,7 +25,7 @@ class CrudController extends Controller
 	{
 		$identifier = new $this->identifier;
 
-		$this->show_route = 'show-' . strtolower(class_basename($identifier->model));
+		$this->show_route = strtolower(class_basename($identifier->model)).'.show';
 	}
 	//	public $trashed_child = [];
 	//

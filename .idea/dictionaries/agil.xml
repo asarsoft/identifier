@@ -2,6 +2,7 @@
   <dictionary name="agil">
     <words>
       <w>asarsoft</w>
+      <w>strtolower</w>
     </words>
   </dictionary>
 </component>

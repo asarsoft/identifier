@@ -32,13 +32,13 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link s_b_anchor " href="{{ route('index-feature') }}">
+                <a class="nav-link s_b_anchor " href="{{ route('feature.index') }}">
                     <i class="mr-2 s_b_icons fas fa-clipboard-check"></i>
                     Feature
                 </a>
             </li>
              <li class="nav-item">
-                <a class="nav-link s_b_anchor" href="{{ route('index-category') }}">
+                <a class="nav-link s_b_anchor" href="{{ route('category.index') }}">
                     <i class="mr-2 s_b_icons fas fa-code-branch"></i>
                     Categories
                 </a>
