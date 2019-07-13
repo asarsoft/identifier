@@ -4,7 +4,8 @@
 					'method' => $method,
 					'field' => $field_value, 
 					'key' => $field_key, 
-					'record' => @$data ? $data[$field_key] : '' 
+					'record' => @$data ? $data[$field_key] : '' ,
+					'selected' => old($field_key)
 				])
 			@endcomponent
 	@endif

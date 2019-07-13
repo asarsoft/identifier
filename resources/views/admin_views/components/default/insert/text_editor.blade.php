@@ -5,7 +5,7 @@
 <div class="form-group">
 <div class="mb-4">
     <label for="{{ $key }}">{{ trans('button_input.'.$key) }}</label>
-    <textarea id="{{ $key }}" name="{{ $key }}">{{@$record}}</textarea>
+    <textarea id="{{ $key }}" name="{{ $key }}">{{old($key) ? old($key) : @$record }}</textarea>
     @if ($errors->has($key))
         <div class="invalid-feedback d-block">
             {{ $errors->first($key) }}

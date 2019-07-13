@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Identifiers\FeatureIdentifier;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class FeatureController extends CrudController
@@ -30,7 +31,7 @@ class FeatureController extends CrudController
 			return redirect()->back()->withInput($request->all())->withErrors($validated['errors']);
 		}
 
-		return redirect()->route($this->show_route, $id);
+		return redirect()->route($this->show_route, ['id' => $id]);
 	}
 
 	/**
@@ -99,41 +100,28 @@ class FeatureController extends CrudController
 
 	public function store_and_upload($data)
 	{
-		$id = null;
-
-		dd($data);
-
-		foreach ($data as $record)
+		if ($data['images'] != null)
 		{
-			if ($record['images'] != null)
+			foreach ($data['images'] as $image)
 			{
-				foreach ($record['images'] as $image)
-				{
-					$image_field_name = $record['images'][$image['name']];
+				$path = Storage::disk($image['disk'])->put('', $data['data'][$image['name']]);
 
-					$path = $request->file($record['data'][$image_field_name])->store('', [
-						'disk' => $image['disk']
-					]);
-
-					$record['data'][$image_field_name] = $path;
-				}
-			}
-
-			if (!$record['primary'])
-			{
-				$record['data'][$primary_key] = $id;
-
-				$record['model']::create($record['data']);
-			}
-
-			else
-			{
-				$stored = $record['model']::create($record['data']);
-
-				$id = $stored->id;
+				$data['data'][$image['name']] = $path;
 			}
 		}
 
-		return $id;
+		$stored = $data['model']::create($data['data']);
+
+		if ($data['sub_data'] != null)
+		{
+			foreach ($data['sub_data'] as $sub_data)
+			{
+				$sub_data['data'][strtolower(class_basename($data['model'])."_id")] = $stored->id;
+
+				$this->store_and_upload($sub_data);
+			}
+		}
+
+		return $stored->id;
 	}
 }
