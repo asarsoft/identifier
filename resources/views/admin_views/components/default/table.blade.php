@@ -20,7 +20,7 @@
 			@foreach($fields as $key => $value)
 				@if(@$value['available_in'] && in_array('index', $value['available_in'], true))
 					<td>
-						@component('admin_views.components.default.index.'.$value['type'],
+						@component('admin_views.components.default.table.'.$value['type'],
 							[
 								'record' => $record,
 								'parameters' => $value,

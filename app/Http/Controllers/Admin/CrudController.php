@@ -18,14 +18,15 @@ class CrudController extends Controller
 
 	public $show_route = '';
 
+	public $relationships = [];
+	public $success = true;
+
 	public function __construct()
 	{
 		$identifier = new $this->identifier;
 
-		$this->show_route = 'show-'.strtolower(class_basename($identifier->model));
+		$this->show_route = 'show-' . strtolower(class_basename($identifier->model));
 	}
-	//
-	//	public $relationships = [];
 	//	public $trashed_child = [];
 	//
 	//	public $trashed_children = [];
@@ -52,11 +53,12 @@ class CrudController extends Controller
 		{
 			if ($value['type'] == 'belongsTo' && @$value['available_in'] && in_array('index', $value['available_in'], true))
 			{
+				$this->relationships = [$value['method']];
 				$reproduced_fields = $this->belongsToReproduce($reproduced_fields, $key);
 			}
 		}
 
-		$data = $identifier->model::all();
+		$data = $identifier->model::with($this->relationships)->get();
 
 		return view($this->index_view)->with([
 			'model' => strtolower(class_basename($identifier->model)),

@@ -1,3 +1,9 @@
-<a href="{{ route('show-'.$parameters['model'], $record['id']) }}">
-	{{ $record[$parameters['belongs']][$parameters['title']] ? $record[$parameters['belongs']][$parameters['title']] : "—"}}
-</a>
+@if($record->{$parameters['method']} )
+	<a href="{{ route('show-'.$parameters['method'], $record['id']) }}">
+		{{ $record->{$parameters['method']}->{$parameters['title']} }}
+	</a>
+@else
+	<a href="#">
+		—
+	</a>
+@endif

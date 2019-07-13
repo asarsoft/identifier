@@ -9,57 +9,42 @@ class CategoryIdentifier extends BaseIdentifier
 {
 	public $title = 'title';
 	public $model = Category::class;
-	public $relationships = ['details', 'category'];
 
 	public function fields()
 	{
 		return [
-			'model' => 'category',
-			'fields' => [
-				'id' => [
-					'type' => 'number',
-					'max' => '1000000',
-					'straight_attributes' => 'required',
-					'available_in' => ['show'],
-				],
-				'icon' => [
-					'type' => 'image',
-					'straight_attributes' => 'required',
-					'available_in' => ['index', 'create', 'update', 'edit'],
-				],
-				'guid' => [
-					'type' => 'text',
-					'straight_attributes' => 'required',
-					'available_in' => ['show'],
-				],
-				'parent_id' => [
-					'type' => 'select',
-					'belongs' => 'category',
-					'identifier' => CategoryIdentifier::class,
-					'options' => 'categories',
-					'straight_attributes' => 'required',
-					'available_in' => ['index', 'create', 'update', 'edit'],
-				],
-				'title' => [
-					'type' => 'text',
-					'straight_attributes' => 'required',
-					'available_in' => ['index', 'create', 'update', 'edit'],
-				]
+			'id' => [
+				'type' => 'number',
+				'available_in' => ['show'],
 			],
-			'sub_models' => [
-				$this->sub_models()
+			'icon' => [
+				'type' => 'image',
+				'disk' => 'category',
+				'straight_attributes' => 'required',
+				'available_in' => ['index', 'create', 'update', 'edit'],
+			],
+			'guid' => [
+				'type' => 'text',
+				'available_in' => ['show'],
+			],
+			'parent_id' => [
+				'type' => 'belongsTo',
+				'method' => 'category',
+				'identifier' => CategoryIdentifier::class,
+				'available_in' => ['index', 'create', 'update', 'edit'],
+			],
+			'title' => [
+				'type' => 'text',
+				'available_in' => ['index', 'create', 'update', 'edit'],
 			]
 		];
 	}
 
-	function sub_models()
+	public function rules()
 	{
-		$sub_model = new CategoryDetail();
 		return [
-			'category_detail' => [
-				'fields' => $sub_model->fields(),
-				'available_in' => ['index', 'create', 'update', 'delete'],
-			]
+			'title' => 'required|max:199',
+			'icon' => 'nullable|image|max:2048',
 		];
 	}
 }
