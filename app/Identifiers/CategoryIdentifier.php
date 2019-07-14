@@ -45,6 +45,7 @@ class CategoryIdentifier extends BaseIdentifier
 		return [
 			'title' => 'required|max:199',
 			'icon' => 'nullable|image|max:2048',
+			'parent_id' => 'nullable|numeric|max:100000000',
 		];
 	}
 }

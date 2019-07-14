@@ -28,17 +28,6 @@ class CrudController extends Controller
 
 		$this->show_route = strtolower(class_basename($identifier->model)).'.show';
 	}
-	//	public $trashed_child = [];
-	//
-	//	public $trashed_children = [];
-	//
-	//	public $primary = null;
-	//	public $show_view = null;
-	//
-	//	public $model = null;
-	//	public $success = true;
-	//	public $child = false;
-
 
 	/**
 	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
