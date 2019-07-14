@@ -41,9 +41,10 @@ class Controller extends BaseController
 	/**
 	 * @param $identifier
 	 * @param string $method
+	 * @param bool $load_data
 	 * @return mixed
 	 */
-	public function reproduce_identifier($identifier, $method = "index")
+	public function reproduce_identifier($identifier, $method = "index", $load_data = true)
 	{
 		$reproduced_fields = $identifier->fields();
 
@@ -53,7 +54,7 @@ class Controller extends BaseController
 			{
 				if (@$value['available_in'] && in_array($method, $value['available_in'], true))
 				{
-					$reproduced_fields = $this->{$value['type']."Reproduce"}($reproduced_fields, $key, "create");
+					$reproduced_fields = $this->{$value['type']."Reproduce"}($reproduced_fields, $key, "create", $load_data);
 				}
 			}
 		}
@@ -62,14 +63,13 @@ class Controller extends BaseController
 	}
 
 	/**
-	 * Reproducing belongs to filed to have the selectable data in it
-	 *
-	 * @param $identifier_fields , Identifier fields
-	 * @param $key , is the key for the identifier field
-	 * @param bool $load_data , when assigned, it will load the data for the given belongsTo field identifier
-	 * @return mixed returns reproduced identifier
+	 * @param $identifier_fields
+	 * @param $key
+	 * @param string $method
+	 * @param bool $load_data
+	 * @return mixed
 	 */
-	public function belongsToReproduce($identifier_fields, $key, $load_data = false)
+	public function belongsToReproduce($identifier_fields, $key, $method = 'create', $load_data = false)
 	{
 		$identifier = new $identifier_fields[$key]['identifier'];
 
@@ -89,9 +89,10 @@ class Controller extends BaseController
 	 * @param $identifier_fields
 	 * @param $key
 	 * @param string $method
+	 * @param bool $load_data
 	 * @return mixed
 	 */
-	public function hasManyReproduce($identifier_fields, $key, $method = "create")
+	public function hasManyReproduce($identifier_fields, $key, $method = "create", $load_data = true)
 	{
 		$sub_identifier = new $identifier_fields[$key]['identifier'];
 
@@ -107,7 +108,7 @@ class Controller extends BaseController
 				{
 					if (@$field_value['available_in'] && in_array($method, $field_value['available_in'], true))
 					{
-						$reproduced_fields = $this->{$field_value['type'] . "Reproduce"}($reproduced_fields, $field_key, $method);
+						$reproduced_fields = $this->{$field_value['type'] . "Reproduce"}($reproduced_fields, $field_key, $method, $load_data);
 					}
 				}
 			}

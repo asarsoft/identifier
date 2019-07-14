@@ -54,7 +54,7 @@ class CrudController extends Controller
 			if ($value['type'] == 'belongsTo' && @$value['available_in'] && in_array('index', $value['available_in'], true))
 			{
 				$this->relationships = [$value['method']];
-				$reproduced_fields = $this->belongsToReproduce($reproduced_fields, $key);
+				$reproduced_fields = $this->belongsToReproduce($reproduced_fields, $key, 'index', true);
 			}
 		}
 
@@ -76,7 +76,7 @@ class CrudController extends Controller
 	{
 		$identifier = new $this->identifier;
 
-		$reproduced_fields = $this->reproduce_identifier($identifier, 'create');
+		$reproduced_fields = $this->reproduce_identifier($identifier, 'create', true);
 
 		return view($this->create_view)->with([
 			'model' => strtolower(class_basename($identifier->model)),
