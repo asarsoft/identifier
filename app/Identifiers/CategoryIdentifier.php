@@ -21,7 +21,7 @@ class CategoryIdentifier extends BaseIdentifier
 				'type' => 'image',
 				'disk' => 'category',
 				'straight_attributes' => 'required',
-				'available_in' => ['index', 'create', 'update', 'edit'],
+				'available_in' => ['index', 'create', 'show', 'edit'],
 			],
 			'guid' => [
 				'type' => 'text',
@@ -31,11 +31,11 @@ class CategoryIdentifier extends BaseIdentifier
 				'type' => 'belongsTo',
 				'method' => 'category',
 				'identifier' => CategoryIdentifier::class,
-				'available_in' => ['index', 'create', 'update', 'edit'],
+				'available_in' => ['index', 'create', 'show', 'edit'],
 			],
 			'title' => [
 				'type' => 'text',
-				'available_in' => ['index', 'create', 'update', 'edit'],
+				'available_in' => ['index', 'create', 'show', 'edit'],
 			]
 		];
 	}

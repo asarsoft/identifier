@@ -25,7 +25,7 @@
 								'record' => $record,
 								'parameters' => $value,
 								'key' => $key,
-								'identifier' => $identifier
+								'model' => $identifier->model
 							])
 						@endcomponent
 					</td>

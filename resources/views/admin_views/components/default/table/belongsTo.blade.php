@@ -1,5 +1,5 @@
 @if($record->{$parameters['method']} )
-	<a href="{{ route(strtolower(class_basename($identifier->model)).'.show', $record['id']) }}">
+	<a href="{{ route(strtolower(class_basename($parameters['model'])).'.show', $record['id']) }}">
 		{{ $record->{$parameters['method']}->{$parameters['title']} }}
 	</a>
 @else

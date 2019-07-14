@@ -21,6 +21,7 @@ class Controller extends BaseController
 
 	// ===> Limit prevents recursive functions from entering infinite loop
 	public $limit = 6;
+	public $relationships = [];
 
 	/**
 	 * @param $action
@@ -41,10 +42,11 @@ class Controller extends BaseController
 	/**
 	 * @param $identifier
 	 * @param string $method
+	 * @param null $id
 	 * @param bool $load_data
 	 * @return mixed
 	 */
-	public function reproduce_identifier($identifier, $method = "index", $load_data = true)
+	public function reproduce_identifier($identifier, $method = "index", $id = null, $load_data = true)
 	{
 		$reproduced_fields = $identifier->fields();
 
@@ -54,7 +56,7 @@ class Controller extends BaseController
 			{
 				if (@$value['available_in'] && in_array($method, $value['available_in'], true))
 				{
-					$reproduced_fields = $this->{$value['type']."Reproduce"}($reproduced_fields, $key, "create", $load_data);
+					$reproduced_fields = $this->{$value['type'] . "Reproduce"}($reproduced_fields, $key, "create", $load_data);
 				}
 			}
 		}
@@ -81,6 +83,8 @@ class Controller extends BaseController
 		}
 
 		$identifier_fields[$key]['title'] = $identifier->title;
+
+		$identifier_fields[$key]['model'] = $identifier->model;
 
 		return $identifier_fields;
 	}
@@ -120,6 +124,92 @@ class Controller extends BaseController
 	}
 
 	/**
+	 * child is used when you want to load given child of the given identifier,
+	 * and child id is to load a specific child
+	 *
+	 * @param $identifier
+	 * @param $method
+	 * @param bool $load_data
+	 * @param null $id
+	 * @param null $child
+	 * @param null $child_id
+	 * @return array
+	 */
+	public function loadIdentifier($identifier, $method, $load_data = false, $id = null, $child = null, $child_id = null)
+	{
+		$data = null;
+
+		$identifier = new $identifier;
+
+		$identifier_fields['main_identifier'] = [
+			'title' => $identifier->title,
+			'model' => $identifier->model,
+			'fields' => $identifier->fields(),
+		];
+
+		foreach ($identifier_fields['main_identifier']['fields'] as $key => $value)
+		{
+			if (in_array($value['type'], $this->relational_fields, true))
+			{
+				//Belongs to field should have title available
+				if ($value['type'] == 'belongsTo' && @$value['available_in'] && in_array($method, $value['available_in'], true))
+				{
+					$this->relationships = [$value['method']];
+
+					$identifier_fields['main_identifier']['fields'] = $this->belongsToReproduce($identifier_fields['main_identifier']['fields'], $key, 'index', false);
+				}
+
+				$this->relationships[] = $value['method'];
+
+				$sub_identifier = $this->relationalIdentifier($value);
+
+				$identifier_fields['sub_identifier'][] = $sub_identifier;
+			}
+		}
+
+		if ($load_data)
+		{
+			$data = $this->identifierData($identifier, $this->relationships, $id, $child, $child_id);
+		}
+
+		$loaded_identifier = [
+			'data' => $data,
+			'identifier_fields' => $identifier_fields
+		];
+
+		return $loaded_identifier;
+	}
+
+	public function identifierData($identifier, $relationships = [], $id = null, $child = null, $child_id = null)
+	{
+		if ($id == null)
+		{
+			$data = $identifier->model::with($relationships)->get();
+		}
+
+		else
+		{
+			$data = $identifier->model::with($relationships)->where('id', $id)->first();
+		}
+
+		return $data;
+	}
+
+	public function relationalIdentifier($field)
+	{
+		$identifier = new $field['identifier'];
+
+		$field['title'] = $identifier->title;
+
+		$field['model'] = $identifier->model;
+
+		$field['fields'] = $identifier->fields();
+
+		return $field;
+	}
+
+
+	/**
 	 * @param $data
 	 * @return mixed
 	 */
@@ -141,7 +231,7 @@ class Controller extends BaseController
 		{
 			foreach ($data['sub_data'] as $sub_data)
 			{
-				$sub_data['data'][strtolower(class_basename($data['model'])."_id")] = $stored->id;
+				$sub_data['data'][strtolower(class_basename($data['model']) . "_id")] = $stored->id;
 
 				$this->store_and_upload($sub_data);
 			}

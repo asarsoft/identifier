@@ -20,6 +20,7 @@ class CrudController extends Controller
 
 	public $relationships = [];
 	public $success = true;
+	public $identifier = null;
 
 	public function __construct()
 	{
@@ -38,7 +39,6 @@ class CrudController extends Controller
 	//	public $success = true;
 	//	public $child = false;
 
-	public $identifier = null;
 
 	/**
 	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
@@ -54,7 +54,8 @@ class CrudController extends Controller
 			if ($value['type'] == 'belongsTo' && @$value['available_in'] && in_array('index', $value['available_in'], true))
 			{
 				$this->relationships = [$value['method']];
-				$reproduced_fields = $this->belongsToReproduce($reproduced_fields, $key, 'index', true);
+
+				$reproduced_fields = $this->belongsToReproduce($reproduced_fields, $key, 'index', false);
 			}
 		}
 
@@ -76,7 +77,7 @@ class CrudController extends Controller
 	{
 		$identifier = new $this->identifier;
 
-		$reproduced_fields = $this->reproduce_identifier($identifier, 'create', true);
+		$reproduced_fields = $this->reproduce_identifier($identifier, 'create', false, true);
 
 		return view($this->create_view)->with([
 			'model' => strtolower(class_basename($identifier->model)),
@@ -84,20 +85,23 @@ class CrudController extends Controller
 		]);
 	}
 
-
 	/**
-	 * Shows the given item in it's view
-	 *
 	 * @param $id
+	 * @param null $field
 	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
 	 */
 	public function show($id)
 	{
 		$identifier = new $this->identifier;
 
-		$record = $identifier->model::with($this->relationships)->where('id', $id)->first();
+		$loaded_identifier = $this->loadIdentifier($identifier, 'show', true, $id);
 
-		return view($this->show_view, ['record' => $record]);
+		return view($this->show_view, [
+			'method' => 'show',
+			'data' => $loaded_identifier['data'],
+			'model' => strtolower(class_basename($identifier->model)),
+			'identifier' => $loaded_identifier['identifier_fields']
+		]);
 	}
 
 	/**
