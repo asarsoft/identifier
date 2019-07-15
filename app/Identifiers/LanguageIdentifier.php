@@ -30,13 +30,13 @@ class LanguageIdentifier extends BaseIdentifier
 			],
 			'icon' => [
 				'type' => 'image',
-				'driver' => "language",
+				'disk' => "language",
 				'available_in' => ['index', 'create', 'show', 'edit'],
 			],
 			'is_featured' => [
 				"type" => "select",
 				"options" => ["0" => "ban", "1" => "active"],
-				'available_in' => ['show', "index"]
+				'available_in' => ['show', "index", 'create']
 			],
 			"deleted_at" => [
 				"type" => "date",

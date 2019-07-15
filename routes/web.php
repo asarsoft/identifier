@@ -62,9 +62,14 @@ Route::group(['middleware' => 'language_required'], function () {
 			Route::resource('feature', 'Admin\FeatureController');
 			Route::get('feature/recycle', 'Admin\FeatureController@recycle')->name('feature.recycle');
 
+			Route::resource('featuredetail', 'Admin\FeatureDetailController');
+			Route::get('featuredetail/recycle', 'Admin\FeatureDetailController@recycle')->name('featuredetail.recycle');
+
+			Route::resource('language', 'Admin\LanguageController');
+			Route::get('language/recycle', 'Admin\LanguageController@recycle')->name('language.recycle');
+
 			Route::resource('category', 'Admin\CategoryController');
 			Route::get('category/recycle', 'Admin\CategoryController@recycle')->name('category.recycle');
-
 
 		});
 	});

@@ -6,6 +6,7 @@
 
 return [
 	'id' => 'ID',
+	'guid' => 'GUID',
 	'cover_image' => 'Cover Image',
     'place_order' => 'Place Order',
     'discuss_order' => 'Discuss Order',
@@ -20,7 +21,8 @@ return [
     'language_id' => 'Language',
     'parent_id' => 'Parent',
     'feature_id' => 'Feature',
-    
+    'is_featured' => 'Is Feature',
+
 
     'name' => 'Name',
     'description' => 'Description',

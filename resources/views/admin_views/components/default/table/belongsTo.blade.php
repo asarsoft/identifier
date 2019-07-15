@@ -1,9 +1,9 @@
-@if($record->{$parameters['method']} )
-	<a href="{{ route(strtolower(class_basename($parameters['model'])).'.show', $record->{$parameters['method']}->id) }}">
-		{{ $record->{$parameters['method']}->{$parameters['title']} }}
+@if($record && $record->{$parameters['method']} )
+	<a href="{{ route(strtolower(class_basename($model)).'.show', $record->{$parameters['method']}->id) }}">
+		{{ @$parameters['title'] ? $record->{$parameters['method']}->{$parameters['title']} : $record->{$parameters['method']}->id }}
 	</a>
 @else
-	<a href="#">
+	<a class="text-decoration-none" href="#">
 		—
 	</a>
 @endif

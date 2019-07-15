@@ -24,11 +24,11 @@ class FeatureDetailIdentifier extends BaseIdentifier
 				'type' => 'belongsTo',
 				'method' => 'feature',
 				'identifier' => FeatureIdentifier::class,
-				'available_in' => ['index', 'show', 'edit'],
+				'available_in' => ['index', 'show', 'edit', 'create'],
 			],
 			'language_id' => [
 				'type' => 'belongsTo',
-				'method' => 'feature',
+				'method' => 'language',
 				'identifier' => LanguageIdentifier::class,
 				'available_in' => ["index", "create", "edit", "show"],
 			],

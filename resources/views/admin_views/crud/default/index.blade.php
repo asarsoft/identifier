@@ -4,6 +4,6 @@
 	@component('admin_views.components.crud_actions', ['module' => $model])
 	@endcomponent
 
-	@component('admin_views.components.default.table', ['fields' => $fields, 'data' => $data, 'identifier' => $identifier, 'model' => $model])
+	@component('admin_views.components.default.table', ['fields' => $fields, 'data' => $data, 'model' => $model])
 	@endcomponent
 @endsection

@@ -17,6 +17,22 @@ return [
 	'category-edit' => 'Edit Category',
 	'category-update' => 'Edit Category',
 
+	'featuredetail' => 'Feature Detail',
+	'featuredetail-create' => 'Create Feature Detail',
+	'featuredetail-index' => 'Index Feature Detail',
+	'featuredetail-recycle' => 'Recycle Feature Detail',
+	'featuredetail-show' => 'Show Feature Detail',
+	'featuredetail-edit' => 'Edit Feature Detail',
+	'featuredetail-update' => 'Edit Feature Detail',
+
+	'language' => 'Language',
+	'language-create' => 'Create Language',
+	'language-index' => 'Index Language',
+	'language-recycle' => 'Recycle Language',
+	'language-show' => 'Show Language',
+	'language-edit' => 'Edit Language',
+	'language-update' => 'Edit Language',
+
     'create' => 'Create',
     'index' => 'Index',
     'recycle' => 'Recycle Bin',

@@ -20,7 +20,8 @@ class Controller extends BaseController
 	public $pivot_or_child = ['belongsToMany', 'hasOne', 'hasMany', 'manyToMany'];
 
 	// ===> Limit prevents recursive functions from entering infinite loop
-	public $limit = 6;
+	public $limit = 10;
+
 	public $relationships = [];
 
 	/**
@@ -161,9 +162,9 @@ class Controller extends BaseController
 
 				$this->relationships[] = $value['method'];
 
-				$sub_identifier = $this->relationalIdentifier($value);
+				$sub_identifier = $this->relationalIdentifier($value, $method);
 
-				$identifier_fields['sub_identifier'][] = $sub_identifier;
+				$identifier_fields['sub_identifier'][$sub_identifier['method']] = $sub_identifier;
 			}
 		}
 
@@ -195,7 +196,7 @@ class Controller extends BaseController
 		return $data;
 	}
 
-	public function relationalIdentifier($field)
+	public function relationalIdentifier($field, $method = "index")
 	{
 		$identifier = new $field['identifier'];
 
@@ -204,6 +205,18 @@ class Controller extends BaseController
 		$field['model'] = $identifier->model;
 
 		$field['fields'] = $identifier->fields();
+
+		if ($this->limit > 0)
+		{
+			$this->limit = $this->limit - 1;
+			foreach ($field['fields'] as $key => $value)
+			{
+				if ($value['type'] == 'belongsTo' && @$value['available_in'] && in_array($method, $value['available_in'], true))
+				{
+					$field['fields'][$key] = $this->relationalIdentifier($value, $method);
+				}
+			}
+		}
 
 		return $field;
 	}
